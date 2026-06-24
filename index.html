@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Scanner — India Market Intelligence</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.19.0/iconfont/tabler-icons.min.css">
+<style>
+:root{--bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;--border:#2a2a38;--border2:#333345;--text:#e8e8f0;--text2:#9898b0;--text3:#5a5a72;--accent:#4f8ef7;--green:#3ecf8e;--green-bg:#0d2618;--green-text:#3ecf8e;--red:#f26b6b;--red-bg:#2a0e0e;--red-text:#f26b6b;--amber:#f5a623;--amber-bg:#271a05;--amber-text:#f5a623;--purple:#a78bfa;--purple-bg:#1a1030;--purple-text:#a78bfa;--blue-bg:#0d1a2e;--blue-text:#4f8ef7;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'JetBrains Mono','Fira Code',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.5;min-height:100vh}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.topnav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;gap:12px;height:52px}
+.brand{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em;white-space:nowrap;flex-shrink:0}
+.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 8px var(--green)}
+.nav-tabs{display:flex;gap:2px;flex:1}
+.ntab{padding:6px 14px;border-radius:6px;border:none;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);font-family:var(--font);transition:all .15s;white-space:nowrap}
+.ntab:hover{background:var(--bg3);color:var(--text)}
+.ntab.active{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
+.nav-chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;white-space:nowrap;font-family:var(--mono)}
+.cg{background:var(--green-bg);color:var(--green-text)}.cr{background:var(--red-bg);color:var(--red-text)}.ca{background:var(--amber-bg);color:var(--amber-text)}.cb{background:var(--blue-bg);color:var(--blue-text)}.cn{background:var(--bg3);color:var(--text2)}
+.ticker{background:var(--bg2);border-bottom:1px solid var(--border);padding:6px 0;overflow:hidden}
+.tick-inner{display:flex;gap:24px;animation:scr 60s linear infinite;white-space:nowrap;padding:0 12px}
+@keyframes scr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ti{display:flex;align-items:center;gap:5px;font-size:11px;font-family:var(--mono)}
+.tn{color:var(--text3)}.tv{color:var(--text2);font-weight:600}.tu{color:var(--green);font-weight:600}.td{color:var(--red);font-weight:600}.tsep{color:var(--border2)}
+.sec{display:none}.sec.on{display:block}
+.scanner-wrap{display:flex;min-height:calc(100vh - 100px)}
+.sidebar{width:160px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding-bottom:20px}
+.sg{font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--text3);padding:12px 12px 4px;text-transform:uppercase}
+.si{padding:7px 12px;cursor:pointer;font-size:11px;font-weight:400;color:var(--text2);border-left:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all .12s}
+.si:hover{background:var(--bg3);color:var(--text)}
+.si.on{background:var(--bg3);color:var(--text);border-left-color:var(--accent);font-weight:500}
+.si-cnt{margin-left:auto;font-size:9px;background:var(--bg4);color:var(--text3);padding:1px 5px;border-radius:3px}
+.si-new{font-size:9px;background:var(--green-bg);color:var(--green-text);padding:1px 5px;border-radius:3px}
+.si-hot{font-size:9px;background:var(--amber-bg);color:var(--amber-text);padding:1px 5px;border-radius:3px}
+.scan-body{flex:1;min-width:0;padding:12px 16px;background:var(--bg)}
+.cpanel{display:none}.cpanel.on{display:block}
+.ph{border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ph-left{display:flex;gap:10px;align-items:flex-start}
+.ph-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.ph-title{font-size:13px;font-weight:600;margin-bottom:3px}
+.ph-sub{font-size:11px;color:var(--text2);line-height:1.5}
+.ph-thesis{font-size:10px;font-style:italic;padding:6px 8px;border-radius:6px;margin-top:6px;line-height:1.5;background:var(--bg3);color:var(--text2)}
+.ph-badge{font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.sc{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--bg2)}
+.sc-top{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:6px;background:var(--bg3)}
+.sc-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tkr{font-size:13px;font-weight:700;color:var(--text);font-family:var(--mono)}
+.px{font-size:11px;color:var(--text3)}
+.sp{font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px}
+.sp-sbuy{background:var(--green-bg);color:var(--green-text);border:1px solid #1a4a30}
+.sp-buy{background:#0d2020;color:#3ecf8e;border:1px solid #1a3a30}
+.sp-acc{background:var(--purple-bg);color:var(--purple-text);border:1px solid #2a1a4a}
+.sp-hold{background:var(--blue-bg);color:var(--blue-text);border:1px solid #1a2a40}
+.sp-watch{background:var(--amber-bg);color:var(--amber-text);border:1px solid #3a2a10}
+.sp-sell{background:var(--red-bg);color:var(--red-text);border:1px solid #3a1a1a}
+.fs{font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px}
+.fs-p{background:var(--green-bg);color:var(--green-text)}.fs-w{background:var(--amber-bg);color:var(--amber-text)}.fs-f{background:var(--red-bg);color:var(--red-text)}
+.s6{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.s6c{background:var(--bg2);padding:5px 6px;text-align:center}
+.s6l{font-size:9px;font-weight:600;color:var(--text3);margin-bottom:2px;display:block;text-transform:uppercase;letter-spacing:.04em}
+.s6v{font-size:9px;font-weight:600;padding:2px 4px;border-radius:3px;display:inline-block}
+.vg{background:var(--green-bg);color:var(--green-text)}.vr{background:var(--red-bg);color:var(--red-text)}.vn{background:var(--blue-bg);color:var(--blue-text)}.va{background:var(--amber-bg);color:var(--amber-text)}.vp{background:var(--purple-bg);color:var(--purple-text)}.vx{background:var(--bg3);color:var(--text3)}
+.cvbar{display:flex;align-items:center;gap:8px;padding:5px 12px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.cvbar-l{font-size:10px;font-weight:500;color:var(--text3);width:80px;flex-shrink:0}
+.cvbar-t{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.cvbar-f{height:100%;border-radius:2px}
+.fb{background:var(--green)}.fa{background:var(--purple)}.fh{background:var(--accent)}.fw{background:var(--amber)}.fr{background:var(--red)}
+.cvbar-s{font-size:11px;font-weight:600;min-width:40px;text-align:right}
+.sc-body{padding:9px 12px}
+.rat{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:6px}
+.rat strong{color:var(--text);font-weight:600}
+.opp{background:var(--green-bg);border-left:2px solid var(--green);padding:6px 9px;font-size:11px;color:var(--green-text);margin-bottom:5px;line-height:1.5}
+.risk{background:var(--amber-bg);border-left:2px solid var(--amber);padding:6px 9px;font-size:11px;color:var(--amber-text);margin-bottom:5px;line-height:1.5}
+.conflict{background:var(--purple-bg);border-left:2px solid var(--purple);padding:6px 9px;font-size:11px;color:var(--purple-text);margin-bottom:5px;line-height:1.5}
+.avoid-box{background:var(--red-bg);border-left:2px solid var(--red);padding:6px 9px;font-size:11px;color:var(--red-text);margin-bottom:5px;line-height:1.5}
+.lvrow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.lv{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;flex:1;min-width:70px}
+.ll{font-size:9px;color:var(--text3);margin-bottom:1px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.lval{font-size:12px;font-weight:700;font-family:var(--mono)}
+.en{color:var(--purple)}.t1{color:var(--green)}.t2{color:#3ecf8e}.sl{color:var(--red)}.uu{color:var(--accent)}
+.section-padding{padding:12px 16px}
+.wl-sum{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:12px}
+.wls-g{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.wls-c{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.wls-t{font-size:12px;font-weight:700;color:var(--text);font-family:var(--mono);margin-bottom:3px}
+.wls-s{font-size:11px;font-weight:600}
+.wls-n{font-size:10px;color:var(--text3);margin-top:2px;line-height:1.4}
+.w-sbuy{color:var(--green)}.w-hold{color:var(--accent)}.w-sell{color:var(--red)}.w-watch{color:var(--amber)}
+.wlcard{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--bg2)}
+.wlc-hdr{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);background:var(--bg3)}
+.wl-t{font-size:14px;font-weight:700;font-family:var(--mono)}
+.wl-ov{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
+.w-sbuy-pill{background:var(--green-bg);color:var(--green-text);border:1px solid #1a4a30}
+.w-hold-pill{background:var(--blue-bg);color:var(--blue-text);border:1px solid #1a2a40}
+.w-sell-pill{background:var(--red-bg);color:var(--red-text);border:1px solid #3a1a1a}
+.w-watch-pill{background:var(--amber-bg);color:var(--amber-text);border:1px solid #3a2a10}
+.wl-s6{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ws6{background:var(--bg2);padding:8px 10px}
+.ws6-l{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:3px}
+.ws6-s{font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:3px}
+.ws6-d{font-size:10px;color:var(--text2);line-height:1.5}
+.wl-cb{display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.wlcb-l{font-size:10px;font-weight:500;color:var(--text3);width:110px;flex-shrink:0}
+.wlcb-t{flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
+.wlcb-f{height:100%;border-radius:3px}
+.wlcb-s{font-size:11px;font-weight:600;min-width:60px;text-align:right}
+.wl-body{padding:10px 14px}
+.wl-rat{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:7px}
+.wl-rat strong{color:var(--text);font-weight:600}
+.wl-lvrow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.wl-lv{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;flex:1;min-width:70px}
+.wl-ll{font-size:9px;color:var(--text3);margin-bottom:1px;font-weight:500;text-transform:uppercase}
+.wl-lval{font-size:12px;font-weight:700;font-family:var(--mono)}
+.sum5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:12px}
+.s5c{border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;background:var(--bg2)}
+.s5v{font-size:24px;font-weight:700;margin-bottom:3px;font-family:var(--mono)}
+.s5l{font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.05em}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.card-hdr{padding:9px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg3)}
+.card-title{font-size:12px;font-weight:600;color:var(--text)}
+.card-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px}
+.card-body{padding:10px 12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.mc{background:var(--bg3);border-radius:8px;padding:9px 10px;border:1px solid var(--border)}
+.mc-lbl{font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.mc-val{font-size:16px;font-weight:700;margin-bottom:1px;font-family:var(--mono)}
+.mc-chg{font-size:11px;font-weight:600;margin-bottom:3px}
+.mc-sub{font-size:10px;color:var(--text3);line-height:1.4}
+.mc-bar-wrap{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-top:5px}
+.mc-bar{height:100%;border-radius:2px}
+.idx-t{width:100%;border-collapse:collapse}
+.idx-t th{font-size:10px;font-weight:600;color:var(--text3);padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em}
+.idx-t td{font-size:12px;padding:6px 8px;border-bottom:1px solid var(--border)}
+.idx-t tr:last-child td{border-bottom:none}
+.iname{font-weight:600;color:var(--text);font-family:var(--mono)}
+.isub{font-size:10px;color:var(--text3);margin-top:1px}
+.ichg{font-weight:600;font-size:10px;padding:1px 6px;border-radius:3px;font-family:var(--mono)}
+.iu{background:var(--green-bg);color:var(--green-text)}.id{background:var(--red-bg);color:var(--red-text)}.if{background:var(--bg3);color:var(--text3)}
+.hmap{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.hmc{border-radius:6px;padding:8px;border:1px solid var(--border)}
+.hmc-name{font-size:11px;font-weight:600;margin-bottom:2px}
+.hmc-chg{font-size:14px;font-weight:700;font-family:var(--mono)}
+.hmc-sub{font-size:9px;opacity:.7;margin-top:2px}
+.h-sbuy{background:#0d2618;border-color:#1a4a30;color:var(--green)}.h-buy{background:#0a1e12;border-color:#152e1e;color:#5dd49a}.h-flat{background:var(--bg3);border-color:var(--border);color:var(--text2)}.h-sell{background:var(--red-bg);border-color:#3a1a1a;color:var(--red)}.h-mdn{background:#1a0e06;border-color:#3a2010;color:var(--amber)}
+.sent-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)}
+.sent-row:last-child{border-bottom:none}
+.sent-name{font-size:12px;font-weight:600;color:var(--text);flex:1;min-width:120px}
+.sent-bar-wrap{flex:2;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;position:relative}
+.sf-bull{position:absolute;top:0;left:50%;height:100%;border-radius:3px}
+.sf-bear{position:absolute;top:0;right:50%;height:100%;border-radius:3px}
+.sent-score{font-size:11px;font-weight:600;min-width:40px;text-align:right;font-family:var(--mono)}
+.sent-v{font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.sv-b{background:var(--green-bg);color:var(--green-text)}.sv-r{background:var(--red-bg);color:var(--red-text)}.sv-a{background:var(--amber-bg);color:var(--amber-text)}
+.ni{padding:9px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
+.ni:last-child{border-bottom:none}
+.ni-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.nd-bull{background:var(--green)}.nd-bear{background:var(--red)}.nd-warn{background:var(--amber)}
+.ni-body{flex:1}
+.ni-hl{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.4}
+.ni-meta{font-size:10px;color:var(--text3);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.ni-imp{font-size:10px;font-weight:600;padding:1px 7px;border-radius:3px}
+.ni-bull{background:var(--green-bg);color:var(--green-text)}.ni-bear{background:var(--red-bg);color:var(--red-text)}.ni-warn{background:var(--amber-bg);color:var(--amber-text)}
+.ni-text{font-size:11px;color:var(--text2);line-height:1.55}
+.ni-text strong{color:var(--text);font-weight:600}
+.ev{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.ev:last-child{border-bottom:none}
+.ev-date{font-size:10px;font-weight:700;background:var(--bg4);color:var(--text2);padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-family:var(--mono);border:1px solid var(--border2)}
+.ev-title{font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px}
+.ev-sub{font-size:10px;color:var(--text3);line-height:1.4}
+.ev-imp{font-size:10px;font-weight:600;padding:1px 7px;border-radius:3px;margin-top:3px;display:inline-block}
+.ei-h{background:var(--red-bg);color:var(--red-text)}.ei-m{background:var(--amber-bg);color:var(--amber-text)}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin:14px 0 8px;display:flex;align-items:center;gap:10px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.narrative-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.narrative-box strong{color:var(--text);font-weight:600}
+.footer-bar{font-size:10px;color:var(--text3);text-align:center;padding:10px 16px;border-top:1px solid var(--border);background:var(--bg2);margin-top:10px}
+.statusbar{background:var(--bg2);border-top:1px solid var(--border);color:var(--text3);padding:6px 16px;font-size:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;position:sticky;bottom:0}
+.mg{color:var(--green)}.mr{color:var(--red)}.ma{color:var(--amber)}
+.nifty-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;text-align:center}
+.nf-val{font-size:36px;font-weight:800;color:var(--green);font-family:var(--mono);line-height:1}
+.nf-chg{font-size:12px;color:var(--green);font-weight:600;margin-top:3px;font-family:var(--mono)}
+.nf-sub{font-size:10px;color:var(--text3);margin-top:3px}
+.fg-wrap{text-align:center;padding:8px}
+.fg-score{font-size:44px;font-weight:800;line-height:1;font-family:var(--mono)}
+.fg-word{font-size:12px;font-weight:600;margin-bottom:8px}
+.fg-gauge{width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,#991f1f,#854f0b,#3b6d11,#1a5a30);margin-bottom:5px;position:relative}
+.fg-needle{position:absolute;top:-4px;width:4px;height:16px;border-radius:2px;background:var(--text);transform:translateX(-50%)}
+.fg-labels{display:flex;justify-content:space-between;font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.fg-comps{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px}
+.fg-c{background:var(--bg3);border-radius:6px;padding:5px 7px;border:1px solid var(--border)}
+.fg-cl{font-size:9px;color:var(--text3);margin-bottom:1px}
+.fg-cv{font-size:11px;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="brand"><span class="brand-dot"></span>Stock Scanner</div>
+  <div class="nav-tabs">
+    <button class="ntab active" id="tab-s1" onclick="showSec('s1')"><i class="ti ti-search" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Stock Scanner</button>
+    <button class="ntab" id="tab-s2" onclick="showSec('s2')"><i class="ti ti-star" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>My Watchlist</button>
+    <button class="ntab" id="tab-s3" onclick="showSec('s3')"><i class="ti ti-news" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>News &amp; Sentiment</button>
+  </div>
+  <div class="nav-chips">
+    <span class="chip cn">Jun 24 2026</span><span class="chip cg">Nifty +0.58%</span><span class="chip cg">Sensex +1.05%</span><span class="chip cg">BNF +2.97%</span><span class="chip cg">VIX 13.42</span><span class="chip cr">Nasdaq -2.21%</span><span class="chip cb">Crude $74</span>
+  </div>
+</nav>
+<div class="ticker">
+  <div class="tick-inner">
+    <span class="ti"><span class="tn">NIFTY</span><span class="tv"> 24,768</span><span class="tu"> +0.58%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">SENSEX</span><span class="tv"> 77,003</span><span class="tu"> +1.05%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BANKNIFTY</span><span class="tv"> 55,177</span><span class="tu"> +2.97%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">VIX</span><span class="tv"> 13.42</span><span class="tu"> Normal</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">HDFC BANK</span><span class="tv"> 1,855</span><span class="tu"> +3.74%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">IDBI BANK</span><span class="tu"> +17.59%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">TCS</span><span class="tv"> 2,073</span><span class="td"> -2.55%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">CIPLA</span><span class="tv"> 1,456</span><span class="tu"> +2.87%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">AU SFB</span><span class="tu"> +5.42% ORB</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BPCL</span><span class="tv"> 311</span><span class="tu"> Broke Rs.308</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BHARTI AIRTEL</span><span class="tu"> 5yr hold</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">ASIAN PAINTS</span><span class="tu"> ROCE 41%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">L&T</span><span class="tu"> Record orderbook</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BRENT</span><span class="tv"> $74</span><span class="tu"> Iran peace</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">GOLD</span><span class="tv"> $4,150</span><span class="td"> -1.2%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">USD/INR</span><span class="tv"> 94.68</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">NIFTY</span><span class="tv"> 24,768</span><span class="tu"> +0.58%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">SENSEX</span><span class="tv"> 77,003</span><span class="tu"> +1.05%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BANKNIFTY</span><span class="tv"> 55,177</span><span class="tu"> +2.97%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">AU SFB</span><span class="tu"> +5.42%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BHARTI AIRTEL</span><span class="tu"> 5yr hold</span></span>
+  </div>
+</div>
+
+<!-- ═══ SECTION 1: STOCK SCANNER ═══ -->
+<div class="sec on" id="sec-s1">
+<div class="scanner-wrap">
+<div class="sidebar">
+  <div class="sg">Today</div>
+  <div class="si on" id="si-today" onclick="showCat('today')">Today's Picks <span class="si-cnt">3</span></div>
+  <div class="si" id="si-intra" onclick="showCat('intra')">Scalp / ORB <span class="si-hot">HOT</span></div>
+  <div class="si" id="si-smart" onclick="showCat('smart')">Smart Money <span class="si-cnt">3</span></div>
+  <div class="sg">Growth</div>
+  <div class="si" id="si-lt" onclick="showCat('lt')">5-10 Year <span class="si-new">NEW</span></div>
+  <div class="si" id="si-multi" onclick="showCat('multi')">3-5 Year <span class="si-cnt">2</span></div>
+  <div class="si" id="si-large" onclick="showCat('large')">Large Cap <span class="si-cnt">2</span></div>
+  <div class="si" id="si-mid" onclick="showCat('mid')">Mid Cap <span class="si-cnt">2</span></div>
+  <div class="si" id="si-small" onclick="showCat('small')">Small Cap <span class="si-cnt">1</span></div>
+  <div class="sg">Quality</div>
+  <div class="si" id="si-mono" onclick="showCat('mono')">Monopolies <span class="si-cnt">2</span></div>
+  <div class="si" id="si-div" onclick="showCat('div')">Dividend <span class="si-cnt">2</span></div>
+  <div class="si" id="si-swing" onclick="showCat('swing')">Short Term <span class="si-cnt">2</span></div>
+  <div class="si" id="si-silent" onclick="showCat('silent')">Silent <span class="si-cnt">2</span></div>
+  <div class="sg">Themes</div>
+  <div class="si" id="si-it" onclick="showCat('it')">IT Sector <span class="si-cnt">3</span></div>
+  <div class="si" id="si-psu" onclick="showCat('psu')">High PSUs <span class="si-cnt">3</span></div>
+  <div class="si" id="si-crude" onclick="showCat('crude')">Crude Plays <span class="si-cnt">3</span></div>
+  <div class="si" id="si-fii" onclick="showCat('fii')">FII Reversal <span class="si-cnt">2</span></div>
+  <div class="si" id="si-contra" onclick="showCat('contra')">Contrarian <span class="si-cnt">2</span></div>
+  <div class="si" id="si-india" onclick="showCat('india')">India Decade <span class="si-cnt">4</span></div>
+  <div class="si" id="si-penny" onclick="showCat('penny')">Penny <span class="si-cnt">3</span></div>
+</div>
+<div class="scan-body">
+
+<!-- TODAY'S PICKS -->
+<div class="cpanel on" id="cp-today">
+<div class="ph" style="background:var(--blue-bg);border-color:#1a2a40"><div class="ph-left"><i class="ti ti-calendar-event ph-icon" style="color:var(--accent)"></i><div><div class="ph-title">Today's Picks — Jun 24 2026</div><div class="ph-sub">VIX 13.42 = full position size | BNF expiry | Post-expiry VIX crash 27 to 13</div><div class="ph-thesis">All 14 BankNifty constituents green. FII covering -1.69L puts. Buy banking breakouts, ride pharma momentum, avoid IT intraday.</div></div></div><span class="ph-badge" style="background:var(--accent);color:#fff">Exit 3:15 PM</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-sbuy">Strong Buy</span><span class="px">~Rs.1,855 | +3.74% | BNF leader | FPI gap 33% to 24%</span></div><span class="fs fs-p">Fund 7/10</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Gold std</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Confirm</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts cvrd</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII return</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">BNF expiry</span></div></div>
+<div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:88%"></div></div><span class="cvbar-s" style="color:var(--green)">88%</span></div>
+<div class="sc-body"><div class="rat">All 14 BNF stocks green. FII covering -1.69L puts = bullish. PAT Rs.79,219 Cr FY26. Rs.13 div declared.<br><strong>Entry Rs.1,840-1,865 | Target Rs.1,930 | Stop Rs.1,818 | Exit 3 PM</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,840-1,865</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,930</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,818</div></div><div class="lv"><div class="ll">Exit by</div><div class="lval sl">3:00 PM</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CIPLA</span><span class="sp sp-buy">Buy on Dip</span><span class="px">Rs.1,456 | +2.87% | Delivery 63.75% | P/E 24x vs sector 32x</span></div><span class="fs fs-p">Fund 8/10</span></div>
+<div class="sc-body"><div class="rat">All 6 signals bullish. Wait for dip Rs.1,415-1,440. Delivery 63.75% = institutional accumulation.<br><strong>T1 Rs.1,530 | T2 Rs.1,620 | Stop Rs.1,370</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,415-1,440</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.1,530</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.1,620</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,370</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IDBI BANK</span><span class="sp sp-hold">Hold — no chase at +17%</span><span class="px">+17.59% today | Privatisation confirmed | NSE top contributor</span></div></div>
+<div class="sc-body"><div class="rat">If long: trailing stop -8% from day high. If not long: wait for consolidation Rs.95-100. Target Rs.120, Rs.145+ on privatisation completion.</div></div></div>
+</div>
+
+<!-- SCALP / ORB -->
+<div class="cpanel" id="cp-intra">
+<div class="ph" style="background:#1a0800;border-color:#3a1a00"><div class="ph-left"><i class="ti ti-bolt ph-icon" style="color:var(--amber)"></i><div><div class="ph-title">Scalp / ORB Intraday — Jun 24 2026</div><div class="ph-sub">F&amp;O liquid stocks only | ORB 9:15-9:45 AM | VWAP as floor | Exit by 3:10 PM | R:R min 1:2</div><div class="ph-thesis">VIX 13.42 = full position sizing. All 14 BNF constituents green. Checklist: price above VWAP | volume above 1.5x | F&amp;O only | stop within 1% | R:R above 1:2.</div></div></div><span class="ph-badge" style="background:var(--amber);color:#000">Exit 3:10 PM</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AU SMALL FINANCE BANK</span><span class="sp sp-sbuy">ORB Long — A+</span><span class="px">+5.42% today | 3x volume | BNF expiry best performer</span></div><span class="fs fs-p">Setup A+</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Strong SFB</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">ORB break</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">3x avg</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Long bldp</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">BNF expiry</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Sector led</span></div></div>
+<div class="cvbar"><span class="cvbar-l">Intra conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:90%"></div></div><span class="cvbar-s" style="color:var(--green)">90%</span></div>
+<div class="sc-body"><div class="rat">Leading BNF +5.42%. ORB trigger: broke above 9:15-9:45 AM high with 3x volume. Textbook A+ setup.<br><strong>Entry: VWAP pullback | Target: Day high +1% | Stop: Below VWAP | Exit 3:10 PM</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">VWAP pullback</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Day high +1%</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Below VWAP</div></div><div class="lv"><div class="ll">Exit by</div><div class="lval sl">3:10 PM</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IDFC FIRST BANK</span><span class="sp sp-sbuy">ORB Long — momentum</span><span class="px">+4.87% today | VWAP breakout sustained</span></div><span class="fs fs-p">Setup A</span></div>
+<div class="sc-body"><div class="rat">14/14 BNF green. Price above VWAP full session = institutional dominance.<br><strong>Enter only on 15-min VWAP pullback with volume. Partial exit 2:45 PM.</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">15-min VWAP dip</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Day high</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">VWAP break</div></div><div class="lv"><div class="ll">Exit by</div><div class="lval sl">3:10 PM</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INDUSIND BANK</span><span class="sp sp-buy">ORB Long — 200 DMA reclaim</span><span class="px">+3.19% today | Short covering | BNF constituent</span></div><span class="fs fs-p">Setup B+</span></div>
+<div class="sc-body"><div class="rat">Short covering visible in OI. Reclaiming 200 DMA is key trigger.<br><strong>Entry: confirmed 15-min close above 200 DMA | Stop: close below 200 DMA</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">200 DMA reclaim</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">+2% from entry</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">200 DMA break</div></div><div class="lv"><div class="ll">Max hold</div><div class="lval sl">2 sessions</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">SBI</span><span class="sp sp-buy">VWAP Bounce — safer play</span><span class="px">+1.64% today | PSU Bank sector +1.9% | Low beta</span></div><span class="fs fs-p">Setup B</span></div>
+<div class="sc-body"><div class="rat">Safest low-beta banking intraday play.<br><strong>Buy VWAP bounce with volume. Target +1-1.5%. Exit before 3 PM.</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">VWAP bounce</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">+1-1.5%</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Below VWAP</div></div><div class="lv"><div class="ll">Exit by</div><div class="lval sl">3:00 PM</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AUROPHARMA</span><span class="sp sp-watch">Conditional — two-way trade</span><span class="px">Rs.1,497 | +3.75% | OAI risk Units I &amp; III</span></div><span class="fs fs-w">Del% confirms direction</span></div>
+<div class="sc-body"><div class="rat"><strong>Two-way trade:</strong> Del above 50% = buy Rs.1,460-1,490 target Rs.1,590. Del below 35% = short, target Rs.1,415, stop Rs.1,535. FDA OAI = mandatory stop, no averaging.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Long (del&gt;50%)</div><div class="lval en">Rs.1,460-1,490</div></div><div class="lv"><div class="ll">Short (del&lt;35%)</div><div class="lval sl">Rs.1,495+</div></div><div class="lv"><div class="ll">Short target</div><div class="lval t1">Rs.1,415</div></div><div class="lv"><div class="ll">Stop (both)</div><div class="lval sl">Rs.1,535</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BANKNIFTY 55,200 CE — EXPIRY SCALP</span><span class="sp sp-sbuy">Expiry options play</span><span class="px">Window: 11 AM - 1 PM | All 14 green | Max pain ~55,000</span></div><span class="fs fs-p">F&amp;O scalp</span></div>
+<div class="sc-body"><div class="rat">BNF at 55,177, all constituents green. FII put covering creates CE tailwind.<br><strong>Buy 55,200 CE only between 11 AM-1 PM. Exit 3 PM. Max 0.5% of account. Not for beginners.</strong></div>
+<div class="lvrow"><div class="lv"><div class="ll">Strike</div><div class="lval en">55,200 CE</div></div><div class="lv"><div class="ll">Window</div><div class="lval t1">11 AM - 1 PM</div></div><div class="lv"><div class="ll">Exit</div><div class="lval sl">3:00 PM</div></div><div class="lv"><div class="ll">Max risk</div><div class="lval sl">0.5% account</div></div></div></div></div>
+</div>
+
+<!-- SMART MONEY -->
+<div class="cpanel" id="cp-smart">
+<div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-chart-bar ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">Smart Money Signals</div><div class="ph-sub">Delivery above 55% on up-move = institutional | Block trades = smart money entries</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">Real signal</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BANKING — ALL 14 GREEN</span><span class="sp sp-sbuy">Institutional Entry Signal</span></div></div>
+<div class="sc-body"><div class="rat">All 14 BNF stocks green on expiry + FII put unwind = institutional reallocation. DII buying Rs.680 Cr. <strong>Check HDFC Bank delivery% — above 55% = FII reversal thesis activating.</strong></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NMDC</span><span class="sp sp-buy">Block Trade Confirmed</span><span class="px">~Rs.92 | Two blocks Rs.74.5 Cr at Rs.89-90 | FII +16% in 1yr</span></div><span class="fs fs-w">Fund 6/10</span></div>
+<div class="sc-body"><div class="rat">Rs.74.5 Cr institutional block trades at Rs.89-90 confirmed. All MAs bullish. Near 52-wk high. <strong>Hold existing. Add only at Rs.82-87 dip.</strong> T1 Rs.110 | Stop Rs.75 | Yield 3.96%</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AUROPHARMA</span><span class="sp sp-watch">Conditional — verify delivery%</span><span class="px">Rs.1,497 | Rs.800 Cr buyback at Rs.1,475 | OAI risk</span></div></div>
+<div class="sc-body"><div class="rat">Buyback at Rs.1,475 = strongest insider signal. BUT OAI on two units = FDA risk. Entry ONLY if delivery above 50%. Entry Rs.1,460-1,490 | T1 Rs.1,590 | Stop Rs.1,415</div></div></div>
+</div>
+
+<!-- 5-10 YEAR -->
+<div class="cpanel" id="cp-lt">
+<div class="ph" style="background:var(--green-bg);border-color:#1a4a30"><div class="ph-left"><i class="ti ti-plant-2 ph-icon" style="color:var(--green)"></i><div><div class="ph-title" style="color:var(--green)">5-10 Year Compounders</div><div class="ph-sub" style="color:#5dd49a">Minimum 5yr hold | ROCE above 20% sustained | Never sell on quarterly noise</div><div class="ph-thesis">The Nifty 50 has delivered 13-15% CAGR since 1995. India macro 2026-2035 is the strongest tailwind in a generation. Concentrate in quality leaders compounding ROCE above 20% for decades.</div></div></div><span class="ph-badge" style="background:var(--green);color:#000">5-10 year horizon</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-buy">Buy in Tranches — anchor</span><span class="px">~Rs.1,855 | India largest private bank | FPI 33% to 24%</span></div><span class="fs fs-p">Fund 9/10</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Gold std</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">+3.74%</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts cvrd</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII anchor</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Rs.13 div</span></div></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:92%"></div></div><span class="cvbar-s" style="color:var(--green)">92%</span></div>
+<div class="sc-body"><div class="opp">India credit-to-GDP at 55% vs China 175% = 3x expansion runway. Net NPA never crossed 0.5% in 25 years. FPI gap = Rs.50,000 Cr latent buying when FII returns.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,840-1,870</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.1,650-1,700</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">Rs.2,500</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t2">Rs.3,200+</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BHARTI AIRTEL</span><span class="sp sp-buy">Buy — telecom royalty</span><span class="px">6.11% Nifty weight | ARPU expansion | 5G | Africa profitable</span></div><span class="fs fs-p">Fund 8/10</span></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:88%"></div></div><span class="cvbar-s" style="color:var(--green)">88%</span></div>
+<div class="sc-body"><div class="rat">India ARPU at Rs.200 vs global benchmark Rs.1,250-1,670. Tripling ARPU = tripling revenue from existing base. 5G monetisation beginning. D/E declining.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Current market</div></div><div class="lv"><div class="ll">Add on dip</div><div class="lval en">Any -15% fall</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">+60-80%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">ARPU reverses</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BAJAJ FINANCE</span><span class="sp sp-acc">Accumulate — consumer credit titan</span><span class="px">3.16% Nifty weight | 101M+ customers | AUM Rs.4.16L Cr</span></div><span class="fs fs-w">Verify P/E first</span></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div class="sc-body"><div class="rat">India consumer credit penetration 20% of what it will be in 2035. 101M+ customers. RBI rate cut cycle = lower cost of funds = margin expansion.</div>
+<div class="risk">P/E can be expensive — verify current P/E against 5yr average before entry.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Verify P/E first</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">+70-100%</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t2">+150-200%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">NPA above 3%</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ASIAN PAINTS</span><span class="sp sp-buy">Buy on Dip — quality compounder</span><span class="px">ROCE 41% | ROE 32% | D/E 0.06 | 60%+ India decorative share</span></div><span class="fs fs-p">Fund 9/10</span></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:85%"></div></div><span class="cvbar-s" style="color:var(--green)">85%</span></div>
+<div class="sc-body"><div class="opp">Crude $74 = TiO2 cost -20-25%. Margin pocketed with 1-2 quarter lag. India housing stock doubles by 2035. Every house gets painted every 4-7 years.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Current / any dip</div></div><div class="lv"><div class="ll">Add if</div><div class="lval en">-15% from ATH</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+80-120%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">ROCE below 25%</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">LARSEN &amp; TOUBRO</span><span class="sp sp-buy">Buy — India infrastructure royalty</span><span class="px">3.03% Nifty weight | Record orderbook | Budget capex Rs.11.21L Cr</span></div><span class="fs fs-p">Fund 8/10</span></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:83%"></div></div><span class="cvbar-s" style="color:var(--green)">83%</span></div>
+<div class="sc-body"><div class="rat">Every rupee of India's Rs.11.21L Cr infra budget flows through L&amp;T. Roads, railways, defence, ports, data centres. Order book at record highs.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry T1</div><div class="lval en">Current market</div></div><div class="lv"><div class="ll">Entry T2</div><div class="lval en">Any 10% dip</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+70-100%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">Order inflow drops</div></div></div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AVENUE SUPERMARTS (DMART)</span><span class="sp sp-acc">Accumulate on Correction</span><span class="px">Zero debt | Revenue CAGR 25%+ 10yr | Promoter Damani 75%</span></div><span class="fs fs-p">Fund 9/10</span></div>
+<div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div>
+<div class="sc-body"><div class="rat">India organised retail below 15% penetration will hit 30%+ by 2035. DMart owns all stores, zero debt, lowest prices. Promoter 75% = fully aligned.</div>
+<div class="risk">P/E typically expensive — buy only on corrections of 15-20% from highs. Quick commerce = genuine long-term competitive threat to monitor.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">On correction only</div></div><div class="lv"><div class="ll">Add</div><div class="lval en">Every -15% dip</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+80-120%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">EBITDA below 7%</div></div></div></div></div>
+</div>
+
+<!-- ALL OTHER COMPACT PANELS -->
+<div class="cpanel" id="cp-multi"><div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-rocket ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">3-5 Year Multibaggers</div><div class="ph-sub">ROCE above 20% | Moat | Invisible toll roads on India's growth</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">3-5 year</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IRCTC</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.523 | ROCE 111.8% | Down 34% from high | CMD change Jul 20</span></div></div><div class="sc-body"><div class="conflict">ROCE 111.8% + monopoly vs below 200 DMA + CMD change. T1 Rs.500-525 | T2 Rs.455-478 | Target Rs.720 | Stop Rs.420</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IEX</span><span class="sp sp-buy">Buy</span><span class="px">~Rs.185 | EBITDA 84% | P/E 26x vs 5yr avg 42x | Green energy supercycle</span></div></div><div class="sc-body"><div class="rat">84% EBITDA on zero-capex model. Green energy open access = 3-5x volume catalyst. Entry Rs.175-195 | T1 Rs.235 | T2 Rs.340 | Stop Rs.158</div></div></div></div>
+
+<div class="cpanel" id="cp-large"><div class="ph" style="background:var(--blue-bg);border-color:#1a2a40"><div class="ph-left"><i class="ti ti-building-skyscraper ph-icon" style="color:var(--accent)"></i><div><div class="ph-title">Large Cap Compounders</div><div class="ph-sub">6-18 months | DII-backed | Institutionally unbreakable businesses</div></div></div><span class="ph-badge" style="background:var(--accent);color:#fff">6-18 month</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">SUNPHARMA</span><span class="sp sp-buy">Buy</span><span class="px">Rs.1,896 | OCF doubled FY20-25 | Debt -75% | Div record Jul 7</span></div></div><div class="sc-body"><div class="rat">Entry Rs.1,850-1,890 | T1 Rs.2,000 | T2 Rs.2,150 | Stop Rs.1,775</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">RELIANCE INDUSTRIES</span><span class="sp sp-buy">Buy</span><span class="px">~Rs.1,380 | Jio 470M subs | 18,000+ retail stores | GRM expansion</span></div></div><div class="sc-body"><div class="rat">Triple re-rating: Jio ARPU hike, Retail scaling, Green energy FY27. Entry Rs.1,350-1,395 | T1 Rs.1,510 | T2 Rs.1,680 | Stop Rs.1,285</div></div></div></div>
+
+<div class="cpanel" id="cp-mid"><div class="ph" style="background:var(--green-bg);border-color:#1a4a30"><div class="ph-left"><i class="ti ti-trending-up ph-icon" style="color:var(--green)"></i><div><div class="ph-title">Mid Cap Growth</div><div class="ph-sub">Rs.5,000-Rs.20,000 Cr | Category leaders | Early-stage sectors</div></div></div><span class="ph-badge" style="background:var(--green);color:#000">6-24 month</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BEL</span><span class="sp sp-buy">Buy</span><span class="px">Rs.435 | ROCE 60.7% | Rs.1,081 Cr new orders | Zero debt</span></div></div><div class="sc-body"><div class="rat">All 6 signals aligned. UAE BrahMos + Akashteer = export unlock. Rs.70,000 Cr order book. Entry Rs.415-445 | T1 Rs.510 | T2 Rs.580 | Stop Rs.390</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PRESTIGE ESTATES</span><span class="sp sp-watch">Verify pledging first</span><span class="px">Realty | Rate yield tailwind</span></div></div><div class="sc-body"><div class="rat">Rate cut narrative = affordability expansion. Verify promoter pledging before entry. Entry Rs.1,450-1,520 | T1 Rs.1,680 | Stop Rs.1,380</div></div></div></div>
+
+<div class="cpanel" id="cp-small"><div class="ph" style="background:var(--amber-bg);border-color:#3a2a10"><div class="ph-left"><i class="ti ti-plant ph-icon" style="color:var(--amber)"></i><div><div class="ph-title">Small Cap High-Growth</div><div class="ph-sub">Below Rs.5,000 Cr | Max 3% allocation</div></div></div><span class="ph-badge" style="background:var(--amber);color:#000">2-5yr high risk</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ION EXCHANGE INDIA</span><span class="sp sp-watch">Research first</span><span class="px">Water treatment | B2B niche | No Chinese competition</span></div></div><div class="sc-body"><div class="rat">Niche B2B water treatment. No FII coverage = pricing gap. Confirm ROCE above 20%, Rev CAGR above 20%, D/E below 0.5, Promoter above 45%. Max 3%.</div></div></div></div>
+
+<div class="cpanel" id="cp-mono"><div class="ph" style="background:var(--green-bg);border-color:#1a4a30"><div class="ph-left"><i class="ti ti-crown ph-icon" style="color:var(--green)"></i><div><div class="ph-title">Monopoly &amp; Pricing Power</div><div class="ph-sub">"If this company disappeared, what breaks in India?" — permanent hold</div></div></div><span class="ph-badge" style="background:var(--green);color:#000">Forever hold</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PIDILITE</span><span class="sp sp-buy">Buy — hidden crude play</span><span class="px">~Rs.2,700 | ROCE 35% | 90% adhesive share | VAM input -30% with crude</span></div></div><div class="sc-body"><div class="rat">VAM cost -30% with crude. Monopoly pricing = margin pocketed. Entry Rs.2,650-2,750 | T1 Rs.2,980 | T2 Rs.3,400 | Stop Rs.2,490</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CAMS</span><span class="sp sp-buy">Buy</span><span class="px">70% MF registrar | EBITDA 46% | Revenue +26.6% FY25</span></div></div><div class="sc-body"><div class="rat">Earns a fee on every rupee in India's mutual funds — permanently. Entry Rs.3,800-4,000 | T1 Rs.4,500 | T2 Rs.5,200 | Stop Rs.3,500</div></div></div></div>
+
+<div class="cpanel" id="cp-div"><div class="ph" style="background:var(--red-bg);border-color:#3a1a1a"><div class="ph-left"><i class="ti ti-coin ph-icon" style="color:var(--red)"></i><div><div class="ph-title">High Dividend — Income Anchor</div><div class="ph-sub">Yield above 4% | FCF-funded | PSU mandated | VIX-resistant</div></div></div><span class="ph-badge" style="background:var(--red);color:#fff">Income</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">COAL INDIA</span><span class="sp sp-buy">Buy for income</span><span class="px">~Rs.423 | Yield 6.48% | ROE 38.2% | Rs.400Bn cash | Zero debt</span></div></div><div class="sc-body"><div class="rat">Entry Rs.408-430 | T1 Rs.475 | Yield 6.48% | Stop Rs.375</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ITC</span><span class="sp sp-buy">Buy — deep value + income</span><span class="px">~Rs.327 | P/E 17x (15yr low) | ROE 29.3% | Yield 4.81% | Zero debt</span></div></div><div class="sc-body"><div class="conflict">9 sell MAs but ROE 29.3% + yield 4.81% + zero debt + P/E 17x = valuation anomaly. Entry Rs.315-335 | T1 Rs.375 | T2 Rs.425 | Stop Rs.293</div></div></div></div>
+
+<div class="cpanel" id="cp-swing"><div class="ph" style="background:var(--blue-bg);border-color:#1a2a40"><div class="ph-left"><i class="ti ti-bolt ph-icon" style="color:var(--accent)"></i><div><div class="ph-title">Short Term Swing</div><div class="ph-sub">5-15 days | R:R above 1:2.5 | Entry on pullback not breakout candle</div></div></div><span class="ph-badge" style="background:var(--accent);color:#fff">5-15 days</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CIPLA</span><span class="sp sp-buy">Swing Buy — on dip</span><span class="px">Rs.1,456 | Del 63.75% | JP Morgan OW | P/E 24x vs sector 32x</span></div></div><div class="sc-body"><div class="rat">Entry on dip Rs.1,415-1,440 | T1 Rs.1,530 | T2 Rs.1,620 | Stop Rs.1,370 | R:R 1:2.5</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">L&amp;T</span><span class="sp sp-watch">Wait for trigger</span><span class="px">Ascending triangle | Trigger: daily close above Rs.3,620 on volume</span></div></div><div class="sc-body"><div class="rat">Entry ONLY on confirmed daily close above Rs.3,620. T1 Rs.3,850 | T2 Rs.4,050 | Stop Rs.3,478</div></div></div></div>
+
+<div class="cpanel" id="cp-silent"><div class="ph" style="background:var(--bg3);border-color:var(--border2)"><div class="ph-left"><i class="ti ti-eye-off ph-icon" style="color:var(--text3)"></i><div><div class="ph-title">Silent Compounders</div><div class="ph-sub">Minimal coverage | ROCE 20%+ unnoticed | Max 3%</div></div></div><span class="ph-badge" style="background:var(--bg4);color:var(--text2)">3-7yr | 3%</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NESCO</span><span class="sp sp-watch">Research</span><span class="px">Bombay Exhibition Centre + IT parks | Zero debt | Under 5 analyst reports</span></div></div><div class="sc-body"><div class="rat">Irreplaceable Mumbai land. IT park occupancy 90%+. Zero debt. Max 3%.</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CLEAN SCIENCE &amp; TECH</span><span class="sp sp-watch">Research</span><span class="px">Green chemistry IP | European ESG buyers | China+1</span></div></div><div class="sc-body"><div class="rat">Proprietary green chemistry moat. ROCE above 20%, Rev CAGR above 15%, Promoter above 60%. Max 3%.</div></div></div></div>
+
+<div class="cpanel" id="cp-it"><div class="ph" style="background:var(--blue-bg);border-color:#1a2a40"><div class="ph-left"><i class="ti ti-device-laptop ph-icon" style="color:var(--accent)"></i><div><div class="ph-title">IT Sector — Contrarian Accumulation</div><div class="ph-sub">Nifty IT -31% in 6 months | P/E 17.8x = 16% below 10yr avg | VIX 13 = window open now</div></div></div><span class="ph-badge" style="background:var(--accent);color:#fff">Contrarian acc.</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">TCS</span><span class="sp sp-acc">Accumulate — 3 tranches</span><span class="px">~Rs.2,073 | ROCE 55% | Down 33% YTD | FCF Rs.60,000 Cr/yr</span></div></div><div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:68%"></div></div><span class="cvbar-s" style="color:var(--purple)">68%</span></div><div class="sc-body"><div class="conflict">Technicals all bearish, fundamentals top 1% India. Invest the business not the chart. T1 Rs.1,980-2,100 | T2 Rs.1,800-1,900 | Target Rs.2,600 | Stop Rs.1,680</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INFOSYS</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.1,035 | ELI AI live | GlobalFoundries deal Jun 23 | HDFC Sec target Rs.1,600</span></div></div><div class="sc-body"><div class="rat">T1 Rs.1,000-1,050 | T2 Rs.930-960 | Target Rs.1,350 | Stop Rs.870</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PERSISTENT SYSTEMS</span><span class="sp sp-buy">Buy — AI-resistant</span><span class="px">Best IT mid-cap | 3.4% QoQ growth | PL target Rs.6,400</span></div></div><div class="sc-body"><div class="rat">Product engineering model = AI-benefitted not disrupted. Buy on sector weakness dips.</div></div></div></div>
+
+<div class="cpanel" id="cp-psu"><div class="ph" style="background:var(--green-bg);border-color:#1a4a30"><div class="ph-left"><i class="ti ti-building-bank ph-icon" style="color:var(--green)"></i><div><div class="ph-title">High-Performing PSUs</div><div class="ph-sub">Navratna + ROCE above 15% + order visibility + zero pledge + dividend above 3%</div></div></div><span class="ph-badge" style="background:var(--green);color:#000">PSU alpha</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BEL — Navratna</span><span class="sp sp-buy">Buy</span><span class="px">Rs.435 | ROCE 60.7% | Zero debt | Rs.9,397 Cr cash | Rs.1,081 Cr new orders</span></div></div><div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div><div class="sc-body"><div class="rat">All 6 signals aligned. UAE BrahMos + Akashteer = export unlock. Rs.70,000 Cr order book. Entry Rs.415-445 | T1 Rs.510 | T2 Rs.580 | Stop Rs.390</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">COAL INDIA — Maharatna</span><span class="sp sp-buy">Buy — income + capital</span><span class="px">~Rs.423 | ROE 38.2% | Yield 6.48% | Zero debt</span></div></div><div class="sc-body"><div class="rat">Entry Rs.408-430 | T1 Rs.475 | Yield 6.48% | Stop Rs.375</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IRCTC — Navratna</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.523 | ROCE 111.8% | CMD change Jul 20</span></div></div><div class="sc-body"><div class="conflict">ROCE 111.8% monopoly vs below 200 DMA + CMD change. T1 Rs.500-525 | T2 Rs.455-478 | Target Rs.720 | Stop Rs.420</div></div></div></div>
+
+<div class="cpanel" id="cp-crude"><div class="ph" style="background:var(--green-bg);border-color:#1a4a30"><div class="ph-left"><i class="ti ti-droplet ph-icon" style="color:var(--green)"></i><div><div class="ph-title">Crude Derivative Plays</div><div class="ph-sub">Crude $74 = 12+ beneficiaries | Same tailwind, less crowded than OMCs</div></div></div><span class="ph-badge" style="background:var(--green);color:#000">4-10 weeks</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PIDILITE</span><span class="sp sp-buy">Buy — hidden crude play</span><span class="px">VAM input -30% with crude | ROCE 35% | Monopoly pricing</span></div></div><div class="sc-body"><div class="rat">Entry Rs.2,650-2,750 | T1 Rs.2,980 | Stop Rs.2,490</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BPCL</span><span class="sp sp-buy">Buy</span><span class="px">Rs.311 | P/E 5.74x | Broke Rs.308 (now support) | Iran waiver | MACD +4.22</span></div></div><div class="sc-body"><div class="rat">PAT Rs.25,843 Cr FY26 highest-ever. Entry Rs.300-315 | T1 Rs.345 | T2 Rs.385 | Stop: close below Rs.288 OR crude above $85</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INDIGO</span><span class="sp sp-watch">Verify hedge book</span><span class="px">ATF 35-40% of cost | Crude -30% = margin expansion | 60% India market</span></div></div><div class="sc-body"><div class="rat">Confirm fuel hedge book % for FY27 before entry.</div></div></div></div>
+
+<div class="cpanel" id="cp-fii"><div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-arrows-exchange ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">FII Reversal Plays</div><div class="ph-sub">FPI at 14yr low 14.7% | Today: -1.69L put contracts covered = reversal signal live</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">3-9 month</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-buy">Buy — FII anchor</span><span class="px">+3.74% today | FPI 33% to 24% | PAT Rs.79,219 Cr</span></div></div><div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:83%"></div></div><span class="cvbar-s" style="color:var(--green)">83%</span></div><div class="sc-body"><div class="rat">FPI gap = Rs.50,000+ Cr latent buying. FII reversal beginning today. Entry Rs.1,840-1,870 | T1 Rs.2,050 | T2 Rs.2,250 | Stop Rs.1,720</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BAJAJ FINANCE</span><span class="sp sp-acc">Accumulate</span><span class="px">Highest-beta India credit | FII darling | Rural credit below 20% penetration</span></div></div><div class="sc-body"><div class="rat">FII reversal + RBI rate cut cycle = double tailwind. Verify current P/E before entry.</div></div></div></div>
+
+<div class="cpanel" id="cp-contra"><div class="ph" style="background:var(--red-bg);border-color:#3a1a1a"><div class="ph-left"><i class="ti ti-refresh ph-icon" style="color:var(--red)"></i><div><div class="ph-title">Contrarian Recovery</div><div class="ph-sub">Business intact | Sentiment crashed | VIX 13 = window open now</div></div></div><span class="ph-badge" style="background:var(--red);color:#fff">3-9 month</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">TCS</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.2,073 | ROCE 55% | Down 33% YTD | FCF Rs.60,000 Cr</span></div></div><div class="sc-body"><div class="conflict">Technicals bearish, fundamentals top 1% India. T1 Rs.1,980-2,100 | T2 Rs.1,800-1,900 | Target Rs.2,600 | Stop Rs.1,680</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INFOSYS</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.1,035 | Down 27% YTD | ELI AI live | GlobalFoundries deal Jun 23</span></div></div><div class="sc-body"><div class="rat">T1 Rs.1,000-1,050 | T2 Rs.930-960 | Target Rs.1,350 | Stop Rs.870</div></div></div></div>
+
+<div class="cpanel" id="cp-india"><div class="ph" style="background:var(--amber-bg);border-color:#3a2a10"><div class="ph-left"><i class="ti ti-flag ph-icon" style="color:var(--amber)"></i><div><div class="ph-title">India Decade Themes 2026-2035</div><div class="ph-sub">5-10yr | 3-5% per theme | Never sell on quarterly noise</div></div></div><span class="ph-badge" style="background:var(--amber);color:#000">5-10 year</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div class="sc"><div class="sc-top" style="flex-direction:column;align-items:flex-start"><span class="tkr" style="font-size:12px">Defence</span><span class="px">HAL | BEL | 65% domestic by 2030</span></div><div class="sc-body"><div class="rat">Rs.6.2L Cr budget. BEL ROCE 60.7%. 5% allocation.</div></div></div>
+<div class="sc"><div class="sc-top" style="flex-direction:column;align-items:flex-start"><span class="tkr" style="font-size:12px">SIP Economy</span><span class="px">CAMS | CDSL | AUM Rs.60 to Rs.100L Cr</span></div><div class="sc-body"><div class="rat">9 crore SIPs. CAMS earns perpetual fee. 5% allocation.</div></div></div>
+<div class="sc"><div class="sc-top" style="flex-direction:column;align-items:flex-start"><span class="tkr" style="font-size:12px">Green Energy</span><span class="px">POLYCAB | KEI | 500 GW by 2030</span></div><div class="sc-body"><div class="rat">Every MW solar/wind = cables, transformers. Polycab ROCE above 25%. 5% allocation.</div></div></div>
+<div class="sc"><div class="sc-top" style="flex-direction:column;align-items:flex-start"><span class="tkr" style="font-size:12px">Hospitals</span><span class="px">APOLLOHOSP | MAXHEALTH | 3% to 5% GDP</span></div><div class="sc-body"><div class="rat">India: 0.5 beds/1,000 vs 3.0 global avg. Apollo top 2026 pick. 4% allocation.</div></div></div>
+</div></div>
+
+<div class="cpanel" id="cp-penny"><div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-currency-rupee ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">Penny Stocks — 3 Tiers</div><div class="ph-sub">Below Rs.100 | Named catalyst required | Max 2% per stock | Max 6% combined</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">High risk | 2%</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IDBI BANK</span><span class="sp sp-sbuy">+17.59% today — thesis validated</span><span class="px">PAT Rs.7,515 Cr | ROE 31.7% | Privatisation confirmed</span></div><span class="fs fs-p">Fund 7/10</span></div><div class="sc-body"><div class="rat">If long: trailing stop -8% from day high. If not: wait Rs.95-100. Target Rs.120, Rs.145+ on privatisation.</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">YES BANK</span><span class="sp sp-watch">Wait for pullback Rs.21-23</span><span class="px">~Rs.25 | SMBC 24.9% | GNPA 1.3% | Near 52wk high</span></div></div><div class="sc-body"><div class="rat">GNPA 15%+ to 1.3%. Near 52-wk high — do not chase. Entry pullback Rs.21-23 | T1 Rs.32 | T2 Rs.42 | Stop Rs.17</div></div></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NHPC</span><span class="sp sp-sell">Speculative — 1% max only</span><span class="px">~Rs.82 | ROE 10.2% | Fails 4 guardrails | Dibang/Etalin bet</span></div><span class="fs fs-f">5/10</span></div><div class="sc-body"><div class="rat">Bet on Dibang + Etalin (2027-2030). Entry Rs.78-86 | T1 Rs.105 (12mo) | T2 Rs.160 (3yr)</div></div></div></div>
+
+</div></div></div>
+
+<!-- ═══ SECTION 2: WATCHLIST ═══ -->
+<div class="sec" id="sec-s2">
+<div class="section-padding">
+<div class="wl-sum">
+  <div style="font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Watchlist Signal Summary — Jun 24 2026</div>
+  <div class="wls-g">
+    <div class="wls-c"><div class="wls-t">MARKSANS</div><div class="wls-s w-sbuy">Strong Buy</div><div class="wls-n">RSI 24 oversold + PAT +63% + P/E 26x vs sector 43x. 5/6 bullish.</div></div>
+    <div class="wls-c"><div class="wls-t">BPCL</div><div class="wls-s w-sbuy">Buy</div><div class="wls-n">Broke Rs.308 support. MACD +4.22. Iran waiver. P/E 5.74x. 4/6 bullish.</div></div>
+    <div class="wls-c"><div class="wls-t">NMDC</div><div class="wls-s w-hold">Hold / add dip</div><div class="wls-n">All MAs Strong Buy. Block trades Rs.74Cr at Rs.89-90. Add Rs.82-87.</div></div>
+    <div class="wls-c"><div class="wls-t">CONCOR</div><div class="wls-s" style="color:var(--text3)">Watch</div><div class="wls-n">200 DMA Rs.506 ceiling. PAT -12.4%. 4/6 bearish. Wait Q1 FY27.</div></div>
+    <div class="wls-c"><div class="wls-t">JAYBARMARU</div><div class="wls-s w-watch">Book 40-50%</div><div class="wls-n">TV Sell daily+weekly. 69% above 50-DMA. MF 0.02%.</div></div>
+    <div class="wls-c"><div class="wls-t">SAIL</div><div class="wls-s w-sell">Sell</div><div class="wls-n">RSI bearish divergence. ROE 5.8%. Contingent Rs.44,708 Cr.</div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">MARKSANS PHARMA</span><span style="font-size:11px;color:var(--text3)">~Rs.205-245 | P/E 26x vs sector 43x | Q4 PAT +63.6% YoY</span></div><div class="wl-ov w-sbuy-pill">Strong Buy — 5/6</div></div>
+  <div class="wl-s6">
+    <div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">P/E 26x vs sector 43x. Q4 PAT +63.6% YoY Rs.148 Cr. Zero debt. Promoter 43.9%.</div></div>
+    <div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s va">Conflict</span><div class="ws6-d">Strong Sell signals but RSI 14d = 24.34 deeply oversold. MACD -3.28. Below 200 DMA Rs.242.</div></div>
+    <div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Confirm del%</span><div class="ws6-d">Wait for delivery above 55% on a green day = institutional confirmation signal.</div></div>
+    <div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">FDA Omeprazole approved (Rs.1.1B US market). Benzonatate ANDA approved.</div></div>
+    <div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Univest: Buy zone. FII 16.8%. OrbiMed Rs.256.8 Cr sale absorbed by market.</div></div>
+    <div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">FDA Omeprazole, Benzonatate ANDA, UK Cetirizine MA, final div Rs.0.9/share.</div></div>
+  </div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:82%"></div></div><span class="wlcb-s" style="color:var(--green)">82% Strong Buy</span></div>
+  <div class="wl-body">
+    <div class="conflict">Signal conflict: technicals Strong Sell (RSI 24 + below 200 DMA). But RSI 24 on accelerating earnings = deeply oversold quality stock. Trigger: delivery above 55% on green day. Strategy: 50% at Rs.205-225 now, add 50% on delivery confirmation.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry 50%</div><div class="wl-lval en">Rs.205-225</div></div><div class="wl-lv"><div class="wl-ll">Add del&gt;55%</div><div class="wl-lval en">Rs.230-250</div></div><div class="wl-lv"><div class="wl-ll">Target 3mo</div><div class="wl-lval t1">Rs.285</div></div><div class="wl-lv"><div class="wl-ll">Target 6mo</div><div class="wl-lval t2">Rs.325</div></div><div class="wl-lv"><div class="wl-ll">Stop-loss</div><div class="wl-lval sl">Below Rs.190</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">BPCL</span><span style="font-size:11px;color:var(--text3)">Rs.310.95 | P/E 5.74x | PAT Rs.25,843 Cr FY26 highest-ever | MACD +4.22</span></div><div class="wl-ov w-sbuy-pill">Buy — 4/6 signals</div></div>
+  <div class="wl-s6">
+    <div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">P/E 5.74x vs sector 9x. PAT Rs.25,843 Cr FY26 highest-ever. ROCE 16.2%. GoI 53%.</div></div>
+    <div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vg">Buy</span><div class="ws6-d">Broke Rs.308 resistance now support. MACD +4.22. TradingView: Buy signal.</div></div>
+    <div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Confirm today</span><div class="ws6-d">Confirm delivery% — above 50% on a down-day = most bullish institutional setup.</div></div>
+    <div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Expiry cleared = clean F&amp;O reset. Iran peace = crude put options unwinding.</div></div>
+    <div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vn">Neutral</span><div class="ws6-d">FII net sellers MTD. MF 8.14%. DII buying Rs.680 Cr today = supportive backdrop.</div></div>
+    <div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">Iran 60-day oil export waiver confirmed. Every $5 crude fall = Rs.1,500-2,000 Cr quarterly PAT.</div></div>
+  </div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:75%"></div></div><span class="wlcb-s" style="color:var(--green)">75% Buy</span></div>
+  <div class="wl-body">
+    <div class="opp">Broke Rs.308 resistance (now support). MACD +4.22. Post-expiry clean entry. Iran catalyst time-limited.</div>
+    <div class="risk">200-DMA Rs.313 = near-term ceiling. Iran collapse + crude above $85 = exit immediately.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry</div><div class="wl-lval en">Rs.300-315</div></div><div class="wl-lv"><div class="wl-ll">Support</div><div class="wl-lval t1">Rs.308</div></div><div class="wl-lv"><div class="wl-ll">Target 1</div><div class="wl-lval t1">Rs.345</div></div><div class="wl-lv"><div class="wl-ll">Target 2</div><div class="wl-lval t2">Rs.385</div></div><div class="wl-lv"><div class="wl-ll">Stop-loss</div><div class="wl-lval sl">Close &lt; Rs.288</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">NMDC</span><span style="font-size:11px;color:var(--text3)">~Rs.88-97 | Block trades Rs.74Cr at Rs.89-90 | Q4 PAT +37.2%</span></div><div class="wl-ov w-hold-pill">Hold — add Rs.82-87</div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fh" style="width:60%"></div></div><span class="wlcb-s" style="color:var(--accent)">60% Hold</span></div>
+  <div class="wl-body">
+    <div class="conflict">All technicals Strong Buy, but near 52-wk high with EBITDA margin compressing and UBS Sell. Hold existing, add only at Rs.82-87 dip.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Hold stop</div><div class="wl-lval sl">Close &lt; Rs.75</div></div><div class="wl-lv"><div class="wl-ll">Add on dip</div><div class="wl-lval en">Rs.82-87</div></div><div class="wl-lv"><div class="wl-ll">Target 1</div><div class="wl-lval t1">Rs.110</div></div><div class="wl-lv"><div class="wl-ll">Target 2</div><div class="wl-lval t2">Rs.130</div></div><div class="wl-lv"><div class="wl-ll">Yield</div><div class="wl-lval uu">3.96%</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">CONCOR</span><span style="font-size:11px;color:var(--text3)">~Rs.447-476 | Down 19% 1yr | Q4 PAT -12.4% | 200 DMA Rs.506 = ceiling</span></div><div class="wl-ov w-watch-pill">Watch — not yet</div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fw" style="width:30%"></div></div><span class="wlcb-s" style="color:var(--amber)">30% — Wait</span></div>
+  <div class="wl-body">
+    <div class="avoid-box">Entry condition (both required): Q1 FY27 PAT shows +10%+ YoY recovery AND price closes above 200-DMA Rs.506 on above-average volume. Neither met today.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry trigger</div><div class="wl-lval en">PAT+ AND &gt;Rs.506</div></div><div class="wl-lv"><div class="wl-ll">Watch dip</div><div class="wl-lval en">Rs.420-440</div></div><div class="wl-lv"><div class="wl-ll">Target (post)</div><div class="wl-lval t1">Rs.560</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">Below Rs.400</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">JAY BHARAT MARUTI</span><span style="font-size:11px;color:var(--text3)">~Rs.169-178 | Up 125% 1yr | ROE 22% | PAT +287%</span></div><div class="wl-ov w-watch-pill">Book 40-50% profits</div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fw" style="width:45%"></div></div><span class="wlcb-s" style="color:var(--amber)">45% — Book profits</span></div>
+  <div class="wl-body">
+    <div class="conflict">Fundamentals excellent (ROE 22%, PAT +287%). Technicals Sell daily+weekly. MF 0.02% = no institutional floor. Book 40-50% at Rs.168-178. Hold rest with stop Rs.145. Re-enter at 50-DMA Rs.140-150.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Book now</div><div class="wl-lval sl">Rs.168-178</div></div><div class="wl-lv"><div class="wl-ll">Hold stop</div><div class="wl-lval sl">Below Rs.145</div></div><div class="wl-lv"><div class="wl-ll">Re-buy zone</div><div class="wl-lval en">Rs.140-150</div></div><div class="wl-lv"><div class="wl-ll">Target (held)</div><div class="wl-lval t1">Rs.210</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">SAIL</span><span style="font-size:11px;color:var(--text3)">Rs.169.18 | Up 38% 1yr | ROE 5.8% | Contingent Rs.44,708 Cr</span></div><div class="wl-ov w-sell-pill">Sell / Avoid — 5/6 negative</div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fr" style="width:15%"></div></div><span class="wlcb-s" style="color:var(--red)">15% — Sell</span></div>
+  <div class="wl-body">
+    <div class="avoid-box">5/6 signals negative. RSI bearish divergence. UBS Sell. ROE 5.8% = capital destruction. Contingent liabilities Rs.44,708 Cr = hidden risk equal to market cap. Board compliance failures = governance red flag.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Sell zone</div><div class="wl-lval sl">Rs.165-182</div></div><div class="wl-lv"><div class="wl-ll">Avoid entry</div><div class="wl-lval sl">Above Rs.160</div></div><div class="wl-lv"><div class="wl-ll">Revisit if ROE</div><div class="wl-lval en">&gt;12% for 3 qtrs</div></div><div class="wl-lv"><div class="wl-ll">Re-buy maybe</div><div class="wl-lval en">Rs.118-130</div></div></div>
+  </div>
+</div>
+<div class="footer-bar">Watchlist | 6 stocks | 6-factor signal engine | Jun 24 2026 | Not SEBI advice</div>
+</div></div>
+
+<!-- ═══ SECTION 3: NEWS & SENTIMENT ═══ -->
+<div class="sec" id="sec-s3">
+<div class="section-padding">
+<div class="sum5">
+  <div class="s5c"><div class="s5v" style="color:var(--green)">62</div><div class="s5l">India Sentiment</div></div>
+  <div class="s5c"><div class="s5v" style="color:var(--accent)">13.42</div><div class="s5l">VIX — Normal</div></div>
+  <div class="s5c"><div class="s5v" style="color:var(--amber)">0.84</div><div class="s5l">Nifty PCR</div></div>
+  <div class="s5c"><div class="s5v" style="color:var(--red)">-2.21%</div><div class="s5l">Nasdaq Overnight</div></div>
+  <div class="s5c"><div class="s5v" style="color:var(--green)">$74</div><div class="s5l">Brent — Iran</div></div>
+</div>
+<div class="sec-lbl">Indices Dashboard</div>
+<div class="g2">
+<div class="card">
+  <div class="card-hdr"><div class="card-title"><i class="ti ti-flag" style="color:var(--green);font-size:14px;vertical-align:-2px;margin-right:5px"></i>India Indices — Jun 24 Live</div><span class="card-badge" style="background:var(--green-bg);color:var(--green)">Post-expiry bounce</span></div>
+  <div class="card-body" style="padding:4px 0">
+    <table class="idx-t">
+      <thead><tr><th>Index</th><th>Level</th><th>Change</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="iname">Nifty 50 (NSE)</div><div class="isub">Supp 24,000 | Res 24,200</div></td><td style="font-weight:700;font-family:var(--mono)">24,768</td><td><span class="ichg iu">+0.58%</span></td><td><span class="ichg iu" style="font-size:9px">Recovery</span></td></tr>
+        <tr><td><div class="iname">Sensex (BSE)</div><div class="isub">BSE benchmark | Post-expiry</div></td><td style="font-weight:700;font-family:var(--mono)">77,003</td><td><span class="ichg iu">+1.05%</span></td><td><span class="ichg iu" style="font-size:9px">BSE strong</span></td></tr>
+        <tr><td><div class="iname">Bank Nifty (NSE)</div><div class="isub">All 14 constituents green</div></td><td style="font-weight:700;font-family:var(--mono)">55,177</td><td><span class="ichg iu">+2.97%</span></td><td><span class="ichg iu" style="font-size:9px">Sector leader</span></td></tr>
+        <tr><td><div class="iname">India VIX (NSE)</div><div class="isub">Crashed 53% post-expiry</div></td><td style="font-weight:700;font-family:var(--mono)">13.42</td><td><span class="ichg iu">-52.9%</span></td><td><span class="ichg iu" style="font-size:9px">Normal</span></td></tr>
+        <tr><td><div class="iname">Nifty Pharma</div><div class="isub">4th consecutive up-day</div></td><td style="font-weight:700;font-family:var(--mono)">25,191</td><td><span class="ichg iu">+1.73%</span></td><td><span class="ichg iu" style="font-size:9px">Strength</span></td></tr>
+        <tr><td><div class="iname">Nifty IT</div><div class="isub">52wk low zone | AI fear</div></td><td style="font-weight:700;font-family:var(--mono)">27,112</td><td><span class="ichg id">-1.87%</span></td><td><span class="ichg id" style="font-size:9px">Acc. zone</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card">
+  <div class="card-hdr"><div class="card-title"><i class="ti ti-world" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>Global Indices — Jun 23 Close</div><span class="card-badge" style="background:var(--red-bg);color:var(--red)">Tech/chip rout</span></div>
+  <div class="card-body" style="padding:4px 0">
+    <table class="idx-t">
+      <thead><tr><th>Market</th><th>Level</th><th>Change</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td><div class="iname">S&P 500</div><div class="isub">Tech selloff | defensives held</div></td><td style="font-weight:700;font-family:var(--mono)">7,365</td><td><span class="ichg id">-1.44%</span></td><td><span class="ichg id" style="font-size:9px">Negative cue</span></td></tr>
+        <tr><td><div class="iname">Nasdaq</div><div class="isub">Samsung -12%, Micron -11.4%</div></td><td style="font-weight:700;font-family:var(--mono)">25,587</td><td><span class="ichg id">-2.21%</span></td><td><span class="ichg id" style="font-size:9px">Chip rout</span></td></tr>
+        <tr><td><div class="iname">Dow Jones</div><div class="isub">IBM +5%, near flat overall</div></td><td style="font-weight:700;font-family:var(--mono)">51,666</td><td><span class="ichg if">-0.09%</span></td><td><span class="ichg if" style="font-size:9px">Near flat</span></td></tr>
+        <tr><td><div class="iname">KOSPI</div><div class="isub">SK Hynix -12% | 20-min halt</div></td><td style="font-weight:700;font-family:var(--mono)">~2,580</td><td><span class="ichg id">-4.2%</span></td><td><span class="ichg id" style="font-size:9px">Chip rout</span></td></tr>
+        <tr><td><div class="iname">Brent Crude</div><div class="isub">Iran peace | Hormuz opening</div></td><td style="font-weight:700;font-family:var(--mono)">$74.0</td><td><span class="ichg iu">Iran deal</span></td><td><span class="ichg iu" style="font-size:9px">Bullish India</span></td></tr>
+        <tr><td><div class="iname">Gold</div><div class="isub">Fed hike fears cap rally</div></td><td style="font-weight:700;font-family:var(--mono)">$4,150</td><td><span class="ichg id">-1.2%</span></td><td><span class="ichg id" style="font-size:9px">Risk-off eased</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<div class="sec-lbl">Macro Dashboard</div>
+<div class="g3">
+  <div class="mc"><div class="mc-lbl">Brent Crude</div><div class="mc-val mg">$74.0</div><div class="mc-chg mg">Down from $107 peak</div><div class="mc-sub">Iran 60-day waiver. Every $5 fall = India saves ~$6B/yr. Pidilite, BPCL, IndiGo all benefit.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:69%;background:var(--green)"></div></div></div>
+  <div class="mc"><div class="mc-lbl">Gold</div><div class="mc-val mr">$4,150</div><div class="mc-chg mr">-1.2% Fed hike fear</div><div class="mc-sub">Iran peace eases safe-haven bid. Fed hike expectations cap the rally.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:82%;background:var(--amber)"></div></div></div>
+  <div class="mc"><div class="mc-lbl">USD/INR</div><div class="mc-val mg">94.68</div><div class="mc-chg mg">Rupee strengthening</div><div class="mc-sub">Was 95.32 during conflict. Crude fall = import relief = rupee. Target 93-94.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:60%;background:var(--green)"></div></div></div>
+  <div class="mc"><div class="mc-lbl">India 10Y Yield</div><div class="mc-val mg">6.85%</div><div class="mc-chg mg">-25bps in 30 days</div><div class="mc-sub">RBI FCNR cap removed. FII bond inflows $2.2B+. Positive for Realty, NBFC.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:72%;background:var(--green)"></div></div></div>
+  <div class="mc"><div class="mc-lbl">US Fed Rate</div><div class="mc-val mr">3.50-3.75%</div><div class="mc-chg mr">Sep hike 60%+</div><div class="mc-sub">BofA + Deutsche revise to September. US CPI 4.2% (3yr high). Watch PCE Jun 25-26.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:62%;background:var(--red)"></div></div></div>
+  <div class="mc"><div class="mc-lbl">India VIX</div><div class="mc-val mg">13.42</div><div class="mc-chg mg">-52.9% post-expiry</div><div class="mc-sub">Crashed from 27.32 to 13.42. Normal regime. Full position sizing resumes today.</div><div class="mc-bar-wrap"><div class="mc-bar" style="width:28%;background:var(--green)"></div></div></div>
+</div>
+<div class="sec-lbl">Sector Heatmap &amp; Sentiment</div>
+<div class="g2">
+<div class="card">
+  <div class="card-hdr"><div class="card-title">NSE Sector Heatmap — Jun 24</div><span class="card-badge" style="background:var(--blue-bg);color:var(--accent)">BNF expiry day</span></div>
+  <div class="card-body">
+    <div class="hmap">
+      <div class="hmc h-sbuy"><div class="hmc-name">Banking</div><div class="hmc-chg">+2.97%</div><div class="hmc-sub">BNF expiry</div></div>
+      <div class="hmc h-buy"><div class="hmc-name">PSU Bank</div><div class="hmc-chg">+1.9%</div><div class="hmc-sub">SBI, BoB</div></div>
+      <div class="hmc h-buy"><div class="hmc-name">Pharma</div><div class="hmc-chg">+1.73%</div><div class="hmc-sub">4th up-day</div></div>
+      <div class="hmc h-buy"><div class="hmc-name">Pvt Banks</div><div class="hmc-chg">+2.1%</div><div class="hmc-sub">HDFC led</div></div>
+      <div class="hmc h-flat"><div class="hmc-name">Energy/OMC</div><div class="hmc-chg">+0.6%</div><div class="hmc-sub">BPCL up</div></div>
+      <div class="hmc h-flat"><div class="hmc-name">FMCG</div><div class="hmc-chg">+0.3%</div><div class="hmc-sub">ITC, HUL</div></div>
+      <div class="hmc h-flat"><div class="hmc-name">Realty</div><div class="hmc-chg">+0.4%</div><div class="hmc-sub">Rate yield</div></div>
+      <div class="hmc h-flat"><div class="hmc-name">Auto</div><div class="hmc-chg">+0.1%</div><div class="hmc-sub">Flat</div></div>
+      <div class="hmc h-mdn"><div class="hmc-name">Metals</div><div class="hmc-chg">-0.3%</div><div class="hmc-sub">Steel weak</div></div>
+      <div class="hmc h-sell"><div class="hmc-name">IT</div><div class="hmc-chg">-1.87%</div><div class="hmc-sub">AI fear</div></div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-hdr"><div class="card-title">Fear &amp; Greed + Sector Sentiment</div><span class="card-badge" style="background:var(--green-bg);color:var(--green)">Score 62 — recovering</span></div>
+  <div class="card-body">
+    <div class="fg-wrap">
+      <div class="fg-score" style="color:var(--green)">62</div>
+      <div class="fg-word" style="color:var(--green)">Mild Greed — Recovering</div>
+      <div class="fg-gauge"><div class="fg-needle" style="left:62%"></div></div>
+      <div class="fg-labels"><span>Extreme Fear</span><span>Neutral</span><span>Extreme Greed</span></div>
+      <div style="font-size:10px;color:var(--text3);margin-top:4px">Yesterday: 31 (Fear, VIX 27.32) — Today: 62 (Mild greed, VIX 13.42)</div>
+      <div class="fg-comps">
+        <div class="fg-c"><div class="fg-cl">India VIX (30%)</div><div class="fg-cv" style="color:var(--green)">13.42 — Greed 78</div></div>
+        <div class="fg-c"><div class="fg-cl">Nifty PCR (20%)</div><div class="fg-cv" style="color:var(--amber)">0.84 — Neutral 48</div></div>
+        <div class="fg-c"><div class="fg-cl">FII flows (20%)</div><div class="fg-cv" style="color:var(--amber)">Hedged — Neutral 45</div></div>
+        <div class="fg-c"><div class="fg-cl">Breadth (15%)</div><div class="fg-cv" style="color:var(--green)">Improving — 70</div></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:8px;margin-top:4px">
+      <div class="sent-row"><span class="sent-name">Banking</span><div class="sent-bar-wrap"><div class="sf-bull" style="width:82%;background:var(--green)"></div></div><span class="sent-score mg">+82%</span><span class="sent-v sv-b">Strong Buy</span></div>
+      <div class="sent-row"><span class="sent-name">Pharma</span><div class="sent-bar-wrap"><div class="sf-bull" style="width:76%;background:var(--green)"></div></div><span class="sent-score mg">+76%</span><span class="sent-v sv-b">Buy</span></div>
+      <div class="sent-row"><span class="sent-name">PSU / Defence</span><div class="sent-bar-wrap"><div class="sf-bull" style="width:80%;background:var(--green)"></div></div><span class="sent-score mg">+80%</span><span class="sent-v sv-b">Buy</span></div>
+      <div class="sent-row"><span class="sent-name">OMC / Energy</span><div class="sent-bar-wrap"><div class="sf-bull" style="width:70%;background:var(--green)"></div></div><span class="sent-score mg">+70%</span><span class="sent-v sv-b">Buy</span></div>
+      <div class="sent-row"><span class="sent-name">Metals</span><div class="sent-bar-wrap"><div class="sf-bear" style="width:38%;background:var(--red)"></div></div><span class="sent-score mr">-38%</span><span class="sent-v sv-a">Caution</span></div>
+      <div class="sent-row"><span class="sent-name">IT</span><div class="sent-bar-wrap"><div class="sf-bear" style="width:68%;background:var(--red)"></div></div><span class="sent-score mr">-68%</span><span class="sent-v sv-r">Sell (contra acc)</span></div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="sec-lbl">Market-Moving News</div>
+<div class="g2">
+<div class="card">
+  <div class="card-hdr"><div class="card-title">Global News</div><span class="card-badge" style="background:var(--red-bg);color:var(--red)">Chip selloff dominant</span></div>
+  <div class="card-body" style="padding:6px 12px">
+    <div class="ni"><div class="ni-dot nd-bear"></div><div class="ni-body"><div class="ni-hl">Samsung -12%, SK Hynix -12%, Micron -11.4% — global chip rout triggers Korea 20-min halt</div><div class="ni-meta"><span>CNBC | Jun 23</span><span class="ni-imp ni-bear">Bearish India IT</span></div><div class="ni-text">Nasdaq -2.21%. India IT: TCS -2.55%, Infy -2.77%. Sentiment-driven not India earnings. <strong>Contrarian window open now.</strong></div></div></div>
+    <div class="ni"><div class="ni-dot nd-bull"></div><div class="ni-body"><div class="ni-hl">US-Iran peace deal signed Jun 19 — 107-day conflict ends | Hormuz reopening by 3Q26</div><div class="ni-meta"><span>Business Standard | Jun 15</span><span class="ni-imp ni-bull">Strongly bullish India</span></div><div class="ni-text">India gets 50% of crude from West Asia. Import bill relief = rupee + inflation + RBI rate cut space. <strong>Biggest structural tailwind for India in 2026.</strong></div></div></div>
+    <div class="ni"><div class="ni-dot nd-bear"></div><div class="ni-body"><div class="ni-hl">BofA + Deutsche both project September Fed rate hike — US CPI 4.2% (3yr high)</div><div class="ni-meta"><span>TheStreet | Jun 23</span><span class="ni-imp ni-bear">Bearish EMs</span></div><div class="ni-text">2Y Treasury at Feb 2025 highs. Dollar strength = FPI outflows. Watch PCE data Jun 25-26 — critical macro event for India.</div></div></div>
+    <div class="ni"><div class="ni-dot nd-warn"></div><div class="ni-body"><div class="ni-hl">Oracle cuts 21,000 jobs (13% workforce) citing AI adoption — structural shift accelerating</div><div class="ni-meta"><span>CNBC | Jun 23</span><span class="ni-imp ni-warn">Watch India IT long-term</span></div><div class="ni-text">India IT structural risk: headcount-based billing under slow pressure. Not immediate — 12-18 month concern. Persistent Systems less exposed than TCS/Infy.</div></div></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-hdr"><div class="card-title"><i class="ti ti-flag" style="font-size:14px;color:var(--green);vertical-align:-2px;margin-right:5px"></i>India News</div><span class="card-badge" style="background:var(--green-bg);color:var(--green)">IDBI + pharma dominant</span></div>
+  <div class="card-body" style="padding:6px 12px">
+    <div class="ni"><div class="ni-dot nd-bull"></div><div class="ni-body"><div class="ni-hl">IDBI Bank +17.59% — GoI confirms privatisation revival | NSE Nifty 50 top contributor today</div><div class="ni-meta"><span>NSE Live | Jun 24</span><span class="ni-imp ni-bull">Watchlist validated</span></div><div class="ni-text"><strong>Penny stock watchlist thesis confirmed today.</strong> PAT Rs.7,515 Cr FY25. ROE 31.7%. If long: trailing stop -8% from day high.</div></div></div>
+    <div class="ni"><div class="ni-dot nd-bull"></div><div class="ni-body"><div class="ni-hl">BEL secures Rs.1,081 Cr new orders — radars + comms | UAE BrahMos interest confirmed</div><div class="ni-meta"><span>Groww | Jun 24</span><span class="ni-imp ni-bull">Bullish BEL</span></div><div class="ni-text">Total order book Rs.70,000 Cr+. ROCE 60.7%, zero debt. Strong long-term defence indigenisation theme play.</div></div></div>
+    <div class="ni"><div class="ni-dot nd-bull"></div><div class="ni-body"><div class="ni-hl">Pharma sector 4th up-day — Cipla +2.87% leads Nifty 50 | Delivery 63.75% = institutional</div><div class="ni-meta"><span>Business Standard | Jun 23</span><span class="ni-imp ni-bull">Sector momentum</span></div><div class="ni-text">Rotation: money moving from IT (-31%) to pharma. Budget Biopharma SHAKTI Rs.10,000 Cr = 5yr policy tailwind for sector.</div></div></div>
+    <div class="ni"><div class="ni-dot nd-warn"></div><div class="ni-body"><div class="ni-hl">IRCTC CMD Sanjay Kumar Jain resigns effective July 20 — new appointment pending</div><div class="ni-meta"><span>Screener.in | Jun 24</span><span class="ni-imp ni-warn">Watch for new CMD</span></div><div class="ni-text">Core business (ROCE 111.8%, statutory monopoly) unaffected. P/E 31x vs 42x avg = buy the dip, not sell.</div></div></div>
+  </div>
+</div>
+</div>
+<div class="sec-lbl">Event Calendar &amp; Nifty Levels</div>
+<div class="g2">
+<div class="card">
+  <div class="card-hdr"><div class="card-title"><i class="ti ti-calendar-event" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>Upcoming High-Impact Events</div><span class="card-badge" style="background:var(--red-bg);color:var(--red)">PCE + Micron critical</span></div>
+  <div class="card-body" style="padding:6px 12px">
+    <div class="ev"><span class="ev-date">Today</span><div class="ev-body"><div class="ev-title">Micron (MU) earnings — after US market close</div><div class="ev-sub">Key AI semiconductor catalyst. Determines IT sentiment for Jun 25 India open.</div><span class="ev-imp ei-h">High — IT watch</span></div></div>
+    <div class="ev"><span class="ev-date">Jun 25-26</span><div class="ev-body"><div class="ev-title">US PCE price index (May 2026) — Fed's preferred inflation gauge</div><div class="ev-sub">If hot: Sep hike probability surges = dollar up = rupee down = FPI outflows = Nifty pressure.</div><span class="ev-imp ei-h">High — macro critical</span></div></div>
+    <div class="ev"><span class="ev-date">Jul 7</span><div class="ev-body"><div class="ev-title">Sunpharma dividend record date</div><div class="ev-sub">Creates near-term price floor. Buy before Jul 7 to capture dividend. Long-term holders: hold through.</div><span class="ev-imp" style="background:var(--green-bg);color:var(--green)">Medium</span></div></div>
+    <div class="ev"><span class="ev-date">Jul 20</span><div class="ev-body"><div class="ev-title">IRCTC CMD departure — replacement expected</div><div class="ev-sub">New CMD = strategy reset on dynamic pricing. Long-term investors: add on CMD news dip.</div><span class="ev-imp ei-m">Medium — IRCTC</span></div></div>
+    <div class="ev"><span class="ev-date">Jul-Aug</span><div class="ev-body"><div class="ev-title">Q1 FY27 India earnings season — TCS first ~Jul 10</div><div class="ev-sub">Will validate or invalidate AI disruption narrative for IT sector. Most important earnings event of 2026.</div><span class="ev-imp ei-h">High — sector defining</span></div></div>
+    <div class="ev"><span class="ev-date">Oct 2026</span><div class="ev-body"><div class="ev-title">US Fed FOMC — potential rate hike decision</div><div class="ev-sub">60%+ probability. If hike: Nifty -5-8% correction = buy HDFC Bank, Bajaj Finance, Asian Paints.</div><span class="ev-imp ei-h">High — global risk</span></div></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-hdr"><div class="card-title"><i class="ti ti-chart-line" style="font-size:14px;vertical-align:-2px;margin-right:5px"></i>Nifty Technical Levels + Today's Narrative</div><span class="card-badge" style="background:var(--green-bg);color:var(--green)">Post-expiry recovery</span></div>
+  <div class="card-body">
+    <div class="nifty-box">
+      <div style="font-size:10px;color:var(--text3);margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase">Nifty 50 | Jun 24 2026</div>
+      <div class="nf-val">24,768</div>
+      <div class="nf-chg">+0.58% | +142 pts | Recovery from 23,824 (Jun 23)</div>
+      <div class="nf-sub">Supp: 24,000 | 23,800 | 23,600 | Resist: 24,200 | 24,400</div>
+    </div>
+    <div style="font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:8px"><strong style="color:var(--text)">Weekly RSI:</strong> 47.64 — below bullish threshold 50. Falling wedge breakout intact. Above 100-week EMA. Bias: sideways-to-bullish 23,800-24,400.</div>
+    <div class="narrative-box"><strong>Today's bottom line:</strong> Global tech sold hard (Nasdaq -2.21%). India decoupling — banking surging on FII put unwind, pharma advancing on sector rotation. VIX 27 to 13 = fear removed completely. For intraday: buy AU SFB and IDFC First on VWAP dips. For long-term: VIX 13 = add HDFC Bank, Asian Paints, L&amp;T on any near-term weakness. Iran peace = biggest structural tailwind for India in 2026, benefiting every long-term position in the platform.</div>
+  </div>
+</div>
+</div>
+<div class="footer-bar">Stock Scanner | News &amp; Sentiment | Jun 24 2026 | NSE | BSE | Business Standard | CNBC | Yahoo Finance | Not SEBI-registered investment advice</div>
+</div></div>
+
+<!-- STATUS BAR -->
+<div class="statusbar">
+  <span>Stock Scanner | India Market Intelligence | v6.0 | Jun 24 2026</span>
+  <span>19 categories | 6-factor signal engine | NSE + BSE</span>
+  <span>Not SEBI-registered advice | Educational use only</span>
+</div>
+
+<script>
+function showSec(id){
+  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on')});
+  document.querySelectorAll('.ntab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById('sec-'+id).classList.add('on');
+  document.getElementById('tab-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showCat(id){
+  document.querySelectorAll('.cpanel').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('.si').forEach(function(s){s.classList.remove('on')});
+  var p=document.getElementById('cp-'+id);
+  var s=document.getElementById('si-'+id);
+  if(p)p.classList.add('on');
+  if(s)s.classList.add('on');
+}
+</script>
+</body>
+</html>
