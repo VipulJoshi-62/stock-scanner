@@ -6,7 +6,7 @@
 <title>Stock Scanner — India Market Intelligence</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.19.0/iconfont/tabler-icons.min.css">
 <style>
-:root{--bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;--border:#2a2a38;--border2:#333345;--text:#e8e8f0;--text2:#9898b0;--text3:#5a5a72;--accent:#4f8ef7;--green:#3ecf8e;--green-bg:#0d2618;--green-text:#3ecf8e;--red:#f26b6b;--red-bg:#2a0e0e;--red-text:#f26b6b;--amber:#f5a623;--amber-bg:#271a05;--amber-text:#f5a623;--purple:#a78bfa;--purple-bg:#1a1030;--purple-text:#a78bfa;--blue-bg:#0d1a2e;--blue-text:#4f8ef7;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'JetBrains Mono','Fira Code',monospace}
+:root{--bg:#0a0a0f;--bg2:#111118;--bg3:#18181f;--bg4:#1e1e28;--border:#2a2a38;--border2:#333345;--text:#ffffff;--text2:#d0d0e8;--text3:#9898b8;--accent:#4f8ef7;--green:#3ecf8e;--green-bg:#0d2618;--green-text:#3ecf8e;--red:#f26b6b;--red-bg:#2a0e0e;--red-text:#f26b6b;--amber:#f5a623;--amber-bg:#271a05;--amber-text:#f5a623;--purple:#a78bfa;--purple-bg:#1a1030;--purple-text:#a78bfa;--blue-bg:#0d1a2e;--blue-text:#4f8ef7;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'JetBrains Mono','Fira Code',monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.5;min-height:100vh}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
@@ -14,25 +14,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .brand{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.01em;white-space:nowrap;flex-shrink:0}
 .brand-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 8px var(--green)}
 .nav-tabs{display:flex;gap:2px;flex:1}
-.ntab{padding:6px 14px;border-radius:6px;border:none;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:var(--text2);font-family:var(--font);transition:all .15s;white-space:nowrap}
+.ntab{padding:6px 14px;border-radius:6px;border:none;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:#b0b0d0;font-family:var(--font);transition:all .15s;white-space:nowrap}
 .ntab:hover{background:var(--bg3);color:var(--text)}
 .ntab.active{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
 .nav-chips{display:flex;gap:5px;flex-wrap:wrap}
 .chip{font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;white-space:nowrap;font-family:var(--mono)}
-.cg{background:var(--green-bg);color:var(--green-text)}.cr{background:var(--red-bg);color:var(--red-text)}.ca{background:var(--amber-bg);color:var(--amber-text)}.cb{background:var(--blue-bg);color:var(--blue-text)}.cn{background:var(--bg3);color:var(--text2)}
+.cg{background:var(--green-bg);color:var(--green-text)}.cr{background:var(--red-bg);color:var(--red-text)}.ca{background:var(--amber-bg);color:var(--amber-text)}.cb{background:var(--blue-bg);color:var(--blue-text)}.cn{background:var(--bg3);color:#c8c8e0}
 .ticker{background:var(--bg2);border-bottom:1px solid var(--border);padding:6px 0;overflow:hidden}
 .tick-inner{display:flex;gap:24px;animation:scr 60s linear infinite;white-space:nowrap;padding:0 12px}
 @keyframes scr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ti{display:flex;align-items:center;gap:5px;font-size:11px;font-family:var(--mono)}
-.tn{color:var(--text3)}.tv{color:var(--text2);font-weight:600}.tu{color:var(--green);font-weight:600}.td{color:var(--red);font-weight:600}.tsep{color:var(--border2)}
+.tn{color:#a0a0c8}.tv{color:#ffffff;font-weight:700}.tu{color:var(--green);font-weight:700}.td{color:var(--red);font-weight:700}.tsep{color:var(--border2)}
 .sec{display:none}.sec.on{display:block}
 .scanner-wrap{display:flex;min-height:calc(100vh - 100px)}
 .sidebar{width:160px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding-bottom:20px}
-.sg{font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--text3);padding:12px 12px 4px;text-transform:uppercase}
-.si{padding:7px 12px;cursor:pointer;font-size:11px;font-weight:400;color:var(--text2);border-left:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all .12s}
+.sg{font-size:9px;font-weight:700;letter-spacing:.1em;color:#7878a8;padding:12px 12px 4px;text-transform:uppercase}
+.si{padding:7px 12px;cursor:pointer;font-size:11px;font-weight:400;color:#b0b0d0;border-left:2px solid transparent;display:flex;align-items:center;gap:5px;transition:all .12s}
 .si:hover{background:var(--bg3);color:var(--text)}
 .si.on{background:var(--bg3);color:var(--text);border-left-color:var(--accent);font-weight:500}
-.si-cnt{margin-left:auto;font-size:9px;background:var(--bg4);color:var(--text3);padding:1px 5px;border-radius:3px}
+.si-cnt{margin-left:auto;font-size:9px;background:var(--bg4);color:#a0a0c8;padding:1px 5px;border-radius:3px}
 .si-new{font-size:9px;background:var(--green-bg);color:var(--green-text);padding:1px 5px;border-radius:3px}
 .si-hot{font-size:9px;background:var(--amber-bg);color:var(--amber-text);padding:1px 5px;border-radius:3px}
 .scan-body{flex:1;min-width:0;padding:12px 16px;background:var(--bg)}
@@ -41,14 +41,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .ph-left{display:flex;gap:10px;align-items:flex-start}
 .ph-icon{font-size:20px;flex-shrink:0;margin-top:1px}
 .ph-title{font-size:13px;font-weight:600;margin-bottom:3px}
-.ph-sub{font-size:11px;color:var(--text2);line-height:1.5}
-.ph-thesis{font-size:10px;font-style:italic;padding:6px 8px;border-radius:6px;margin-top:6px;line-height:1.5;background:var(--bg3);color:var(--text2)}
+.ph-sub{font-size:11px;color:#c0c0d8;line-height:1.5}
+.ph-thesis{font-size:10px;font-style:italic;padding:6px 8px;border-radius:6px;margin-top:6px;line-height:1.5;background:var(--bg3);color:#c8c8e0}
 .ph-badge{font-size:10px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
 .sc{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--bg2)}
 .sc-top{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:6px;background:var(--bg3)}
 .sc-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .tkr{font-size:13px;font-weight:700;color:var(--text);font-family:var(--mono)}
-.px{font-size:11px;color:var(--text3)}
+.px{font-size:11px;color:#c0c0d8}
 .sp{font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px}
 .sp-sbuy{background:var(--green-bg);color:var(--green-text);border:1px solid #1a4a30}
 .sp-buy{background:#0d2020;color:#3ecf8e;border:1px solid #1a3a30}
@@ -60,25 +60,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .fs-p{background:var(--green-bg);color:var(--green-text)}.fs-w{background:var(--amber-bg);color:var(--amber-text)}.fs-f{background:var(--red-bg);color:var(--red-text)}
 .s6{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .s6c{background:var(--bg2);padding:5px 6px;text-align:center}
-.s6l{font-size:9px;font-weight:600;color:var(--text3);margin-bottom:2px;display:block;text-transform:uppercase;letter-spacing:.04em}
+.s6l{font-size:9px;font-weight:600;color:#9898c8;margin-bottom:2px;display:block;text-transform:uppercase;letter-spacing:.04em}
 .s6v{font-size:9px;font-weight:600;padding:2px 4px;border-radius:3px;display:inline-block}
 .vg{background:var(--green-bg);color:var(--green-text)}.vr{background:var(--red-bg);color:var(--red-text)}.vn{background:var(--blue-bg);color:var(--blue-text)}.va{background:var(--amber-bg);color:var(--amber-text)}.vp{background:var(--purple-bg);color:var(--purple-text)}.vx{background:var(--bg3);color:var(--text3)}
 .cvbar{display:flex;align-items:center;gap:8px;padding:5px 12px;background:var(--bg3);border-bottom:1px solid var(--border)}
-.cvbar-l{font-size:10px;font-weight:500;color:var(--text3);width:80px;flex-shrink:0}
+.cvbar-l{font-size:10px;font-weight:500;color:#b0b0d0;width:80px;flex-shrink:0}
 .cvbar-t{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
 .cvbar-f{height:100%;border-radius:2px}
 .fb{background:var(--green)}.fa{background:var(--purple)}.fh{background:var(--accent)}.fw{background:var(--amber)}.fr{background:var(--red)}
 .cvbar-s{font-size:11px;font-weight:600;min-width:40px;text-align:right}
 .sc-body{padding:9px 12px}
-.rat{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:6px}
-.rat strong{color:var(--text);font-weight:600}
+.rat{font-size:11px;color:#c8c8e0;line-height:1.65;margin-bottom:6px}
+.rat strong{color:#ffffff;font-weight:600}
 .opp{background:var(--green-bg);border-left:2px solid var(--green);padding:6px 9px;font-size:11px;color:var(--green-text);margin-bottom:5px;line-height:1.5}
 .risk{background:var(--amber-bg);border-left:2px solid var(--amber);padding:6px 9px;font-size:11px;color:var(--amber-text);margin-bottom:5px;line-height:1.5}
 .conflict{background:var(--purple-bg);border-left:2px solid var(--purple);padding:6px 9px;font-size:11px;color:var(--purple-text);margin-bottom:5px;line-height:1.5}
 .avoid-box{background:var(--red-bg);border-left:2px solid var(--red);padding:6px 9px;font-size:11px;color:var(--red-text);margin-bottom:5px;line-height:1.5}
 .lvrow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
 .lv{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;flex:1;min-width:70px}
-.ll{font-size:9px;color:var(--text3);margin-bottom:1px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.ll{font-size:9px;color:#9898c8;margin-bottom:1px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
 .lval{font-size:12px;font-weight:700;font-family:var(--mono)}
 .en{color:var(--purple)}.t1{color:var(--green)}.t2{color:#3ecf8e}.sl{color:var(--red)}.uu{color:var(--accent)}
 .section-padding{padding:12px 16px}
@@ -87,7 +87,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .wls-c{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
 .wls-t{font-size:12px;font-weight:700;color:var(--text);font-family:var(--mono);margin-bottom:3px}
 .wls-s{font-size:11px;font-weight:600}
-.wls-n{font-size:10px;color:var(--text3);margin-top:2px;line-height:1.4}
+.wls-n{font-size:10px;color:#c0c0d8;margin-top:2px;line-height:1.4}
 .w-sbuy{color:var(--green)}.w-hold{color:var(--accent)}.w-sell{color:var(--red)}.w-watch{color:var(--amber)}
 .wlcard{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--bg2)}
 .wlc-hdr{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);background:var(--bg3)}
@@ -99,25 +99,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .w-watch-pill{background:var(--amber-bg);color:var(--amber-text);border:1px solid #3a2a10}
 .wl-s6{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .ws6{background:var(--bg2);padding:8px 10px}
-.ws6-l{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:3px}
+.ws6-l{font-size:10px;font-weight:600;color:#a0a0c8;margin-bottom:3px}
 .ws6-s{font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:3px}
-.ws6-d{font-size:10px;color:var(--text2);line-height:1.5}
+.ws6-d{font-size:10px;color:#c0c0d8;line-height:1.5}
 .wl-cb{display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--bg3);border-bottom:1px solid var(--border)}
-.wlcb-l{font-size:10px;font-weight:500;color:var(--text3);width:110px;flex-shrink:0}
+.wlcb-l{font-size:10px;font-weight:500;color:#b0b0d0;width:110px;flex-shrink:0}
 .wlcb-t{flex:1;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden}
 .wlcb-f{height:100%;border-radius:3px}
 .wlcb-s{font-size:11px;font-weight:600;min-width:60px;text-align:right}
 .wl-body{padding:10px 14px}
-.wl-rat{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:7px}
+.wl-rat{font-size:11px;color:#c8c8e0;line-height:1.65;margin-bottom:7px}
 .wl-rat strong{color:var(--text);font-weight:600}
 .wl-lvrow{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
 .wl-lv{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 8px;flex:1;min-width:70px}
-.wl-ll{font-size:9px;color:var(--text3);margin-bottom:1px;font-weight:500;text-transform:uppercase}
+.wl-ll{font-size:9px;color:#9898c8;margin-bottom:1px;font-weight:500;text-transform:uppercase}
 .wl-lval{font-size:12px;font-weight:700;font-family:var(--mono)}
 .sum5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:12px}
 .s5c{border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;background:var(--bg2)}
 .s5v{font-size:24px;font-weight:700;margin-bottom:3px;font-family:var(--mono)}
-.s5l{font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.05em}
+.s5l{font-size:10px;font-weight:500;color:#a0a0c8;text-transform:uppercase;letter-spacing:.05em}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px}
 .card-hdr{padding:9px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg3)}
 .card-title{font-size:12px;font-weight:600;color:var(--text)}
@@ -126,18 +126,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
 .mc{background:var(--bg3);border-radius:8px;padding:9px 10px;border:1px solid var(--border)}
-.mc-lbl{font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.mc-lbl{font-size:9px;color:#a0a0c8;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
 .mc-val{font-size:16px;font-weight:700;margin-bottom:1px;font-family:var(--mono)}
 .mc-chg{font-size:11px;font-weight:600;margin-bottom:3px}
-.mc-sub{font-size:10px;color:var(--text3);line-height:1.4}
+.mc-sub{font-size:10px;color:#c0c0d8;line-height:1.4}
 .mc-bar-wrap{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-top:5px}
 .mc-bar{height:100%;border-radius:2px}
 .idx-t{width:100%;border-collapse:collapse}
-.idx-t th{font-size:10px;font-weight:600;color:var(--text3);padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em}
+.idx-t th{font-size:10px;font-weight:600;color:#b0b0d0;padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.04em}
 .idx-t td{font-size:12px;padding:6px 8px;border-bottom:1px solid var(--border)}
 .idx-t tr:last-child td{border-bottom:none}
 .iname{font-weight:600;color:var(--text);font-family:var(--mono)}
-.isub{font-size:10px;color:var(--text3);margin-top:1px}
+.isub{font-size:10px;color:#a0a0c8;margin-top:1px}
 .ichg{font-weight:600;font-size:10px;padding:1px 6px;border-radius:3px;font-family:var(--mono)}
 .iu{background:var(--green-bg);color:var(--green-text)}.id{background:var(--red-bg);color:var(--red-text)}.if{background:var(--bg3);color:var(--text3)}
 .hmap{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
@@ -161,38 +161,38 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .nd-bull{background:var(--green)}.nd-bear{background:var(--red)}.nd-warn{background:var(--amber)}
 .ni-body{flex:1}
 .ni-hl{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.4}
-.ni-meta{font-size:10px;color:var(--text3);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.ni-meta{font-size:10px;color:#a0a0c8;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2px}
 .ni-imp{font-size:10px;font-weight:600;padding:1px 7px;border-radius:3px}
 .ni-bull{background:var(--green-bg);color:var(--green-text)}.ni-bear{background:var(--red-bg);color:var(--red-text)}.ni-warn{background:var(--amber-bg);color:var(--amber-text)}
-.ni-text{font-size:11px;color:var(--text2);line-height:1.55}
+.ni-text{font-size:11px;color:#c0c0d8;line-height:1.55}
 .ni-text strong{color:var(--text);font-weight:600}
 .ev{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);align-items:flex-start}
 .ev:last-child{border-bottom:none}
-.ev-date{font-size:10px;font-weight:700;background:var(--bg4);color:var(--text2);padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-family:var(--mono);border:1px solid var(--border2)}
+.ev-date{font-size:10px;font-weight:700;background:var(--bg4);color:#c0c0e0;padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0;font-family:var(--mono);border:1px solid var(--border2)}
 .ev-title{font-size:11px;font-weight:600;color:var(--text);margin-bottom:2px}
-.ev-sub{font-size:10px;color:var(--text3);line-height:1.4}
+.ev-sub{font-size:10px;color:#b0b0d0;line-height:1.4}
 .ev-imp{font-size:10px;font-weight:600;padding:1px 7px;border-radius:3px;margin-top:3px;display:inline-block}
 .ei-h{background:var(--red-bg);color:var(--red-text)}.ei-m{background:var(--amber-bg);color:var(--amber-text)}
-.sec-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;margin:14px 0 8px;display:flex;align-items:center;gap:10px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;color:#9898c8;text-transform:uppercase;margin:14px 0 8px;display:flex;align-items:center;gap:10px}
 .sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
-.narrative-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--text2);line-height:1.7;margin-bottom:10px}
+.narrative-box{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:11px;color:#c8c8e0;line-height:1.7;margin-bottom:10px}
 .narrative-box strong{color:var(--text);font-weight:600}
-.footer-bar{font-size:10px;color:var(--text3);text-align:center;padding:10px 16px;border-top:1px solid var(--border);background:var(--bg2);margin-top:10px}
-.statusbar{background:var(--bg2);border-top:1px solid var(--border);color:var(--text3);padding:6px 16px;font-size:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;position:sticky;bottom:0}
+.footer-bar{font-size:10px;color:#9898c8;text-align:center;padding:10px 16px;border-top:1px solid var(--border);background:var(--bg2);margin-top:10px}
+.statusbar{background:var(--bg2);border-top:1px solid var(--border);color:#a0a0c8;padding:6px 16px;font-size:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;position:sticky;bottom:0}
 .mg{color:var(--green)}.mr{color:var(--red)}.ma{color:var(--amber)}
 .nifty-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;text-align:center}
 .nf-val{font-size:36px;font-weight:800;color:var(--green);font-family:var(--mono);line-height:1}
 .nf-chg{font-size:12px;color:var(--green);font-weight:600;margin-top:3px;font-family:var(--mono)}
-.nf-sub{font-size:10px;color:var(--text3);margin-top:3px}
+.nf-sub{font-size:10px;color:#b0b0d0;margin-top:3px}
 .fg-wrap{text-align:center;padding:8px}
 .fg-score{font-size:44px;font-weight:800;line-height:1;font-family:var(--mono)}
 .fg-word{font-size:12px;font-weight:600;margin-bottom:8px}
 .fg-gauge{width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,#991f1f,#854f0b,#3b6d11,#1a5a30);margin-bottom:5px;position:relative}
 .fg-needle{position:absolute;top:-4px;width:4px;height:16px;border-radius:2px;background:var(--text);transform:translateX(-50%)}
-.fg-labels{display:flex;justify-content:space-between;font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.fg-labels{display:flex;justify-content:space-between;font-size:9px;color:#9898c8;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 .fg-comps{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px}
 .fg-c{background:var(--bg3);border-radius:6px;padding:5px 7px;border:1px solid var(--border)}
-.fg-cl{font-size:9px;color:var(--text3);margin-bottom:1px}
+.fg-cl{font-size:9px;color:#a0a0c8;margin-bottom:1px}
 .fg-cv{font-size:11px;font-weight:600}
 </style>
 </head>
@@ -270,6 +270,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-sbuy">Strong Buy</span><span class="px">~Rs.1,855 | +3.74% | BNF leader | FPI gap 33% to 24%</span></div><span class="fs fs-p">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Gold std</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Confirm</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts cvrd</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII return</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">BNF expiry</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:88%"></div></div><span class="cvbar-s" style="color:var(--green)">88%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">19.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.78.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">17.1%</div></div>
+<div class="lv"><div class="ll">Net NPA</div><div class="lval en">0.3%</div></div>
+</div>
 <div class="sc-body"><div class="rat">All 14 BNF stocks green. FII covering -1.69L puts = bullish. PAT Rs.79,219 Cr FY26. Rs.13 div declared.<br><strong>Entry Rs.1,840-1,865 | Target Rs.1,930 | Stop Rs.1,818 | Exit 3 PM</strong></div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,840-1,865</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,930</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,818</div></div><div class="lv"><div class="ll">Exit by</div><div class="lval sl">3:00 PM</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CIPLA</span><span class="sp sp-buy">Buy on Dip</span><span class="px">Rs.1,456 | +2.87% | Delivery 63.75% | P/E 24x vs sector 32x</span></div><span class="fs fs-p">Fund 8/10</span></div>
@@ -306,13 +313,52 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 
 <!-- SMART MONEY -->
 <div class="cpanel" id="cp-smart">
-<div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-chart-bar ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">Smart Money Signals</div><div class="ph-sub">Delivery above 55% on up-move = institutional | Block trades = smart money entries</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">Real signal</span></div>
-<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BANKING — ALL 14 GREEN</span><span class="sp sp-sbuy">Institutional Entry Signal</span></div></div>
-<div class="sc-body"><div class="rat">All 14 BNF stocks green on expiry + FII put unwind = institutional reallocation. DII buying Rs.680 Cr. <strong>Check HDFC Bank delivery% — above 55% = FII reversal thesis activating.</strong></div></div></div>
-<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NMDC</span><span class="sp sp-buy">Block Trade Confirmed</span><span class="px">~Rs.92 | Two blocks Rs.74.5 Cr at Rs.89-90 | FII +16% in 1yr</span></div><span class="fs fs-w">Fund 6/10</span></div>
-<div class="sc-body"><div class="rat">Rs.74.5 Cr institutional block trades at Rs.89-90 confirmed. All MAs bullish. Near 52-wk high. <strong>Hold existing. Add only at Rs.82-87 dip.</strong> T1 Rs.110 | Stop Rs.75 | Yield 3.96%</div></div></div>
-<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AUROPHARMA</span><span class="sp sp-watch">Conditional — verify delivery%</span><span class="px">Rs.1,497 | Rs.800 Cr buyback at Rs.1,475 | OAI risk</span></div></div>
-<div class="sc-body"><div class="rat">Buyback at Rs.1,475 = strongest insider signal. BUT OAI on two units = FDA risk. Entry ONLY if delivery above 50%. Entry Rs.1,460-1,490 | T1 Rs.1,590 | Stop Rs.1,415</div></div></div>
+<div class="ph" style="background:var(--purple-bg);border-color:#2a1a4a"><div class="ph-left"><i class="ti ti-chart-bar ph-icon" style="color:var(--purple)"></i><div><div class="ph-title">Smart Money Signals</div><div class="ph-sub">Delivery above 55% on up-move = institutional accumulation | Block trades = smart money entries | FII/DII flow divergence</div></div></div><span class="ph-badge" style="background:var(--purple);color:#fff">Real signal</span></div>
+
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK — BANKING ALL 14 GREEN</span><span class="sp sp-sbuy">Institutional Entry Signal</span><span class="px">+3.74% today | FII covering -1.69L puts | DII buying Rs.680 Cr</span></div><span class="fs fs-p">Fund 7/10</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">PAT Rs.79K Cr</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Delivery</span><span class="s6v va">Confirm &gt;55%</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts covered</span></div><div class="s6c"><span class="s6l">FII/DII</span><span class="s6v vg">DII Rs.680Cr</span></div><div class="s6c"><span class="s6l">Signal</span><span class="s6v vg">14/14 green</span></div></div>
+<div class="cvbar"><span class="cvbar-l">Smart signal</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:85%"></div></div><span class="cvbar-s" style="color:var(--green)">Strong</span></div>
+<div class="sc-body">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">19.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.78.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">17.1%</div></div>
+<div class="lv"><div class="ll">Delivery</div><div class="lval en">Confirm</div></div>
+</div>
+<div class="rat">All 14 BNF stocks green + FII covering -1.69L puts = institutional reallocation signal. DII buying Rs.680 Cr. Delivery above 55% on up-move = FII reversal thesis activating. Smart money is entering today.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Smart entry</div><div class="lval en">Rs.1,840-1,865</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,930</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,818</div></div></div>
+</div></div>
+
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NMDC</span><span class="sp sp-buy">Block Trade Confirmed</span><span class="px">~Rs.92 | Two blocks Rs.74.5 Cr at Rs.89-90 | FII ownership +16% in 1yr</span></div><span class="fs fs-w">Fund 6/10</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Yield 3.96%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">All MAs buy</span></div><div class="s6c"><span class="s6l">Delivery</span><span class="s6v vg">Block Rs.74Cr</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">No F&amp;O</span></div><div class="s6c"><span class="s6l">FII/DII</span><span class="s6v vg">FII +16% 1yr</span></div><div class="s6c"><span class="s6l">Signal</span><span class="s6v vg">Block confirm</span></div></div>
+<div class="cvbar"><span class="cvbar-l">Smart signal</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:75%"></div></div><span class="cvbar-s" style="color:var(--green)">Strong block</span></div>
+<div class="sc-body">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">8.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">21.3%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.11.2</div></div>
+<div class="lv"><div class="ll">Yield</div><div class="lval t1">3.96%</div></div>
+<div class="lv"><div class="ll">Block</div><div class="lval en">Rs.74.5 Cr</div></div>
+</div>
+<div class="rat">Rs.74.5 Cr institutional block trades at Rs.89-90 confirmed. Block trades at support = smart money accumulating at a price they consider fair value. All MAs bullish. Near 52-wk high — add only on dip.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Hold stop</div><div class="lval sl">Close &lt;Rs.75</div></div><div class="lv"><div class="ll">Add on dip</div><div class="lval en">Rs.82-87</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.110</div></div><div class="lv"><div class="ll">Yield</div><div class="lval uu">3.96%</div></div></div>
+</div></div>
+
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AUROPHARMA</span><span class="sp sp-watch">Conditional — verify delivery% before acting</span><span class="px">Rs.1,497 | Rs.800 Cr buyback at Rs.1,475 | Units I &amp; III FDA OAI risk</span></div><span class="fs fs-w">Fund 6/10</span></div>
+<div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v va">OAI risk</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">+3.75% today</span></div><div class="s6c"><span class="s6l">Delivery</span><span class="s6v va">Confirm %</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v va">Two-way</span></div><div class="s6c"><span class="s6l">FII/DII</span><span class="s6v vg">Buyback signal</span></div><div class="s6c"><span class="s6l">Signal</span><span class="s6v va">Conditional</span></div></div>
+<div class="cvbar"><span class="cvbar-l">Smart signal</span><div class="cvbar-t"><div class="cvbar-f fw" style="width:60%"></div></div><span class="cvbar-s" style="color:var(--amber)">Conditional</span></div>
+<div class="sc-body">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">26.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.1%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.56.7</div></div>
+<div class="lv"><div class="ll">Buyback</div><div class="lval en">Rs.1,475</div></div>
+<div class="lv"><div class="ll">OAI risk</div><div class="lval sl">Units I+III</div></div>
+</div>
+<div class="conflict">Buyback at Rs.1,475 = strongest insider signal — management believes stock is undervalued. BUT OAI on two units = FDA risk. Entry ONLY if delivery above 50%. Two-way trade if delivery below 35% = short. No averaging on FDA risk stocks.</div>
+<div class="lvrow"><div class="lv"><div class="ll">Long (del&gt;50%)</div><div class="lval en">Rs.1,460-1,490</div></div><div class="lv"><div class="ll">Short (del&lt;35%)</div><div class="lval sl">Rs.1,495+</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,590</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,415</div></div></div>
+</div></div>
 </div>
 
 <!-- 5-10 YEAR -->
@@ -321,27 +367,69 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-buy">Buy in Tranches — anchor</span><span class="px">~Rs.1,855 | India largest private bank | FPI 33% to 24%</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Gold std</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">+3.74%</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts cvrd</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII anchor</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Rs.13 div</span></div></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:92%"></div></div><span class="cvbar-s" style="color:var(--green)">92%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">19.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.78.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">17.1%</div></div>
+<div class="lv"><div class="ll">FPI gap</div><div class="lval en">9%</div></div>
+</div>
 <div class="sc-body"><div class="opp">India credit-to-GDP at 55% vs China 175% = 3x expansion runway. Net NPA never crossed 0.5% in 25 years. FPI gap = Rs.50,000 Cr latent buying when FII returns.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,840-1,870</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.1,650-1,700</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">Rs.2,500</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t2">Rs.3,200+</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BHARTI AIRTEL</span><span class="sp sp-buy">Buy — telecom royalty</span><span class="px">6.11% Nifty weight | ARPU expansion | 5G | Africa profitable</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:88%"></div></div><span class="cvbar-s" style="color:var(--green)">88%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">18.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.42.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">18.4%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.9x</div></div>
+</div>
 <div class="sc-body"><div class="rat">India ARPU at Rs.200 vs global benchmark Rs.1,250-1,670. Tripling ARPU = tripling revenue from existing base. 5G monetisation beginning. D/E declining.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Current market</div></div><div class="lv"><div class="ll">Add on dip</div><div class="lval en">Any -15% fall</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">+60-80%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">ARPU reverses</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BAJAJ FINANCE</span><span class="sp sp-acc">Accumulate — consumer credit titan</span><span class="px">3.16% Nifty weight | 101M+ customers | AUM Rs.4.16L Cr</span></div><span class="fs fs-w">Verify P/E first</span></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.6x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.312</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">22.1%</div></div>
+<div class="lv"><div class="ll">NPA GNPA</div><div class="lval en">1.09%</div></div>
+</div>
 <div class="sc-body"><div class="rat">India consumer credit penetration 20% of what it will be in 2035. 101M+ customers. RBI rate cut cycle = lower cost of funds = margin expansion.</div>
 <div class="risk">P/E can be expensive — verify current P/E against 5yr average before entry.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Verify P/E first</div></div><div class="lv"><div class="ll">Target 3yr</div><div class="lval t1">+70-100%</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t2">+150-200%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">NPA above 3%</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ASIAN PAINTS</span><span class="sp sp-buy">Buy on Dip — quality compounder</span><span class="px">ROCE 41% | ROE 32% | D/E 0.06 | 60%+ India decorative share</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:85%"></div></div><span class="cvbar-s" style="color:var(--green)">85%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">52.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">41.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.52.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">32.1%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.06x</div></div>
+</div>
 <div class="sc-body"><div class="opp">Crude $74 = TiO2 cost -20-25%. Margin pocketed with 1-2 quarter lag. India housing stock doubles by 2035. Every house gets painted every 4-7 years.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Current / any dip</div></div><div class="lv"><div class="ll">Add if</div><div class="lval en">-15% from ATH</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+80-120%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">ROCE below 25%</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">LARSEN &amp; TOUBRO</span><span class="sp sp-buy">Buy — India infrastructure royalty</span><span class="px">3.03% Nifty weight | Record orderbook | Budget capex Rs.11.21L Cr</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:83%"></div></div><span class="cvbar-s" style="color:var(--green)">83%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.1x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">14.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.115.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">15.2%</div></div>
+<div class="lv"><div class="ll">OB</div><div class="lval en">Rs.5.5L Cr</div></div>
+</div>
 <div class="sc-body"><div class="rat">Every rupee of India's Rs.11.21L Cr infra budget flows through L&amp;T. Roads, railways, defence, ports, data centres. Order book at record highs.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry T1</div><div class="lval en">Current market</div></div><div class="lv"><div class="ll">Entry T2</div><div class="lval en">Any 10% dip</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+70-100%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">Order inflow drops</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">AVENUE SUPERMARTS (DMART)</span><span class="sp sp-acc">Accumulate on Correction</span><span class="px">Zero debt | Revenue CAGR 25%+ 10yr | Promoter Damani 75%</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="cvbar"><span class="cvbar-l">5yr conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">98.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">19.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.49.2</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">18.7%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="rat">India organised retail below 15% penetration will hit 30%+ by 2035. DMart owns all stores, zero debt, lowest prices. Promoter 75% = fully aligned.</div>
 <div class="risk">P/E typically expensive — buy only on corrections of 15-20% from highs. Quick commerce = genuine long-term competitive threat to monitor.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">On correction only</div></div><div class="lv"><div class="ll">Add</div><div class="lval en">Every -15% dip</div></div><div class="lv"><div class="ll">Target 5yr</div><div class="lval t1">+80-120%</div></div><div class="lv"><div class="ll">Thesis break</div><div class="lval sl">EBITDA below 7%</div></div></div></div></div>
@@ -353,11 +441,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IRCTC</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.523 | ROCE 111.8% | Down 34% from high | CMD change Jul 20</span></div><span class="fs fs-w">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 111.8%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">Below 200DMA</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Declining</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v va">CMD change</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v va">Jul 20 CMD</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:72%"></div></div><span class="cvbar-s" style="color:var(--purple)">72%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">31.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">111.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.16.7</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">38.2%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="conflict">ROCE 111.8% + statutory monopoly vs below 200 DMA + CMD change Jul 20. Business unbreakable, chart weak — buy in 2 tranches.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.500-525</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.455-478</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.720</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.420</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IEX — INDIA ENERGY EXCHANGE</span><span class="sp sp-buy">Buy</span><span class="px">~Rs.185 | EBITDA 84% | P/E 26x vs 5yr avg 42x | Green energy supercycle play</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">EBITDA 84%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Inst. buying</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Green energy</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Open access</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">26.1x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">84.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.7.1</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">36.4%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="opp">84% EBITDA on zero-capex model — earns a toll on every electricity unit traded. Green energy open access policy = 3-5x volume catalyst. P/E at 37% discount to 5yr average.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.175-195</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.235</div></div><div class="lv"><div class="ll">T2 (3yr)</div><div class="lval t2">Rs.340</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.158</div></div></div></div></div></div>
 
@@ -366,11 +468,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">SUNPHARMA</span><span class="sp sp-buy">Buy</span><span class="px">Rs.1,896 | OCF doubled FY20-25 | Debt -75% | P/E 33x below 5yr avg 38x | Div record Jul 7</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">OCF doubled</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">4th up-day</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Long buildup</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Pharma sector</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Div Jul 7</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">33.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">18.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.56.8</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">17.2%</div></div>
+<div class="lv"><div class="ll">Debt</div><div class="lval en">-75%</div></div>
+</div>
 <div class="sc-body"><div class="rat">OCF doubled FY20-25. Debt down 75%. Specialty pharma growing 18%+ in US market. 4th consecutive up-day confirms sector rotation into pharma. Dividend record date Jul 7 = near-term price floor.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,850-1,890</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.2,000</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.2,150</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,775</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">RELIANCE INDUSTRIES</span><span class="sp sp-buy">Buy</span><span class="px">~Rs.1,380 | Jio 470M subs | 18,000+ retail stores | GRM expansion ongoing</span></div><span class="fs fs-p">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Revenue #1</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Sideways</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v va">Mixed</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Jio ARPU hike</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:72%"></div></div><span class="cvbar-s" style="color:var(--green)">72%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">24.6x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.56.2</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">9.8%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.4x</div></div>
+</div>
 <div class="sc-body"><div class="rat">Triple re-rating thesis: Jio ARPU hike (telecom), Retail scaling (consumer), Green energy FY27 (clean energy). India's largest company by revenue with each segment individually justifying current valuation.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,350-1,395</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.1,510</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.1,680</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,285</div></div></div></div></div></div>
 
@@ -379,11 +495,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BEL — BHARAT ELECTRONICS</span><span class="sp sp-buy">Buy</span><span class="px">Rs.435 | ROCE 60.7% | Zero debt | Rs.9,397 Cr cash | Rs.1,081 Cr new orders this week</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 60.7%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above 200DMA</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">97L high vol</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Long buildup</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">UAE BrahMos</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Rs.1081Cr ord</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">60.7%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.15.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">27.4%</div></div>
+<div class="lv"><div class="ll">Cash</div><div class="lval en">Rs.9,397Cr</div></div>
+</div>
 <div class="sc-body"><div class="opp">Rs.70,000 Cr total order book. Rs.1,081 Cr new orders this week alone. UAE BrahMos + Akashteer = export unlock doubling addressable market. Revenue + profit up 4 consecutive quarters averaging 23-24% growth each quarter.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.415-445</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.510</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.580</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.390</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PRESTIGE ESTATES</span><span class="sp sp-watch">Verify pledging first</span><span class="px">Realty | Rate yield tailwind | 2nd consecutive up-day | RBI rate cuts = affordability</span></div><span class="fs fs-w">Fund 6/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v va">Verify D/E</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">2 up-days</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Moderate</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Rate cut bid</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v va">Verify pledge</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fw" style="width:58%"></div></div><span class="cvbar-s" style="color:var(--amber)">58% — verify first</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">42.1x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">12.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.34.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">14.2%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">1.1x</div></div>
+</div>
 <div class="sc-body"><div class="risk">Before entry: verify promoter pledging% and D/E ratio. Rate cut narrative = affordability expansion = realty demand uptick. Entry Rs.1,450-1,520 | T1 Rs.1,680 | Stop Rs.1,380</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,450-1,520</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.1,680</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,380</div></div><div class="lv"><div class="ll">Check first</div><div class="lval sl">Pledge &amp; D/E</div></div></div></div></div></div>
 
@@ -392,6 +522,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ION EXCHANGE INDIA</span><span class="sp sp-watch">Research first — do not buy blindly</span><span class="px">Water treatment | B2B niche | No Chinese competition | India infra demand +15%/yr</span></div><span class="fs fs-w">Fund — verify</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v va">Verify ROCE</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Verify MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Low coverage</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">No FII = gap</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Infra demand</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fw" style="width:55%"></div></div><span class="cvbar-s" style="color:var(--amber)">55% — after research</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">Verify</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">Verify</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Verify</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">Verify</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">Verify</div></div>
+</div>
 <div class="sc-body"><div class="rat">Niche B2B water treatment with no Chinese competition. No FII coverage = pricing gap vs intrinsic value. India infra push = direct demand increase.</div>
 <div class="risk">Entry checklist before buying: ROCE above 20% | Rev CAGR above 20% | D/E below 0.5 | Promoter above 45% | Check latest quarterly. Max 3% of portfolio only.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">After research</div></div><div class="lv"><div class="ll">Max allocation</div><div class="lval sl">3% only</div></div><div class="lv"><div class="ll">Horizon</div><div class="lval t1">2-5 years</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Thesis break</div></div></div></div></div></div>
@@ -401,11 +538,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PIDILITE</span><span class="sp sp-buy">Buy — hidden crude play</span><span class="px">~Rs.2,700 | ROCE 35% | 90% India adhesive share | VAM input cost -30% with crude</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 35%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Steady inst.</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Monopoly buy</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">VAM cost down</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:85%"></div></div><span class="cvbar-s" style="color:var(--green)">85%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">52.6x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">35.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.51.4</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">29.8%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.1x</div></div>
+</div>
 <div class="sc-body"><div class="opp">VAM (vinyl acetate monomer) = key input cost. Crude $74 = VAM -30%. Monopoly pricing = entire margin improvement drops to profit, not passed to consumers. Same crude tailwind as BPCL but far less crowded trade.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.2,650-2,750</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.2,980</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.3,400</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.2,490</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CAMS</span><span class="sp sp-buy">Buy — MF registrar monopoly</span><span class="px">70% MF registrar share | EBITDA 46% | Revenue +26.6% FY25 | AUM Rs.60 to Rs.100L Cr</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">EBITDA 46%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Uptrend</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Inst. hold</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">SIP economy</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">AUM rising</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">38.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">46.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.104.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">38.6%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="rat">Earns a fee on every rupee in India's mutual funds — permanently. 9 crore SIPs growing. AUM expanding from Rs.60 to Rs.100L Cr = direct revenue growth with zero additional capex. 70% market share = irreplaceable infrastructure.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.3,800-4,000</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.4,500</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.5,200</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.3,500</div></div></div></div></div></div>
 
@@ -414,11 +565,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">COAL INDIA</span><span class="sp sp-buy">Buy for income</span><span class="px">~Rs.423 | Yield 6.48% | ROE 38.2% | Rs.400Bn cash | Zero debt | 100% monopoly</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROE 38.2%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">DII anchor</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">PSU income</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Yield 6.48%</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">7.8x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">35.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.54.2</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">38.2%</div></div>
+<div class="lv"><div class="ll">Yield</div><div class="lval en">6.48%</div></div>
+</div>
 <div class="sc-body"><div class="rat">ROE 38.2% + 6.48% yield + zero debt + Rs.400Bn cash = best income stock in India. Government mandated dividends = yield is secure. 100% coal monopoly for decades. Capital appreciation is a bonus on top of 6.48% annual income.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.408-430</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.475</div></div><div class="lv"><div class="ll">Yield</div><div class="lval uu">6.48%</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.375</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">ITC</span><span class="sp sp-buy">Buy — deep value + income</span><span class="px">~Rs.327 | P/E 17x (15yr low) | ROE 29.3% | Yield 4.81% | Zero debt | ROIC 36.6%</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROE 29.3%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">9 sell MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vr">ESG outflow</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vr">ESG stigma</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Hotels peak</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:78%"></div></div><span class="cvbar-s" style="color:var(--green)">78%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">17.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">36.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.19.8</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">29.3%</div></div>
+<div class="lv"><div class="ll">Yield</div><div class="lval en">4.81%</div></div>
+</div>
 <div class="sc-body"><div class="conflict">9 sell MAs but ROE 29.3% + ROIC 36.6% + yield 4.81% + zero debt + P/E 17x (15yr low) = extreme valuation anomaly. ESG exit is NOT business deterioration. If ESG eases: 17x to 25x PE = 47% upside from re-rating alone.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.315-335</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.375</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.425</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.293</div></div></div></div></div></div>
 
@@ -427,6 +592,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">CIPLA</span><span class="sp sp-buy">Swing Buy — on dip only</span><span class="px">Rs.1,456 | Delivery 63.75% | JP Morgan Overweight | P/E 24x vs sector 32x</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">P/E 24x vs 32x</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Del 63.75%</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Long buildup</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">JP Morgan OW</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Pharma sector</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">23.8x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">18.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.61.2</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">18.2%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.1x</div></div>
+</div>
 <div class="sc-body"><div class="rat">All 6 signals bullish. Delivery 63.75% = strong institutional accumulation. Do NOT chase the +2.87% move. Wait for pullback to entry zone for a clean R:R 1:2.5 setup.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry on dip</div><div class="lval en">Rs.1,415-1,440</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.1,530</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.1,620</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,370</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">L&amp;T — LARSEN &amp; TOUBRO</span><span class="sp sp-watch">Wait for confirmed breakout trigger</span><span class="px">Ascending triangle | Trigger: daily close above Rs.3,620 on volume | Budget capex winner</span></div><span class="fs fs-w">Fund 8/10</span></div>
@@ -453,16 +625,37 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">TCS</span><span class="sp sp-acc">Accumulate — 3 tranches</span><span class="px">~Rs.2,073 | ROCE ~55% | Down 33% YTD | FCF Rs.60,000 Cr/yr | TCV $8-10B Q4</span></div><span class="fs fs-w">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 55%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">All MAs bear</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vr">Sector sell</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v va">Short bldp</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vr">AI fear</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">TCV strong</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:68%"></div></div><span class="cvbar-s" style="color:var(--purple)">68% — patience needed</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">22.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">55.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.92.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">46.8%</div></div>
+<div class="lv"><div class="ll">Cash</div><div class="lval en">Rs.60KCr</div></div>
+</div>
 <div class="sc-body"><div class="conflict">All technicals bearish. Fundamentals top 1% of India. Invest the business not the chart. TCV $8-10B Q4 shows demand NOT collapsing. 3-tranche accumulation strategy spreads risk.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,980-2,100</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.1,800-1,900</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.2,600</div></div><div class="lv"><div class="ll">Stop (thesis)</div><div class="lval sl">TCV collapses</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INFOSYS</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.1,035 | ELI AI platform live | GlobalFoundries deal Jun 23 | HDFC Sec target Rs.1,600</span></div><span class="fs fs-w">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">FCF strong</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">Below MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vr">Sector sell</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vr">Short bldp</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vr">AI fear</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">GF deal Jun 23</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:65%"></div></div><span class="cvbar-s" style="color:var(--purple)">65%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">20.8x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">42.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.49.8</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">33.4%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="rat">ELI AI platform now live = Infosys IS the AI transformation. GlobalFoundries semiconductor deal Jun 23 = new revenue stream. HDFC Sec buy target Rs.1,600 = 55% upside from current. Down 27% YTD on sentiment, not fundamentals.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,000-1,050</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.930-960</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,350</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.870</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">PERSISTENT SYSTEMS</span><span class="sp sp-buy">Buy — AI-resistant mid-cap IT</span><span class="px">Best IT mid-cap | 3.4% QoQ revenue growth (highest in mid-tier) | PL target Rs.6,400</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">CAGR 30%+</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Less affected</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Sector drag</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v va">Mild short</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Analyst fav</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">PL Rs.6,400</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:75%"></div></div><span class="cvbar-s" style="color:var(--green)">75%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">38.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">28.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.142.4</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">28.8%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="opp">Product engineering model = AI-benefitted NOT disrupted — builds the AI systems that replace headcount elsewhere. 3.4% QoQ growth = highest in mid-tier IT. Corrects with peers but recovers faster. Buy on sector-wide weakness dips.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">On sector dips</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.6,000</div></div><div class="lv"><div class="ll">T2 (analyst)</div><div class="lval t2">Rs.6,400</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Thesis break</div></div></div></div></div></div>
 
@@ -471,6 +664,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BEL — BHARAT ELECTRONICS (Navratna)</span><span class="sp sp-buy">Buy</span><span class="px">Rs.435 | ROCE 60.7% | Zero debt | Rs.9,397 Cr cash | Rs.1,081 Cr new orders this week</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 60.7%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Above 200DMA</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">97L high vol</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Long buildup</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">UAE BrahMos</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Rs.1081Cr ord</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:82%"></div></div><span class="cvbar-s" style="color:var(--green)">82%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">60.7%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.15.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">27.4%</div></div>
+<div class="lv"><div class="ll">Cash</div><div class="lval en">Rs.9,397Cr</div></div>
+</div>
 <div class="sc-body"><div class="rat">All 6 signals aligned. Rs.70,000 Cr order book. UAE BrahMos + Akashteer = export unlock doubling addressable market. Revenue + profit up 4 consecutive quarters at 23-24% average growth.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.415-445</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.510</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.580</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.390</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">COAL INDIA (Maharatna)</span><span class="sp sp-buy">Buy — income + capital growth</span><span class="px">~Rs.423 | ROE 38.2% | Yield 6.48% | Rs.400Bn cash | Zero debt | 100% monopoly</span></div><span class="fs fs-p">Fund 8/10</span></div>
@@ -481,6 +681,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IRCTC (Navratna)</span><span class="sp sp-acc">Accumulate — 2 tranches</span><span class="px">~Rs.523 | ROCE 111.8% | Down 34% from ATH | CMD change Jul 20 | P/E 31x vs avg 42x</span></div><span class="fs fs-w">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 111.8%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">Below 200DMA</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Declining</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v va">CMD overhang</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v va">Jul 20 CMD</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:68%"></div></div><span class="cvbar-s" style="color:var(--purple)">68%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">31.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">111.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.16.7</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">38.2%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="conflict">ROCE 111.8% + statutory monopoly vs below 200 DMA + CMD change Jul 20. P/E 31x vs 5yr avg 42x = 26% discount to historical. Business permanently unbreakable. Add on CMD news dip.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.500-525</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.455-478</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.720</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.420</div></div></div></div></div></div>
 
@@ -494,6 +701,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BPCL</span><span class="sp sp-buy">Buy</span><span class="px">Rs.311 | P/E 5.74x | Broke Rs.308 (now support) | Iran waiver | MACD +4.22</span></div><span class="fs fs-p">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">P/E 5.74x</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Broke Rs.308</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Confirm del%</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Post-expiry</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vn">Neutral+</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Iran 60-day</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:75%"></div></div><span class="cvbar-s" style="color:var(--green)">75%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">5.7x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.54.2</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">22.4%</div></div>
+<div class="lv"><div class="ll">Yield</div><div class="lval en">2.8%</div></div>
+</div>
 <div class="sc-body"><div class="rat">PAT Rs.25,843 Cr FY26 highest-ever. P/E 5.74x vs sector 9x = 36% discount. Iran 60-day oil waiver = every $5 crude fall = Rs.1,500-2,000 Cr quarterly PAT improvement. Broke Rs.308 (now support) per Investtech.</div>
 <div class="risk">Iran deal collapses or crude above $85 = exit immediately. 200 DMA Rs.313 = near-term ceiling.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.300-315</div></div><div class="lv"><div class="ll">Support</div><div class="lval t1">Rs.308</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.345</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.385</div></div></div></div></div>
@@ -509,11 +723,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-buy">Buy — FII reversal anchor stock</span><span class="px">+3.74% today | FPI gap 33% to 24% | PAT Rs.79,219 Cr FY26 | Rs.13 div declared</span></div><span class="fs fs-p">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">Gold standard</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout today</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">+3.74% lead</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vg">Puts covered</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII return #1</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Rs.13 div</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:83%"></div></div><span class="cvbar-s" style="color:var(--green)">83%</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">19.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.8%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.78.3</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">17.1%</div></div>
+<div class="lv"><div class="ll">FPI gap</div><div class="lval en">9%</div></div>
+</div>
 <div class="sc-body"><div class="opp">FPI gap 33% to 24% = Rs.50,000+ Cr of latent buying when FII returns to India. This is arithmetic not speculation. HDFC Bank is always the first stock FIIs buy when returning to India. Today's +3.74% = reversal beginning NOW.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.1,840-1,870</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.2,050</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.2,250</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.1,720</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">BAJAJ FINANCE</span><span class="sp sp-acc">Accumulate — FII darling returning</span><span class="px">Highest-beta India credit play | FII darling historically | Rural credit below 20% penetration</span></div><span class="fs fs-w">Fund 8/10 — verify P/E</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">AUM Rs.4.16L Cr</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Verify MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">FII darling</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vn">Neutral</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Rate cut bid</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">RBI rate cuts</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:78%"></div></div><span class="cvbar-s" style="color:var(--green)">78% — after P/E verify</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">28.6x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.312</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">22.1%</div></div>
+<div class="lv"><div class="ll">NPA</div><div class="lval en">1.09%</div></div>
+</div>
 <div class="sc-body"><div class="rat">When FII reversal accelerates, Bajaj Finance is typically bought in the first wave — highest beta to India credit growth. RBI rate cut cycle = lower cost of funds = margin expansion. Rural credit below 20% = decade-long runway.</div>
 <div class="risk">Verify current P/E against 5yr average before entry — can trade at expensive valuations during FII buying frenzies.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Verify P/E first</div></div><div class="lv"><div class="ll">Horizon</div><div class="lval t1">3-9 months</div></div><div class="lv"><div class="ll">Stop (thesis)</div><div class="lval sl">NPA spike</div></div></div></div></div></div>
@@ -523,11 +751,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">TCS</span><span class="sp sp-acc">Accumulate — VIX 13 window now</span><span class="px">~Rs.2,073 | ROCE ~55% | Down 33% YTD | FCF Rs.60,000 Cr/yr | Zero debt</span></div><span class="fs fs-w">Fund 9/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROCE 55%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">All MAs bear</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vr">Sector sell</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v va">Short bldp</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vr">AI fear max</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">TCV strong</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:68%"></div></div><span class="cvbar-s" style="color:var(--purple)">68% contrarian</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">22.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">55.2%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.92.6</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">46.8%</div></div>
+<div class="lv"><div class="ll">Cash</div><div class="lval en">Rs.60KCr</div></div>
+</div>
 <div class="sc-body"><div class="conflict">Technicals bearish across every timeframe. Fundamentals top 1% of India. VIX 13 = fear removed = best time to accumulate beaten-down quality. This is the definition of a contrarian opportunity. 3-tranche strategy.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,980-2,100</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.1,800-1,900</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.2,600</div></div><div class="lv"><div class="ll">Stop (thesis)</div><div class="lval sl">TCV collapses</div></div></div></div></div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">INFOSYS</span><span class="sp sp-acc">Accumulate</span><span class="px">~Rs.1,035 | Down 27% YTD | ELI AI live | GlobalFoundries semiconductor deal Jun 23</span></div><span class="fs fs-w">Fund 8/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">FCF strong</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vr">Below MAs</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vr">Sector sell</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vr">Short bldp</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vr">AI fear</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">GF deal Jun 23</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fa" style="width:65%"></div></div><span class="cvbar-s" style="color:var(--purple)">65% contrarian</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">20.8x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">42.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.49.8</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">33.4%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.0x</div></div>
+</div>
 <div class="sc-body"><div class="rat">ELI AI platform live = Infosys IS the AI transformation. GlobalFoundries deal = new revenue vertical. HDFC Sec buy target Rs.1,600 = 55% upside. Down 27% YTD on sentiment not fundamentals.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Tranche 1</div><div class="lval en">Rs.1,000-1,050</div></div><div class="lv"><div class="ll">Tranche 2</div><div class="lval en">Rs.930-960</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.1,350</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.870</div></div></div></div></div></div>
 
@@ -554,18 +796,46 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">IDBI BANK</span><span class="sp sp-sbuy">+17.59% today — watchlist thesis validated</span><span class="px">PAT Rs.7,515 Cr FY25 | ROE 31.7% | Privatisation confirmed by GoI | GNPA 1.3%</span></div><span class="fs fs-p">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">ROE 31.7%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">+17% extended</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Volume spike</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Event-driven</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Privatisation</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:72%"></div></div><span class="cvbar-s" style="color:var(--green)">72% — trail stop</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">13.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">12.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.7.5</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">31.7%</div></div>
+<div class="lv"><div class="ll">GNPA</div><div class="lval en">1.3%</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">13.4x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">12.6%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.7.5</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">31.7%</div></div>
+<div class="lv"><div class="ll">GNPA</div><div class="lval en">1.3%</div></div>
+</div>
 <div class="sc-body"><div class="rat">If already long: trail stop -8% from day high. If not long: wait for consolidation at Rs.95-100 before entering. Target Rs.120 near-term, Rs.145+ on privatisation completion.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Trail stop</div><div class="lval sl">-8% from high</div></div><div class="lv"><div class="ll">New entry</div><div class="lval en">Rs.95-100</div></div><div class="lv"><div class="ll">Target</div><div class="lval t1">Rs.120</div></div><div class="lv"><div class="ll">Priv. target</div><div class="lval t2">Rs.145+</div></div></div></div></div>
 <div style="font-size:10px;font-weight:700;color:var(--amber-text);background:var(--amber-bg);padding:5px 12px;margin:6px 0;border-radius:4px">TIER 2 — Recovery + strategic investor backing</div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">YES BANK</span><span class="sp sp-watch">Wait for pullback — do not chase at 52wk high</span><span class="px">~Rs.25 | SMBC 24.9% strategic stake | GNPA 1.3% (was 15%+) | Near 52wk high Rs.25.45</span></div><span class="fs fs-w">Fund 6/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vg">GNPA 1.3%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Near 52wk hi</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Moderate</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">SMBC stake</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">Turnaround</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fw" style="width:62%"></div></div><span class="cvbar-s" style="color:var(--amber)">62% — wait pullback</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">18.2x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">8.4%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.1.4</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">9.2%</div></div>
+<div class="lv"><div class="ll">GNPA</div><div class="lval en">1.3%</div></div>
+</div>
 <div class="sc-body"><div class="rat">GNPA collapsed 15%+ to 1.3% = genuine turnaround. SMBC 24.9% strategic stake = Japanese bank backing = credibility restored. Near 52-wk high at Rs.25.45 — do NOT chase. Wait for pullback to Rs.21-23.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry pullback</div><div class="lval en">Rs.21-23</div></div><div class="lv"><div class="ll">T1</div><div class="lval t1">Rs.32</div></div><div class="lv"><div class="ll">T2</div><div class="lval t2">Rs.42</div></div><div class="lv"><div class="ll">Stop</div><div class="lval sl">Rs.17</div></div></div></div></div>
 <div style="font-size:10px;font-weight:700;color:var(--red-text);background:var(--red-bg);padding:5px 12px;margin:6px 0;border-radius:4px">TIER 3 — Speculative | 1% max | Catalyst-only bet</div>
 <div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">NHPC</span><span class="sp sp-sell">Speculative — 1% max only | Fails 4 fundamental guardrails</span><span class="px">~Rs.82 | ROE 10.2% | ROCE 8.5% | Bet on Dibang + Etalin hydro projects 2027-2030</span></div><span class="fs fs-f">Fund 5/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Fund</span><span class="s6v vr">ROE 10.2%</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v va">Sideways</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v va">Low</span></div><div class="s6c"><span class="s6l">OI</span><span class="s6v vx">No F&amp;O</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">Green energy</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v va">Projects 2027+</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fr" style="width:35%"></div></div><span class="cvbar-s" style="color:var(--red)">35% speculative</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:7px">
+<div class="lv"><div class="ll">P/E</div><div class="lval uu">18.6x</div></div>
+<div class="lv"><div class="ll">ROCE</div><div class="lval t1">8.5%</div></div>
+<div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.4.4</div></div>
+<div class="lv"><div class="ll">ROE</div><div class="lval t1">10.2%</div></div>
+<div class="lv"><div class="ll">D/E</div><div class="lval en">0.6x</div></div>
+</div>
 <div class="sc-body"><div class="avoid-box">Fails ROE, ROCE, Revenue CAGR and Profit Growth guardrails. Pure bet on Dibang + Etalin hydro projects coming online 2027-2030. If they execute: 2-3x upside. If delayed (common in hydro): dead money for years. Maximum 1% — treat as a lottery ticket.</div>
 <div class="lvrow"><div class="lv"><div class="ll">Entry</div><div class="lval en">Rs.78-86</div></div><div class="lv"><div class="ll">T1 (12mo)</div><div class="lval t1">Rs.105</div></div><div class="lv"><div class="ll">T2 (3yr)</div><div class="lval t2">Rs.160</div></div><div class="lv"><div class="ll">Max risk</div><div class="lval sl">1% only</div></div></div></div></div></div>
 
