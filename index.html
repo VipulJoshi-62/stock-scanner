@@ -94,7 +94,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13
 .w-sbuy{color:var(--green)}.w-hold{color:var(--accent)}.w-sell{color:var(--red)}.w-watch{color:var(--amber)}
 .wlcard{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--bg2)}
 .wlc-hdr{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--border);background:var(--bg3)}
-.wl-t{font-size:14px;font-weight:700;font-family:var(--mono)}
+
 .wl-ov{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px}
 .w-sbuy-pill{background:var(--green-bg);color:var(--green-text);border:1px solid #1a4a30}
 .w-hold-pill{background:var(--blue-bg);color:var(--blue-text);border:1px solid #1a2a40}
@@ -262,75 +262,36 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
 .vb-over   { background:#2a0e0e; color:#f26b6b; border-color:#3a1a1a; }
 .vb-spec   { background:#1a1030; color:#a78bfa; border-color:#2a1a4a; }
 
-/* ── RJ Signal ── */
 
-/* ── TAAZA KHABAR ── */
-.tk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px 24px;max-width:1400px;margin:0 auto}
-@media(max-width:860px){.tk-wrap{grid-template-columns:1fr}}
-.tk-card{border-radius:12px;overflow:hidden;border:1px solid var(--bd)}
-/* Analyst card */
-.tk-analyst .tk-head{background:linear-gradient(135deg,#0a1628 0%,#1a2a4a 100%);padding:20px 22px 16px}
-.tk-analyst .tk-head-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4f8ef7;margin-bottom:6px}
-.tk-analyst .tk-head-name{font-size:18px;font-weight:800;color:#fff;margin-bottom:3px}
-.tk-analyst .tk-head-sub{font-size:11px;color:rgba(255,255,255,.55)}
-.tk-analyst .tk-head-badge{display:inline-block;margin-top:10px;padding:4px 12px;background:#4f8ef7;border-radius:20px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.5px}
-/* Trader card */
-.tk-trader .tk-head{background:linear-gradient(135deg,#1a0a00 0%,#3a1a00 100%);padding:20px 22px 16px}
-.tk-trader .tk-head-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#f5a623;margin-bottom:6px}
-.tk-trader .tk-head-name{font-size:18px;font-weight:800;color:#fff;margin-bottom:3px}
-.tk-trader .tk-head-sub{font-size:11px;color:rgba(255,255,255,.55)}
-.tk-trader .tk-head-badge{display:inline-block;margin-top:10px;padding:4px 12px;background:#f5a623;border-radius:20px;font-size:10px;font-weight:700;color:#000;letter-spacing:.5px}
-.tk-body{background:var(--bg2);padding:0}
-/* Stock strip */
-.tk-stock-strip{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--bd);background:var(--bg3)}
-.tk-ticker{font-size:20px;font-weight:900;color:#fff;letter-spacing:-.5px;font-family:var(--mono)}
-.tk-signal-pill{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:.3px}
-.tk-signal-buy{background:#0a2e14;color:#3ecf8e;border:1px solid #1a4a28}
-.tk-signal-sell{background:#2e0a0a;color:#f26b6b;border:1px solid #4a1a1a}
-.tk-signal-hold{background:#0a1a2e;color:#4f8ef7;border:1px solid #1a2a40}
-.tk-cmp{margin-left:auto;text-align:right}
-.tk-cmp-price{font-size:16px;font-weight:800;color:#fff;font-family:var(--mono)}
-.tk-cmp-label{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px}
-/* Content sections */
-.tk-section{padding:14px 20px;border-bottom:1px solid var(--bd)}
-.tk-section:last-child{border-bottom:none}
-.tk-sec-label{font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#666;margin-bottom:8px}
-.tk-sec-text{font-size:12.5px;color:#d0d0ec;line-height:1.7}
-.tk-sec-text b{color:#fff}
-/* Analyst metrics grid */
-.tk-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
-.tk-metric{background:var(--bg4);border-radius:6px;padding:8px 10px;border:1px solid var(--bd)}
-.tk-metric-l{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
-.tk-metric-v{font-size:13px;font-weight:800;color:#fff;font-family:var(--mono)}
-.tk-metric-v.up{color:#3ecf8e}
-.tk-metric-v.dn{color:#f26b6b}
-.tk-metric-v.nt{color:#f5a623}
-/* Target strip */
-.tk-targets{display:flex;gap:0;border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin:10px 0}
-.tk-target{flex:1;text-align:center;padding:10px 6px;background:var(--bg4)}
-.tk-target:not(:last-child){border-right:1px solid var(--bd)}
-.tk-target-l{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
-.tk-target-v{font-size:13px;font-weight:800;font-family:var(--mono)}
-.tk-target-v.entry{color:#4f8ef7}
-.tk-target-v.t1{color:#3ecf8e}
-.tk-target-v.t2{color:#5dd49a}
-.tk-target-v.sl{color:#f26b6b}
-/* Trader quote style */
-.tk-quote{font-style:italic;color:#f5a623;font-size:13px;line-height:1.7;padding:12px 16px;background:rgba(245,166,35,.06);border-left:3px solid #f5a623;border-radius:0 6px 6px 0;margin:8px 0}
-.tk-quote-attr{font-size:10px;color:#888;font-style:normal;margin-top:4px}
-/* Rumour pills */
-.tk-rumours{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.tk-rumour-pill{font-size:10px;padding:4px 10px;border-radius:12px;background:rgba(245,166,35,.1);color:#f5a623;border:1px solid rgba(245,166,35,.25);font-weight:600}
-/* Verdict banner */
-.tk-verdict{padding:14px 20px;background:var(--bg4);display:flex;align-items:center;gap:12px}
-.tk-verdict-icon{font-size:22px;font-weight:900}
-.tk-verdict-text{font-size:12px;color:#c0c0e0;line-height:1.5}
-.tk-verdict-text b{color:#fff;font-size:13px}
-/* Section header */
-.tk-section-hdr{padding:28px 24px 0;max-width:1400px;margin:0 auto}
-.tk-section-hdr h2{font-size:22px;font-weight:800;color:#fff;margin:0 0 4px}
-.tk-section-hdr p{font-size:12px;color:#888;margin:0}
-.tk-date-chip{display:inline-block;padding:3px 10px;background:var(--bg3);border:1px solid var(--bd);border-radius:12px;font-size:10px;color:#aaa;font-weight:600;letter-spacing:.5px;margin-top:8px}
+
+/* ── Watchlist fixes ── */
+.wl-t{font-size:16px;font-weight:800;font-family:var(--mono);color:var(--text)}
+.w-sbuy-pill{background:#0a2a18;color:#3ecf8e;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid #1a4528}
+.w-hold-pill{background:#091525;color:#4f8ef7;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid #152238}
+.w-sell-pill{background:#200a0a;color:#f26b6b;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid #401515}
+.w-watch-pill{background:#181005;color:#f5a623;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid #302010}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 8px;flex-wrap:wrap;gap:8px}
+.sh-title{font-size:20px;font-weight:800;color:var(--text)}
+.sh-sub{font-size:12px;color:var(--text3);margin-top:2px}
+.sh-ts{font-size:11px;color:var(--text3);background:var(--bg2);padding:4px 10px;border-radius:6px;border:1px solid var(--border)}
+/* ── RJ Signal (larger font) ── */
+.rj{border-radius:8px;padding:12px 16px;margin:8px 0 6px;border:1px solid}
+.rj-b{background:#05180d;border-color:#1a4528}
+.rj-h{background:#091525;border-color:#152238}
+.rj-s{background:#200a0a;border-color:#401515}
+.rj-w{background:#181005;border-color:#302010}
+.rj-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.rj-icon{font-size:12px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:.5px}
+.rj-b .rj-icon{background:#1a4528;color:#3ecf8e}
+.rj-h .rj-icon{background:#152238;color:#4f8ef7}
+.rj-s .rj-icon{background:#401515;color:#f26b6b}
+.rj-w .rj-icon{background:#302010;color:#f5a623}
+.rj-verdict{font-size:13px;font-weight:800;color:#fff;letter-spacing:.3px;flex:1}
+.rj-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#888;text-transform:uppercase;margin-left:auto}
+.rj-text{font-size:13px;color:#bbb;line-height:1.7}
+.rj-text b{color:#fff;font-style:normal;font-weight:700}
+/* ── Timestamp chip ── */
+.chips .ts-chip{background:var(--bg3);color:var(--text3);padding:3px 10px;border-radius:12px;font-size:11px;border:1px solid var(--border)}
 </style>
 </head>
 <body><!-- build:v9.0-055122 -->
@@ -343,7 +304,7 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
     <button class="ntab" id="tab-s4" onclick="showSec('s4')"><i class="ti ti-news-filled" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Taaza Khabar</button>
   </div>
   <div class="nav-chips">
-    <span class="chip cn">Jun 25 2026</span><span class="chip cg">Nifty +0.83%</span><span class="chip cg">Sensex +1.02%</span><span class="chip cg">BNF +1.68%</span><span class="chip cg">VIX 13.33</span><span class="chip cr">Nasdaq -2.21%</span><span class="chip cb">Crude $74</span>
+    <span class="chip cn">Jun 25 2026</span><span class="chip cn" id="live-time">--:-- IST</span><span class="chip cg">Nifty +0.83%</span><span class="chip cg">Sensex +1.02%</span><span class="chip cg">BNF +1.68%</span><span class="chip cg">VIX 13.33</span><span class="chip cr">Nasdaq -2.21%</span><span class="chip cb">Crude $74</span>
   </div>
 </nav>
 <div class="ticker">
@@ -414,7 +375,7 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
   <div class="si" id="si-crude" onclick="showCat('crude')">Crude Plays <span class="si-cnt">3</span></div>
   <div class="si" id="si-fii" onclick="showCat('fii')">FII Reversal <span class="si-cnt">2</span></div>
   <div class="si" id="si-contra" onclick="showCat('contra')">Contrarian <span class="si-cnt">2</span></div>
-  <div class="si" id="si-india" onclick="showCat('india')">India Decade <span class="si-cnt">4</span></div>
+  <div class="si" id="si-india" onclick="showCat('india')">India Decade <span class="si-cnt">3</span></div>
   <div class="si" id="si-penny" onclick="showCat('penny')">Penny <span class="si-cnt">3</span></div>
 </div>
 <div class="scan-body">
@@ -838,12 +799,7 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
 <div class="vbadge vb-fair"><span>▷</span><span>FAIRLY VALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — Near sector avg — 500GW target makes this a 10yr compounder</span></div>
 <div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — EVERY MEGAWATT NEEDS CABLES AND TRANSFORMERS</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"500 GW renewable target = every single megawatt needs cables, transformers, switchgear. Regardless of which solar company wins, Polycab and KEI win. Infrastructure always beats technology in certainty." <b>Polycab EPS Rs.78 growing. ROCE 25%+. At PE 28x = near sector avg. Target: 10-year EPS doubling with 500 GW build-out. EPS NOT peaking — green capex is just starting. RJ verdict: BUY this theme with 5% allocation.</b></div></div>
 <div class="rat">Every MW of solar or wind power needs cables, transformers, switchgear. 500 GW target = massive cable demand regardless of which solar company wins. Polycab ROCE above 25%, dominant market share. 5% allocation.<div style="font-size:10px;color:#a0a0cc;font-style:italic;margin-top:4px">Theme basket — individual stock P/E varies; check each before entry</div></div></div></div></div>
-<div class="sc"><div class="sc-top" style="flex-direction:column;align-items:flex-start"><span class="tkr" style="font-size:12px">Theme 4 — Healthcare Infrastructure</span><span class="px">APOLLOHOSP | MAXHEALTH | Healthcare spending 3% to 5% of GDP</span></div>
-<div class="s6"><div class="s6c"><span class="s6l">Beds/1000</span><span class="s6v vr">0.5 vs 3.0</span></div><div class="s6c"><span class="s6l">Gap</span><span class="s6v vg">6x beds needed</span></div><div class="s6c"><span class="s6l">Best stock</span><span class="s6v vg">Apollo top pick</span></div><div class="s6c"><span class="s6l">GDP share</span><span class="s6v vg">3% to 5%</span></div><div class="s6c"><span class="s6l">Duration</span><span class="s6v vg">10yr build</span></div><div class="s6c"><span class="s6l">Alloc</span><span class="s6v vg">4%</span></div></div>
-<div <div class="cvbar"><span class="cvbar-l">Theme conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:80%"></div></div><span class="cvbar-s" style="color:var(--green)">80%</span></div><div class="sc-body"><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">62x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">58x (hospital)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">14.8%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.42.6</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">16.4%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Apollo benchmark</div></div></div>
-<div class="vbadge vb-rich"><span>△</span><span>PREMIUM — LONG TERM ONLY</span><span style="font-weight:400;opacity:.8;font-size:10px"> — Apollo at premium but 6x beds deficit justifies 10yr position</span></div>
-<div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — INDIA HAS 6× HOSPITAL BED DEFICIT TO FILL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"India: 0.5 hospital beds per 1,000 people. Global average: 3.0. Healthcare GDP going from 3% to 5% = Rs.10 lakh crore of new spending over 10 years. Apollo Hospitals is the direct, undisputable beneficiary." <b>Apollo EPS Rs.42 growing. In 5yrs EPS ~Rs.80 → At PE 50x = Rs.4,000 target. PE 62x today = premium but 10-year structural demand guarantees EPS growth. Not peaking — demographic + income growth drives decade-long expansion. Allocate 4%.</b></div></div>
-<div class="rat">India has 0.5 hospital beds per 1,000 people vs global average 3.0 = 6x gap to fill. Healthcare GDP going from 3% to 5% = Rs.10L Cr+ new spending over 10 years. Apollo Hospitals is the direct beneficiary. 4% allocation.<div style="font-size:10px;color:#a0a0cc;font-style:italic;margin-top:4px">Theme basket — individual stock P/E varies; check each before entry</div></div></div></div></div></div>
+</div>
 </div></div>
 
 <!-- PENNY -->
@@ -888,119 +844,133 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
 
 <!-- ═══ SECTION 2<!-- ═══ SECTION 2: WATCHLIST ═══ -->
 <div class="sec" id="sec-s2" style="display:none">
-<div class="section-padding">
-<div class="wl-sum">
-  <div style="font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Watchlist Signal Summary — Jun 25 2026</div>
-  <div class="wls-g">
-    <div class="wls-c"><div class="wls-t">MARKSANS</div><div class="wls-s w-sbuy">Strong Buy</div><div class="wls-n">RSI 24 oversold + PAT +63% + P/E 26x vs sector 43x. 5/6 bullish.</div></div>
-    <div class="wls-c"><div class="wls-t">BPCL</div><div class="wls-s w-sbuy">Buy</div><div class="wls-n">Broke Rs.308 support. MACD +4.22. Iran waiver. P/E 5.74x. 4/6 bullish.</div></div>
-    <div class="wls-c"><div class="wls-t">NMDC</div><div class="wls-s w-hold">Hold / add dip</div><div class="wls-n">All MAs Strong Buy. Block trades Rs.74Cr at Rs.89-90. Add Rs.82-87.</div></div>
-    <div class="wls-c"><div class="wls-t">CONCOR</div><div class="wls-s" style="color:var(--text3)">Watch</div><div class="wls-n">200 DMA Rs.506 ceiling. PAT -12.4%. 4/6 bearish. Wait Q1 FY27.</div></div>
-    <div class="wls-c"><div class="wls-t">JAYBARMARU</div><div class="wls-s w-watch">Book 40-50%</div><div class="wls-n">TV Sell daily+weekly. 69% above 50-DMA. MF 0.02%.</div></div>
-    <div class="wls-c"><div class="wls-t">SAIL</div><div class="wls-s w-sell">Sell</div><div class="wls-n">RSI bearish divergence. ROE 5.8%. Contingent Rs.44,708 Cr.</div></div>
+<div class="section-hdr">
+  <div class="sh-left"><div class="sh-title">My Watchlist</div><div class="sh-sub">6 positions tracked | Updated Jun 25 2026 | RJ Signal on every stock</div></div>
+  <div class="sh-ts">Last updated: Jun 25 2026 | Updated 10:30 AM IST</div>
+</div>
+<div class="wls-bar">
+  <div class="wls-title">Watchlist — 6 Stocks</div>
+  <div class="wls-items">
+    <div class="wls-c"><div class="wls-t">MARKSANS</div><div class="wls-s w-sbuy">Strong Buy</div><div class="wls-n">RSI 24 + PAT +63% = rare opportunity</div></div>
+    <div class="wls-c"><div class="wls-t">BPCL</div><div class="wls-s w-sbuy">Strong Buy</div><div class="wls-n">PE 5.74x. Iran peace. Record PAT Rs.25,843 Cr.</div></div>
+    <div class="wls-c"><div class="wls-t">NMDC</div><div class="wls-s w-hold">Hold / add dip</div><div class="wls-n">Block trade Rs.74Cr. Add Rs.82-87.</div></div>
+    <div class="wls-c"><div class="wls-t">CONCOR</div><div class="wls-s" style="color:var(--text3)">Watch</div><div class="wls-n">200 DMA Rs.506 ceiling. PAT -12.4%. Wait Q1 FY27.</div></div>
+    <div class="wls-c"><div class="wls-t">JAY BHR MARUTI</div><div class="wls-s w-sbuy">Strong Buy</div><div class="wls-n">PAT +287%. PE 18x vs sector 22x. RSI 24.</div></div>
+    <div class="wls-c"><div class="wls-t">SAIL</div><div class="wls-s w-sell">Sell</div><div class="wls-n">ROE 5.8% = capital destruction. Avoid.</div></div>
   </div>
 </div>
+<div style="padding:16px">
 <div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">MARKSANS PHARMA</span><span style="font-size:11px;color:var(--text3)">~Rs.205-245 | P/E 26x vs sector 43x | Q4 PAT +63.6% YoY</span></div><div class="wl-ov w-sbuy-pill">Strong Buy — 5/6</div></div>
-  <div class="wl-s6">
-    <div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">P/E 26x vs sector 43x. Q4 PAT +63.6% YoY Rs.148 Cr. Zero debt. Promoter 43.9%.</div></div>
-    <div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s va">Conflict</span><div class="ws6-d">Strong Sell signals but RSI 14d = 24.34 deeply oversold. MACD -3.28. Below 200 DMA Rs.242.</div></div>
-    <div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Confirm del%</span><div class="ws6-d">Wait for delivery above 55% on a green day = institutional confirmation signal.</div></div>
-    <div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">FDA Omeprazole approved (Rs.1.1B US market). Benzonatate ANDA approved.</div></div>
-    <div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Univest: Buy zone. FII 16.8%. OrbiMed Rs.256.8 Cr sale absorbed by market.</div></div>
-    <div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">FDA Omeprazole, Benzonatate ANDA, UK Cetirizine MA, final div Rs.0.9/share.</div></div>
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">MARKSANS PHARMA</span>
+      <span style="font-size:11px;color:var(--text3)">~Rs.218 | P/E 26x vs sector 43x | Q4 PAT +63.6% YoY</span>
+    </div>
+    <div class="wl-ov w-sbuy-pill">Strong Buy — 5/6</div>
   </div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:82%"></div></div><span class="wlcb-s" style="color:var(--green)">82% Strong Buy</span></div>
-  <div class="wl-body"><div class="rj rj-h"><div class="rj-top"><span class="rj-icon">◆ HOLD</span><span class="rj-verdict">HOLD — AT EXACT FAIR VALUE, ADD ON DIPS ONLY</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Block trades of Rs.74 Cr confirm institutional conviction. But near 52-week high at formula fair value with an iron ore company? I hold what I have and wait for the dip." <b>EPS Rs.10.8 → PE 8.4x → Formula = 8.4×10.8 = Rs.91. At Rs.92 = EXACTLY at fair value. No margin of safety. Iron ore $100 = possible EPS peak risk. RJ verdict: HOLD. Add only at Rs.82-87.</b></div></div>
-<div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — HIGHEST-EVER PAT AT LOWEST-EVER PE</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Highest-ever PAT Rs.25,843 Cr and stock at PE 5.74x. Iran peace keeps crude low. The market has not connected these dots. I have connected them and I am buying." <b>EPS Rs.44 → Sector PE 9x → Fair = 9×44 = Rs.396. At Rs.311 = 21% below fair. Even normalised to EPS Rs.30 → Fair Rs.270 = limited downside. Upside 27%. RJ verdict: BUY now.</b></div></div>
-<div class="rj rj-s"><div class="rj-top"><span class="rj-icon">▼ SELL</span><span class="rj-verdict">SELL — ROE 5.8% = DESTROYING SHAREHOLDER CAPITAL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"ROE 5.8% means SAIL earns less than the cost of your capital every year. This is permanent value destruction, not temporary underperformance. There are 50 better businesses in India." <b>EPS Rs.11.8 → PE 14x → Formula = 14×11.8 = Rs.165. At Rs.169 = near fair. BUT ROE 5.8% < cost of equity 12% = systematic capital destruction. Steel sector under global pressure. EPS likely peaking at Rs.12. Contingent liabilities Rs.44,708 Cr = hidden EPS risk. RJ verdict: SELL.</b></div></div>
-<div class="rj rj-w"><div class="rj-top"><span class="rj-icon">◇ WAIT</span><span class="rj-verdict">WAIT — EPS DECLINING IS A VALUE TRAP SIGNAL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"EPS declining 12.4% YoY while PE is above sector average = a value trap. The PE looks reasonable only if EPS stops falling. My rule: never buy declining EPS businesses." <b>EPS Rs.12.4 DECLINING. PE 38x = above logistics sector PE 32x. Formula: even at sector PE 32x → Fair = 32×12 = Rs.384. At Rs.460 = 20% above fair with DECLINING EPS. EPS peak has passed. RJ verdict: WAIT for 2 consecutive quarters of EPS recovery before any entry.</b></div></div>
-<div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">STRONG BUY — RSI 24 ON ACCELERATING EARNINGS = RARE</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"RSI 24 on a company where PAT grew 63%? The market is making a massive error. When the market makes errors on accelerating earnings, I act decisively." <b>EPS Rs.12.8, PAT +63% YoY. 5yr avg PE ~30x → Fair = 30×12.8 = Rs.384. At Rs.220 = 43% BELOW fair value. EPS NOT peaking — growing explosively. RSI 24 = maximum panic. This is exactly when RJ buys. STRONG BUY.</b></div></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">14x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">12x (steel)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.11.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.69,800 Cr</div></div></div>
-<div class="vbadge vb-over"><span>✕</span><span>OVERVALUED + AVOID</span><span style="font-weight:400;opacity:.8;font-size:10px"> — ROE 5.8% = capital destruction | above steel sector P/E with deteriorating metrics</span></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">18x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">22x (auto anc)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.9.4</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">22.0%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.3,200 Cr</div></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 18% below auto ancillary sector — PAT +287% not reflected in price</span></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">38x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">32x (logistics)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.12.4</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">10.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.54,200 Cr</div></div></div>
-<div class="vbadge vb-over"><span>✕</span><span>OVERVALUED FOR NOW</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 19% above logistics sector while PAT -12.4% — wait for earnings recovery</span></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">8.4x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (mining)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">21.3%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.10.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">22.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.40,200 Cr</div></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — P/E 8.4x vs sector 9x — block trade Rs.74Cr confirms institutional thesis</span></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">5.74x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (OMC)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.2%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.44.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">18.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.1.35L Cr</div></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>DEEPLY UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 36% below OMC sector — highest-ever PAT Rs.25,843 Cr still unrecognised</span></div>
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">26x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">32x (pharma)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.12.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">18.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.8,200 Cr</div></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>DEEPLY UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 26x vs sector 32x — PAT +63% while stock is at RSI 24 = rare setup</span></div>
-
-    <div class="conflict">Signal conflict: technicals Strong Sell (RSI 24 + below 200 DMA). But RSI 24 on accelerating earnings = deeply oversold quality stock. Trigger: delivery above 55% on green day. Strategy: 50% at Rs.205-225 now, add 50% on delivery confirmation.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry 50%</div><div class="wl-lval en">Rs.205-225</div></div><div class="wl-lv"><div class="wl-ll">Add del&gt;55%</div><div class="wl-lval en">Rs.230-250</div></div><div class="wl-lv"><div class="wl-ll">Target 3mo</div><div class="wl-lval t1">Rs.285</div></div><div class="wl-lv"><div class="wl-ll">Target 6mo</div><div class="wl-lval t2">Rs.325</div></div><div class="wl-lv"><div class="wl-ll">Stop-loss</div><div class="wl-lval sl">Below Rs.190</div></div></div>
-  </div>
-</div>
-<div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">BPCL</span><span style="font-size:11px;color:var(--text3)">Rs.310.95 | P/E 5.74x | PAT Rs.25,843 Cr FY26 highest-ever | MACD +4.22</span></div><div class="wl-ov w-sbuy-pill">Buy — 4/6 signals</div></div>
-  <div class="wl-s6">
-    <div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">P/E 5.74x vs sector 9x. PAT Rs.25,843 Cr FY26 highest-ever. ROCE 16.2%. GoI 53%.</div></div>
-    <div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vg">Buy</span><div class="ws6-d">Broke Rs.308 resistance now support. MACD +4.22. TradingView: Buy signal.</div></div>
-    <div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Confirm today</span><div class="ws6-d">Confirm delivery% — above 50% on a down-day = most bullish institutional setup.</div></div>
-    <div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Expiry cleared = clean F&amp;O reset. Iran peace = crude put options unwinding.</div></div>
-    <div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vn">Neutral</span><div class="ws6-d">FII net sellers MTD. MF 8.14%. DII buying Rs.680 Cr today = supportive backdrop.</div></div>
-    <div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">Iran 60-day oil export waiver confirmed. Every $5 crude fall = Rs.1,500-2,000 Cr quarterly PAT.</div></div>
-  </div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:75%"></div></div><span class="wlcb-s" style="color:var(--green)">75% Buy</span></div>
-  <div class="wl-body"><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">5.74x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (OMC)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.2%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.44.8</div></div><div class="lv"><div class="vbadge vb-cheap"><span>◆</span><span>DEEPLY UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 36% below OMC sector — record PAT Rs.25,843 Cr unrecognised by market</span></div>
-<div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — HIGHEST-EVER PAT AT LOWEST-EVER PE</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Highest-ever PAT Rs.25,843 Cr. PE 5.74x. Iran peace = crude stays low. This is a cigar butt with a massive puff still left." <b>EPS Rs.44 → Sector PE 9x → Fair = 9×44 = Rs.396. At Rs.311 = 21% below fair. Downside limited to Rs.270. RJ verdict: BUY.</b></div></div>
-<div class="ll">ROE</div><div class="lval t1">18.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.1.35L Cr</div></div></div>
-
-    <div class="opp">Broke Rs.308 resistance (now support). MACD +4.22. Post-expiry clean entry. Iran catalyst time-limited.</div>
-    <div class="risk">200-DMA Rs.313 = near-term ceiling. Iran collapse + crude above $85 = exit immediately.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry</div><div class="wl-lval en">Rs.300-315</div></div><div class="wl-lv"><div class="wl-ll">Support</div><div class="wl-lval t1">Rs.308</div></div><div class="wl-lv"><div class="wl-ll">Target 1</div><div class="wl-lval t1">Rs.345</div></div><div class="wl-lv"><div class="wl-ll">Target 2</div><div class="wl-lval t2">Rs.385</div></div><div class="wl-lv"><div class="wl-ll">Stop-loss</div><div class="wl-lval sl">Close &lt; Rs.288</div></div></div>
-  </div>
-</div>
-<div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">NMDC</span><span style="font-size:11px;color:var(--text3)">~Rs.88-97 | Block trades Rs.74Cr at Rs.89-90 | Q4 PAT +37.2%</span></div><div class="wl-ov w-hold-pill">Hold — add Rs.82-87</div></div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fh" style="width:60%"></div></div><span class="wlcb-s" style="color:var(--accent)">60% Hold</span></div>
-  <div class="wl-body"><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">8.4x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (mining)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">21.3%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.10.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">22.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.40,200 Cr</div></div></div>
-<div class="rj rj-h"><div class="rj-top"><span class="rj-icon">◆ HOLD</span><span class="rj-verdict">HOLD — AT EXACT FAIR VALUE, ADD ONLY ON DIPS</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Block trades of Rs.74 Cr confirm institutional conviction. But near 52-week high at formula fair value with a commodity stock? I hold what I have." <b>EPS Rs.10.8 → Fair = 8.4×10.8 = Rs.91. At Rs.92 = exactly fair. No margin of safety. Iron ore = possible EPS peak. HOLD. Add only at Rs.82-87.</b></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — P/E 8.4x vs sector 9x — block trade Rs.74Cr confirms institutional thesis</span></div>
-
-    <div class="conflict">All technicals Strong Buy, but near 52-wk high with EBITDA margin compressing and UBS Sell. Hold existing, add only at Rs.82-87 dip.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Hold stop</div><div class="wl-lval sl">Close &lt; Rs.75</div></div><div class="wl-lv"><div class="wl-ll">Add on dip</div><div class="wl-lval en">Rs.82-87</div></div><div class="wl-lv"><div class="wl-ll">Target 1</div><div class="wl-lval t1">Rs.110</div></div><div class="wl-lv"><div class="wl-ll">Target 2</div><div class="wl-lval t2">Rs.130</div></div><div class="wl-lv"><div class="wl-ll">Yield</div><div class="wl-lval uu">3.96%</div></div></div>
-  </div>
-</div>
-<div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">CONCOR</span><span style="font-size:11px;color:var(--text3)">~Rs.447-476 | Down 19% 1yr | Q4 PAT -12.4% | 200 DMA Rs.506 = ceiling</span></div><div class="wl-ov w-watch-pill">Watch — not yet</div></div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fw" style="width:30%"></div></div><span class="wlcb-s" style="color:var(--amber)">30% — Wait</span></div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">P/E 26x vs sector 43x. Q4 PAT +63.6% YoY Rs.148 Cr. Zero debt. Promoter 43.9%.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s va">Conflict</span><div class="ws6-d">Strong Sell signals but RSI 14d = 24.34 deeply oversold. MACD -3.28. Below 200 DMA Rs.242.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Confirm del%</span><div class="ws6-d">Wait for delivery above 55% on a green day = institutional confirmation signal.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">FDA Omeprazole approved (Rs.1.1B US market). Benzonatate ANDA approved.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Univest: Buy zone. FII 16.8%. OrbiMed Rs.256.8 Cr sale absorbed by market.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">FDA Omeprazole, Benzonatate ANDA, UK Cetirizine MA, final div Rs.0.9/share.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:82%"></div></div><span class="wlcb-s" style="color:var(--green)">82% Strong Buy — 5/6</span></div>
   <div class="wl-body">
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">38x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">32x (logistics)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.12.4</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">10.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.54,200 Cr</div></div></div>
-<div class="vbadge vb-over"><span>✕</span><span>OVERVALUED FOR NOW</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 19% above logistics sector while PAT -12.4% — EPS declining = value trap</span></div>
-<div class="rj rj-w"><div class="rj-top"><span class="rj-icon">◇ WAIT</span><span class="rj-verdict">WAIT — DECLINING EPS IS A VALUE TRAP SIGNAL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"EPS declining 12.4% YoY while PE is above sector average. The PE looks reasonable only if EPS stops falling. My rule: never buy declining EPS businesses." <b>EPS Rs.12.4 DECLINING. PE 38x = above logistics sector 32x. Fair = 32×12 = Rs.384. At Rs.460 = 20% above fair with declining EPS. WAIT for 2 quarters of EPS recovery.</b></div></div>
-<div class="avoid-box">Entry condition (both required): Q1 FY27 PAT shows +10%+ YoY recovery AND price closes above 200-DMA Rs.506 on above-average volume. Neither met today.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry trigger</div><div class="wl-lval en">PAT+ AND &gt;Rs.506</div></div><div class="wl-lv"><div class="wl-ll">Watch dip</div><div class="wl-lval en">Rs.420-440</div></div><div class="wl-lv"><div class="wl-ll">Target (post)</div><div class="wl-lval t1">Rs.560</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">Below Rs.400</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">26x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">43x (pharma)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.12.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">18.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.8,200 Cr</div></div></div>
+    <div class="vbadge vb-cheap"><span>◆</span><span>DEEPLY UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 26x vs sector 43x — PAT +63% while RSI 24 = rare setup</span></div>
+    <div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">STRONG BUY — RSI 24 ON ACCELERATING EARNINGS = RARE</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"RSI 24 on a company where PAT grew 63%? The market is making a massive error. When the market makes errors on accelerating earnings, I act decisively." <b>EPS Rs.12.8, PAT +63% YoY. 5yr avg PE ~30x → Fair = 30×12.8 = Rs.384. At Rs.218 = 43% BELOW fair value. EPS NOT peaking — growing explosively. RSI 24 = maximum panic. This is exactly when RJ buys. STRONG BUY.</b></div></div>
+    <div class="conflict">Signal conflict: technicals Strong Sell (RSI 24 + below 200 DMA). But RSI 24 on accelerating earnings = deeply oversold quality stock. Trigger: delivery above 55% on green day. Strategy: 50% at Rs.205-225 now, add 50% on delivery confirmation.</div>
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry 50%</div><div class="wl-lval en">Rs.205-225</div></div><div class="wl-lv"><div class="wl-ll">Add del>55%</div><div class="wl-lval en">Rs.230-250</div></div><div class="wl-lv"><div class="wl-ll">Target 3mo</div><div class="wl-lval t1">Rs.285</div></div><div class="wl-lv"><div class="wl-ll">Target 6mo</div><div class="wl-lval t2">Rs.325</div></div><div class="wl-lv"><div class="wl-ll">Stop-loss</div><div class="wl-lval sl">Rs.190</div></div></div>
   </div>
 </div>
 <div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">JAY BHARAT MARUTI</span><span style="font-size:11px;color:var(--text3)">~Rs.169-178 | Up 125% 1yr | ROE 22% | PAT +287%</span></div><div class="wl-ov w-watch-pill">Book 40-50% profits</div></div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fw" style="width:45%"></div></div><span class="wlcb-s" style="color:var(--amber)">45% — Book profits</span></div>
-  <div class="wl-body"><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">18x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">22x (auto anc)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.9.4</div></div><div class="lv"><div class="rj rj-s"><div class="rj-top"><span class="rj-icon">▼ SELL</span><span class="rj-verdict">BOOK 40-50% — MARKET HAS RECOGNISED THE EPS</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Up 125% in 1 year on PAT +287%. When a stock rises 125% matching its earnings improvement, the market has recognised the EPS. That is exactly when I book partial profits." <b>EPS Rs.9.4, PAT +287%. Stock +125% = PE re-rating done. Fair = 18×9.4 = Rs.169. MF holding 0.02% = no institutional floor. Base effect = next EPS growth harder. BOOK 40-50%. Re-enter at PE 12-14x.</b></div></div>
-<div class="ll">ROE</div><div class="lval t1">22.0%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.3,200 Cr</div></div></div>
-<div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 18% below auto ancillary sector — PAT +287% not reflected in price</span></div>
-
-    <div class="conflict">Fundamentals excellent (ROE 22%, PAT +287%). Technicals Sell daily+weekly. MF 0.02% = no institutional floor. Book 40-50% at Rs.168-178. Hold rest with stop Rs.145. Re-enter at 50-DMA Rs.140-150.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Book now</div><div class="wl-lval sl">Rs.168-178</div></div><div class="wl-lv"><div class="wl-ll">Hold stop</div><div class="wl-lval sl">Below Rs.145</div></div><div class="wl-lv"><div class="wl-ll">Re-buy zone</div><div class="wl-lval en">Rs.140-150</div></div><div class="wl-lv"><div class="wl-ll">Target (held)</div><div class="wl-lval t1">Rs.210</div></div></div>
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">BPCL</span>
+      <span style="font-size:11px;color:var(--text3)">Rs.311 | P/E 5.74x vs sector 9x | Record PAT Rs.25,843 Cr</span>
+    </div>
+    <div class="wl-ov w-sbuy-pill">Strong Buy — 4/6</div>
+  </div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">PE 5.74x vs OMC sector 9x. Record PAT Rs.25,843 Cr. Dividend yield 6.5%.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vg">Breakout</span><div class="ws6-d">Broke Rs.308 resistance. MACD +4.22. Above 50 DMA. Iran waiver = crude tailwind.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s vg">Confirm</span><div class="ws6-d">Delivery above 58% = institutional buying confirmed.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s va">Neutral</span><div class="ws6-d">No major OI build. Directional cash trade.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Iran peace deal = crude $74 = refining margin expansion. FII coverage increasing.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">Iran waiver extension likely. Govt divest plans shelved. Capex Rs.1.7L Cr pipeline.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:78%"></div></div><span class="wlcb-s" style="color:var(--green)">78% Strong Buy — 4/6</span></div>
+  <div class="wl-body">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">5.74x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (OMC)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.2%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.44.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">18.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.1.35L Cr</div></div></div>
+    <div class="vbadge vb-cheap"><span>◆</span><span>DEEPLY UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 36% below OMC sector — highest-ever PAT Rs.25,843 Cr still unrecognised</span></div>
+    <div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — HIGHEST-EVER PAT AT LOWEST-EVER PE</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Highest-ever PAT Rs.25,843 Cr and stock at PE 5.74x. Iran peace keeps crude low. The market has not connected these dots. I have connected them and I am buying." <b>EPS Rs.44 → Sector PE 9x → Fair = 9×44 = Rs.396. At Rs.311 = 21% below fair. Even normalised to EPS Rs.30 → Fair Rs.270 = limited downside. Upside 27%. RJ verdict: BUY now.</b></div></div>
+    
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry</div><div class="wl-lval en">Rs.295-315</div></div><div class="wl-lv"><div class="wl-ll">Target 1</div><div class="wl-lval t1">Rs.396</div></div><div class="wl-lv"><div class="wl-ll">Target 2</div><div class="wl-lval t2">Rs.450+</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">Rs.275</div></div><div class="wl-lv"><div class="wl-ll">Horizon</div><div class="wl-lval t1">12 months</div></div></div>
   </div>
 </div>
 <div class="wlcard">
-  <div class="wlc-hdr"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="wl-t">SAIL</span><span style="font-size:11px;color:var(--text3)">Rs.169.18 | Up 38% 1yr | ROE 5.8% | Contingent Rs.44,708 Cr</span></div><div class="wl-ov w-sell-pill">Sell / Avoid — 5/6 negative</div></div>
-  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fr" style="width:15%"></div></div><span class="wlcb-s" style="color:var(--red)">15% — Sell</span></div>
-  <div class="wl-body"><div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">14x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">12x (steel)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.11.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.69,800 Cr</div></div></div>
-<div class="vbadge vb-over"><span>✕</span><span>OVERVALUED + AVOID</span><span style="font-weight:400;opacity:.8;font-size:10px"> — ROE 5.8% = capital destruction | above sector PE with deteriorating metrics</span></div>
-
-    <div class="rj rj-s"><div class="rj-top"><span class="rj-icon">▼ SELL</span><span class="rj-verdict">BOOK 40-50% — MARKET HAS RECOGNISED THE EPS</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Up 125% in 1 year on PAT +287%. When a stock rises 125% matching its earnings improvement, the market has recognised the EPS. That is exactly when I book partial profits." <b>EPS Rs.9.4, PAT +287%. Stock up 125% = PE re-rating has happened. Fair = 18×9.4 = Rs.169. At Rs.175 = at fair. MF holding 0.02% = no institutional buying floor. Base effect: next year EPS growth will be much harder. RJ verdict: BOOK 40-50%. Re-enter at PE 12-14x = Rs.113-132.</b></div></div>
-<div class="avoid-box">5/6 signals negative. RSI bearish divergence. UBS Sell. ROE 5.8% = capital destruction. Contingent liabilities Rs.44,708 Cr = hidden risk equal to market cap. Board compliance failures = governance red flag.</div>
-    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Sell zone</div><div class="wl-lval sl">Rs.165-182</div></div><div class="wl-lv"><div class="wl-ll">Avoid entry</div><div class="wl-lval sl">Above Rs.160</div></div><div class="wl-lv"><div class="wl-ll">Revisit if ROE</div><div class="wl-lval en">&gt;12% for 3 qtrs</div></div><div class="wl-lv"><div class="wl-ll">Re-buy maybe</div><div class="wl-lval en">Rs.118-130</div></div></div>
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">NMDC</span>
+      <span style="font-size:11px;color:var(--text3)">Rs.92 | P/E 8.4x vs sector 9x | Block trade Rs.74Cr confirmed</span>
+    </div>
+    <div class="wl-ov w-hold-pill">Hold / Add dip</div>
+  </div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Undervalued</span><div class="ws6-d">PE 8.4x vs mining sector 9x. ROCE 21.3%. Block trade Rs.74Cr at Rs.89-90.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vg">All MAs Buy</span><div class="ws6-d">All moving averages Strong Buy. Momentum positive.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s vg">Confirmed</span><div class="ws6-d">Block trade Rs.74 Cr = institutional thesis confirmed.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Iron ore price stable. No major shorts.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s va">Neutral</span><div class="ws6-d">Iron ore $100/t = possible EPS peak risk. Monitor.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s va">Watch</span><div class="ws6-d">Hold/add dip at Rs.82-87. Wait for Q1 FY27 results.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:62%"></div></div><span class="wlcb-s" style="color:var(--accent)">62% Hold / Add dip</span></div>
+  <div class="wl-body">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">8.4x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">9x (mining)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">21.3%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.10.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">22.6%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.40,200 Cr</div></div></div>
+    <div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — P/E 8.4x vs sector 9x — block trade Rs.74Cr confirms institutional thesis</span></div>
+    <div class="rj rj-h"><div class="rj-top"><span class="rj-icon">◆ HOLD</span><span class="rj-verdict">HOLD — AT EXACT FAIR VALUE, ADD ON DIPS ONLY</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"Block trades of Rs.74 Cr confirm institutional conviction. But near 52-week high at formula fair value with an iron ore company? I hold what I have and wait for the dip." <b>EPS Rs.10.8 → PE 8.4x → Formula = 8.4×10.8 = Rs.91. At Rs.92 = EXACTLY at fair value. No margin of safety. Iron ore $100 = possible EPS peak risk. RJ verdict: HOLD. Add only at Rs.82-87.</b></div></div>
+    
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Hold above</div><div class="wl-lval en">Rs.82</div></div><div class="wl-lv"><div class="wl-ll">Add dip</div><div class="wl-lval en">Rs.82-87</div></div><div class="wl-lv"><div class="wl-ll">Target</div><div class="wl-lval t1">Rs.105</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">Rs.78</div></div><div class="wl-lv"><div class="wl-ll">Horizon</div><div class="wl-lval t1">6-9 months</div></div></div>
   </div>
 </div>
-<div class="footer-bar">Watchlist | 6 stocks | 6-factor signal engine | Jun 25 2026 | Not SEBI advice</div>
-</div></div>
+<div class="wlcard">
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">CONCOR</span>
+      <span style="font-size:11px;color:var(--text3)">Rs.460 | P/E 38x vs logistics 32x | PAT -12.4% — wait</span>
+    </div>
+    <div class="wl-ov w-watch-pill">Watch — 2/6</div>
+  </div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vr">Overvalued</span><div class="ws6-d">PE 38x above logistics sector 32x. PAT declining -12.4% YoY. EPS peaking.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vr">Bearish</span><div class="ws6-d">200 DMA Rs.506 = ceiling. Price below all key MAs. 4/6 bearish signals.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s vr">Weak</span><div class="ws6-d">Low delivery %. No institutional accumulation signals.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s va">Neutral</span><div class="ws6-d">No directional conviction from derivatives desk.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s va">Cautious</span><div class="ws6-d">Logistics sector facing margin pressure. Rail freight competition.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s va">Wait</span><div class="ws6-d">Wait for 2 consecutive quarters of EPS recovery before entry.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:30%"></div></div><span class="wlcb-s" style="color:var(--text3)">30% Watch — 2/6</span></div>
+  <div class="wl-body">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">38x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">32x (logistics)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">11.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.12.4</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">10.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.54,200 Cr</div></div></div>
+    <div class="vbadge vb-over"><span>✕</span><span>OVERVALUED FOR NOW</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 19% above logistics sector while PAT -12.4% — wait for earnings recovery</span></div>
+    <div class="rj rj-w"><div class="rj-top"><span class="rj-icon">◇ WAIT</span><span class="rj-verdict">WAIT — EPS DECLINING IS A VALUE TRAP SIGNAL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"EPS declining 12.4% YoY while PE is above sector average = a value trap. The PE looks reasonable only if EPS stops falling. My rule: never buy declining EPS businesses." <b>EPS Rs.12.4 DECLINING. PE 38x = above logistics sector PE 32x. Formula: even at sector PE 32x → Fair = 32×12 = Rs.384. At Rs.460 = 20% above fair with DECLINING EPS. EPS peak has passed. RJ verdict: WAIT for 2 consecutive quarters of EPS recovery before any entry.</b></div></div>
+    
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Watch</div><div class="wl-lval va">Rs.506 DMA</div></div><div class="wl-lv"><div class="wl-ll">Entry if EPS recovers</div><div class="wl-lval en">Rs.380-400</div></div><div class="wl-lv"><div class="wl-ll">Target</div><div class="wl-lval t1">Rs.520</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">-8% from entry</div></div><div class="wl-lv"><div class="wl-ll">Horizon</div><div class="wl-lval va">Wait Q1 FY27</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">JAY BHARAT MARUTI</span>
+      <span style="font-size:11px;color:var(--text3)">~Rs.220 | P/E 18x vs auto anc 22x | PAT +287% YoY</span>
+    </div>
+    <div class="wl-ov w-sbuy-pill">Strong Buy — 5/6</div>
+  </div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vg">Strong Buy</span><div class="ws6-d">PE 18x vs auto ancillary sector 22x = 18% discount. PAT +287% YoY. ROE 22%.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vg">Buy</span><div class="ws6-d">RSI 24 = oversold. Below 200 DMA = entry zone. MF holding 0.02%.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s va">Watch</span><div class="ws6-d">Wait for delivery above 55% on green day for institutional confirmation.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">No F&O. Clean cash trade. No derivative overhang.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vg">Bullish</span><div class="ws6-d">Maruti Suzuki parent company = supply certainty. Auto sector strong.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vg">Buy</span><div class="ws6-d">Book 40-50% if held from lower. Add fresh at Rs.200-215 zone.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:80%"></div></div><span class="wlcb-s" style="color:var(--green)">80% Strong Buy — 5/6</span></div>
+  <div class="wl-body">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">18x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">22x (auto anc)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">22.4%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.9.4</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">22.0%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.3,200 Cr</div></div></div>
+    <div class="vbadge vb-cheap"><span>◆</span><span>UNDERVALUED</span><span style="font-weight:400;opacity:.8;font-size:10px"> — 18% below auto ancillary sector — PAT +287% not reflected in price</span></div>
+    <div class="rj rj-b"><div class="rj-top"><span class="rj-icon">▲ BUY</span><span class="rj-verdict">BUY — PAT +287% AT SECTOR DISCOUNT = GIFT</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"A company growing PAT at 287% and trading 18% below its sector PE? This is the exact situation I look for. The market has not noticed yet — but it will." <b>EPS Rs.9.4 growing. Sector PE 22x → Fair = 22×9.4 = Rs.207. At Rs.220 = near fair. But EPS growing rapidly — next year EPS ~Rs.14 → Fair = Rs.308. BUY now for EPS re-rating.</b></div></div>
+    
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Entry</div><div class="wl-lval en">Rs.200-215</div></div><div class="wl-lv"><div class="wl-ll">Target 1yr</div><div class="wl-lval t1">Rs.308</div></div><div class="wl-lv"><div class="wl-ll">Target 2yr</div><div class="wl-lval t2">Rs.380+</div></div><div class="wl-lv"><div class="wl-ll">Stop</div><div class="wl-lval sl">Rs.185</div></div><div class="wl-lv"><div class="wl-ll">Horizon</div><div class="wl-lval t1">12-24 months</div></div></div>
+  </div>
+</div>
+<div class="wlcard">
+  <div class="wlc-hdr">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="wl-t">SAIL</span>
+      <span style="font-size:11px;color:var(--text3)">Rs.169 | P/E 14x vs steel 12x | ROE 5.8% — avoid</span>
+    </div>
+    <div class="wl-ov w-sell-pill">Sell — 1/6</div>
+  </div>
+  <div class="wl-s6"><div class="ws6"><div class="ws6-l">Fundamental</div><span class="ws6-s vr">Sell</span><div class="ws6-d">ROE 5.8% = destroying capital. Contingent liabilities Rs.44,708 Cr. EPS peaking.</div></div><div class="ws6"><div class="ws6-l">Technical</div><span class="ws6-s vr">Sell</span><div class="ws6-d">RSI bearish divergence. Below 200 DMA. MACD negative.</div></div><div class="ws6"><div class="ws6-l">Volume</div><span class="ws6-s vr">Weak</span><div class="ws6-d">Low delivery %. Distribution pattern. Institutions exiting.</div></div><div class="ws6"><div class="ws6-l">OI / Deriv</div><span class="ws6-s vr">Bearish</span><div class="ws6-d">Elevated short positions. No institutional buying.</div></div><div class="ws6"><div class="ws6-l">Sentiment</div><span class="ws6-s vr">Bearish</span><div class="ws6-d">Global steel overcapacity. China dumping. Margins under pressure.</div></div><div class="ws6"><div class="ws6-l">News</div><span class="ws6-s vr">Avoid</span><div class="ws6-d">No positive catalyst. Capex heavy with low returns. 50 better businesses in India.</div></div></div>
+  <div class="wl-cb"><span class="wlcb-l">Overall conviction</span><div class="wlcb-t"><div class="wlcb-f fb" style="width:15%"></div></div><span class="wlcb-s" style="color:var(--red)">15% Sell — 1/6</span></div>
+  <div class="wl-body">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:8px 0 6px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">14x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">12x (steel)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.11.8</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">5.8%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.69,800 Cr</div></div></div>
+    <div class="vbadge vb-over"><span>✕</span><span>OVERVALUED + AVOID</span><span style="font-weight:400;opacity:.8;font-size:10px"> — ROE 5.8% = capital destruction | above steel sector P/E with deteriorating metrics</span></div>
+    <div class="rj rj-s"><div class="rj-top"><span class="rj-icon">▼ SELL</span><span class="rj-verdict">SELL — ROE 5.8% = DESTROYING SHAREHOLDER CAPITAL</span><span class="rj-badge">RJ Signal</span></div><div class="rj-text">"ROE 5.8% means SAIL earns less than the cost of your capital every year. This is permanent value destruction, not temporary underperformance. There are 50 better businesses in India." <b>EPS Rs.11.8 → PE 14x → Formula = 14×11.8 = Rs.165. At Rs.169 = near fair. BUT ROE 5.8% < cost of equity 12% = systematic capital destruction. Steel sector under global pressure. EPS likely peaking at Rs.12. Contingent liabilities Rs.44,708 Cr = hidden EPS risk. RJ verdict: SELL.</b></div></div>
+    
+    <div class="wl-lvrow"><div class="wl-lv"><div class="wl-ll">Action</div><div class="wl-lval sl">Exit / Avoid</div></div><div class="wl-lv"><div class="wl-ll">If holding</div><div class="wl-lval sl">Trail stop -7%</div></div><div class="wl-lv"><div class="wl-ll">Re-entry only if</div><div class="wl-lval va">ROE > 12%</div></div><div class="wl-lv"><div class="wl-ll">Better alt.</div><div class="wl-lval en">NMDC/BPCL</div></div><div class="wl-lv"><div class="wl-ll">Horizon</div><div class="wl-lval sl">Avoid</div></div></div>
+  </div>
+</div>
+</div>
+</div>
 
-<!-- ═══ SECTION 3: NEWS & SENTIMENT ═══ -->
 <div class="sec" id="sec-s3" style="display:none">
 <div class="section-padding">
 <div class="sum5">
@@ -1414,6 +1384,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var s1 = document.getElementById('sec-s1');
   if (s1) s1.style.cssText = 'display:block!important';
 });
+
+// Live timestamp
+function updateTime(){
+  var now=new Date();
+  var ist=new Date(now.getTime()+5.5*3600000);
+  var h=ist.getUTCHours(),m=ist.getUTCMinutes();
+  var s=(h<10?'0':'')+h+':'+(m<10?'0':'')+m+' IST';
+  var el=document.getElementById('live-time');
+  if(el)el.textContent=s;
+}
+updateTime();
+setInterval(updateTime,60000);
+
 </script>
 </body>
 </html>
