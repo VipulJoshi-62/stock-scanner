@@ -292,6 +292,67 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
 .rj-text b{color:#fff;font-style:normal;font-weight:700}
 /* ── Timestamp chip ── */
 .chips .ts-chip{background:var(--bg3);color:var(--text3);padding:3px 10px;border-radius:12px;font-size:11px;border:1px solid var(--border)}
+
+/* ══ TAAZA KHABAR ══════════════════════════════════════════════ */
+.tk-section-hdr{padding:24px 24px 12px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.tk-section-hdr h2{font-size:22px;font-weight:800;color:var(--text);margin:0 0 4px}
+.tk-section-hdr p{font-size:13px;color:var(--text3);margin:0 0 10px}
+.tk-date-chip{font-size:11px;background:var(--bg3);color:var(--accent);padding:3px 10px;border-radius:12px;border:1px solid var(--border);font-weight:600}
+.tk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;max-width:1400px}
+@media(max-width:900px){.tk-wrap{grid-template-columns:1fr}}
+.tk-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--bg2);display:flex;flex-direction:column}
+.tk-analyst{border-color:#1a3a5c}
+.tk-trader{border-color:#2a1a3a}
+.tk-head{padding:16px 18px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.tk-analyst .tk-head{background:linear-gradient(135deg,#0a1929 0%,#0d2137 100%)}
+.tk-trader .tk-head{background:linear-gradient(135deg,#12071f 0%,#1a0a2e 100%)}
+.tk-head-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:6px}
+.tk-head-name{font-size:20px;font-weight:800;color:var(--text);margin-bottom:3px;font-family:var(--mono)}
+.tk-head-sub{font-size:11px;color:var(--text3);margin-bottom:8px}
+.tk-head-badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#0a2a18;color:#3ecf8e;border:1px solid #1a4528}
+.tk-analyst .tk-head-badge{background:#0a2a18;color:#3ecf8e;border-color:#1a4528}
+.tk-trader .tk-head-badge{background:#2a1a0a;color:#f5a623;border-color:#4a2a10}
+.tk-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:14px}
+.tk-stock-strip{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg3);border-radius:8px;border:1px solid var(--border)}
+.tk-ticker{font-size:18px;font-weight:800;font-family:var(--mono);color:var(--text)}
+.tk-signal-pill{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:.5px}
+.tk-signal-buy{background:#0a2a18;color:#3ecf8e;border:1px solid #1a4528}
+.tk-signal-hold{background:#091525;color:#4f8ef7;border:1px solid #152238}
+.tk-signal-sell{background:#200a0a;color:#f26b6b;border:1px solid #401515}
+.tk-cmp{margin-left:auto;text-align:right}
+.tk-cmp-label{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--text3);text-transform:uppercase}
+.tk-cmp-price{font-size:16px;font-weight:800;color:var(--text);font-family:var(--mono)}
+.tk-section{}
+.tk-sec-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;margin-bottom:6px}
+.tk-sec-text{font-size:12px;color:var(--text2);line-height:1.7}
+.tk-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tk-metric{background:var(--bg3);border-radius:8px;padding:8px 12px;border:1px solid var(--border)}
+.tk-metric-l{font-size:10px;color:var(--text3);font-weight:600;margin-bottom:3px}
+.tk-metric-v{font-size:14px;font-weight:800;color:var(--text);font-family:var(--mono)}
+.tk-metric-note{font-size:10px;color:var(--text3);margin-top:2px}
+.tk-sotp-total{padding:10px 14px;background:linear-gradient(90deg,#0a2a18,#051810);border-radius:8px;border:1px solid #1a4528;display:flex;align-items:center;justify-content:space-between}
+.tk-sotp-label{font-size:11px;color:#3ecf8e;font-weight:700}
+.tk-sotp-value{font-size:18px;font-weight:800;color:#3ecf8e;font-family:var(--mono)}
+.tk-sotp-discount{font-size:11px;color:#f5a623;font-weight:700}
+.tk-table{width:100%;border-collapse:collapse;font-size:11px}
+.tk-table th{padding:6px 8px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1px;color:var(--text3);text-transform:uppercase;border-bottom:1px solid var(--border)}
+.tk-table td{padding:7px 8px;border-bottom:1px solid var(--border);color:var(--text2)}
+.tk-table td:first-child{font-weight:700;color:var(--text)}
+.tk-table td.green{color:#3ecf8e;font-weight:700}
+.tk-table td.amber{color:#f5a623;font-weight:700}
+.tk-table td.red{color:#f26b6b;font-weight:700}
+.tk-target-box{background:var(--bg3);border-radius:8px;padding:12px 14px;border:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tk-tb-item{text-align:center}
+.tk-tb-label{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
+.tk-tb-val{font-size:15px;font-weight:800;font-family:var(--mono);color:var(--text)}
+.tk-tb-val.green{color:#3ecf8e}
+.tk-tb-val.amber{color:#f5a623}
+.tk-tb-val.red{color:#f26b6b}
+/* Trader card specifics */
+.tk-hindi-quote{font-size:14px;font-weight:700;color:var(--text);line-height:1.6;padding:10px 14px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--purple)}
+.tk-rumour-pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#1a0a2e;color:#a78bfa;border:1px solid #2d1a4a;margin:2px}
+.tk-entry-box{background:var(--bg3);border-radius:8px;padding:12px 14px;border:1px solid var(--border);display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+
 </style>
 </head>
 <body><!-- build:v9.0-055122 -->
@@ -304,29 +365,29 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
     <button class="ntab" id="tab-s4" onclick="showSec('s4')"><i class="ti ti-news-filled" style="font-size:13px;vertical-align:-2px;margin-right:4px"></i>Taaza Khabar</button>
   </div>
   <div class="nav-chips">
-    <span class="chip cn">Jun 25 2026</span><span class="chip cn" id="live-time">--:-- IST</span><span class="chip cg">Nifty +0.83%</span><span class="chip cg">Sensex +1.02%</span><span class="chip cg">BNF +1.68%</span><span class="chip cg">VIX 13.33</span><span class="chip cr">Nasdaq -2.21%</span><span class="chip cb">Crude $74</span>
+    <span class="chip cn">Jun 25 2026</span><span class="chip cn" id="live-time">13:31 IST</span><span class="chip cg">Nifty +0.62%</span><span class="chip cg">Sensex +0.36%</span><span class="chip cr">BNF -1.07%</span><span class="chip cg">VIX 13.33</span><span class="chip cr">Nasdaq -2.21%</span><span class="chip cb">Crude $74</span>
   </div>
 </nav>
 <div class="ticker">
   <div class="tick-inner">
-    <span class="ti"><span class="tn">NIFTY 50</span><span class="tv"> 24,021</span><span class="tu"> ▲0.83%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">SENSEX</span><span class="tv"> 76,991</span><span class="tu"> ▲1.02%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">BANK NIFTY</span><span class="tv"> 58,205</span><span class="tu"> ▲1.68%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">VIX</span><span class="tv"> 13.33</span><span class="tu"> ▼4.38%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">HDFC BANK</span><span class="tv"> 793</span><span class="tu"> ▲2.34%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">IDBI BANK</span><span class="tv"> 85</span><span class="tu"> ▲2.60%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">INDUSIND BANK</span><span class="tv"> 930</span><span class="tu"> ▲2.70%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">IDFC FIRST</span><span class="tv"> 79.7</span><span class="td"> ▼1.29%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">SBI</span><span class="tv"> 1,040</span><span class="tu"> ▲1.50%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">AU SFB</span><span class="tv"> 1,077</span><span class="tu"> ▲3.70%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">TCS</span><span class="tv"> 2,094</span><span class="td"> ▼1.56%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">INFOSYS</span><span class="tv"> 1,057</span><span class="tu"> ▲2.65%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">NIFTY 50</span><span class="tv"> 24,168</span><span class="tu">▲0.62%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">SENSEX</span><span class="tv"> 77,266</span><span class="tu">▲0.36%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BANK NIFTY</span><span class="tv"> 57,585</span><span class="td">▼1.07%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">VIX</span><span class="tv"> 12.67</span><span class="td">▼4.95%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">HDFC BANK</span><span class="tv"> 801</span><span class="tu">▲1.02%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">IDBI BANK</span><span class="tv"> 85</span><span class="tu">▲2.60%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">INDUSIND BANK</span><span class="tv"> 930</span><span class="tu">▲2.70%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">IDFC FIRST</span><span class="tv"> 79.7</span><span class="td">▼1.29%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">SBI</span><span class="tv"> 1,040</span><span class="tu">▲1.50%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">AU SFB</span><span class="tv"> 1,064</span><span class="tu">▲2.50%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">TCS</span><span class="tv"> 2,094</span><span class="td">▼1.56%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">INFOSYS</span><span class="tv"> 1,060</span><span class="tu">▲0.28%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">PERSISTENT</span><span class="tv"> 4,862</span><span class="td"> ▼5.12%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">CIPLA</span><span class="tv"> 1,456</span><span class="tu"> ▲2.87%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">SUNPHARMA</span><span class="tv"> 1,896</span><span class="tu"> ▲1.42%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">AUROPHARMA</span><span class="tv"> 1,535</span><span class="tu"> ▲2.00%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">BPCL</span><span class="tv"> 311</span><span class="tu"> ▲Rs.308 break</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">BHARTI AIRTEL</span><span class="tv"> 1,885</span><span class="tu"> ▲0.80%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">BHARTI AIRTEL</span><span class="tv"> 1,890</span><span class="tu">▲0.27%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">RELIANCE</span><span class="tv"> 1,382</span><span class="tu"> ▲0.42%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">L&T</span><span class="tv"> 3,542</span><span class="tu"> ▲0.54%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">ASIAN PAINTS</span><span class="tv"> 2,714</span><span class="tu"> ▲0.88%</span></span><span class="ti"><span class="tsep">|</span></span>
@@ -343,7 +404,7 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
     <span class="ti"><span class="tn">GOLD</span><span class="tv"> $3,280</span><span class="td"> ▼0.8%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">USD/INR</span><span class="tv"> 84.20</span><span class="td"> ▼Rupee</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">S&P 500</span><span class="tv"> 7,365</span><span class="td"> ▼1.44%</span></span><span class="ti"><span class="tsep">|</span></span>
-    <span class="ti"><span class="tn">NASDAQ</span><span class="tv"> 25,587</span><span class="td"> ▼2.21%</span></span><span class="ti"><span class="tsep">|</span></span>
+    <span class="ti"><span class="tn">NASDAQ</span><span class="tv"> 25,587</span><span class="td">▼2.21%</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">PCR</span><span class="tv"> 0.84</span><span class="tu"> Neutral</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">FII</span><span class="tv"> +Rs.17.9Cr</span><span class="tu"> Buying</span></span><span class="ti"><span class="tsep">|</span></span>
     <span class="ti"><span class="tn">DII</span><span class="tv"> +Rs.680Cr</span><span class="tu"> Buying</span></span>
@@ -383,7 +444,7 @@ body, .sc-body, .card-body, .wl-body, .section-padding { color: #d8d8f0; }
 <!-- TODAY'S PICKS -->
 <div class="cpanel on" style="display:block" id="cp-today">
 <div class="ph" style="background:var(--blue-bg);border-color:#1a2a40"><div class="ph-left"><i class="ti ti-calendar-event ph-icon" style="color:var(--accent)"></i><div><div class="ph-title">Today's Picks — Jun 25 2026</div><div class="ph-sub">VIX 13.33 = full position size | BNF expiry | Post-expiry VIX crash 27 to 13</div><div class="ph-thesis">All 14 BankNifty constituents green. FII covering -1.69L puts. Buy banking breakouts, ride pharma momentum, avoid IT intraday.</div></div></div><span class="ph-badge" style="background:var(--accent);color:#fff">Exit 3:15 PM</span></div>
-<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-sbuy">Strong Buy</span><span class="px">~Rs.793 | +2.34% | BNF leader | FPI gap 33% to 24%</span></div><span class="fs fs-p">Fund 7/10</span></div>
+<div class="sc"><div class="sc-top"><div class="sc-left"><span class="tkr">HDFC BANK</span><span class="sp sp-sbuy">Strong Buy</span><span class="px">~Rs.801 | +1.02% | BNF leader | FPI gap 33% to 24%</span></div><span class="fs fs-p">Fund 7/10</span></div>
 <div class="s6"><div class="s6c"><span class="s6l">Earnings</span><span class="s6v vg">Gold std</span></div><div class="s6c"><span class="s6l">Tech</span><span class="s6v vg">Breakout</span></div><div class="s6c"><span class="s6l">Volume</span><span class="s6v vg">Confirm</span></div><div class="s6c"><span class="s6l">Derivatives</span><span class="s6v vg">Puts cvrd</span></div><div class="s6c"><span class="s6l">Sentiment</span><span class="s6v vg">FII return</span></div><div class="s6c"><span class="s6l">News</span><span class="s6v vg">BNF expiry</span></div></div>
 <div class="cvbar"><span class="cvbar-l">Conviction</span><div class="cvbar-t"><div class="cvbar-f fb" style="width:88%"></div></div><span class="cvbar-s" style="color:var(--green)">88%</span></div>
 <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:6px 0 5px"><div class="lv"><div class="ll">P/E</div><div class="lval uu">16.1x</div></div><div class="lv"><div class="ll">Sector P/E</div><div class="lval" style="color:#fff;font-size:11px;font-weight:700;font-family:var(--mono)">14x (pvtbk)</div></div><div class="lv"><div class="ll">ROCE</div><div class="lval t1">16.8%</div></div><div class="lv"><div class="ll">EPS</div><div class="lval t1">Rs.49.3</div></div><div class="lv"><div class="ll">ROE</div><div class="lval t1">17.1%</div></div><div class="lv"><div class="ll">Mkt Cap</div><div class="lval" style="color:#c0c0d8;font-size:11px;font-weight:700;font-family:var(--mono)">Rs.6.1L Cr</div></div></div>
